@@ -1,0 +1,30 @@
+{
+  "workflowMinimumCharacters": 8,
+  "minimumSignalsToBook": 1,
+  "signals": {
+    "roles": [
+      "Founder / executive",
+      "Operations leader",
+      "Revenue / customer leader",
+      "Finance / admin leader",
+      "Technical / systems leader"
+    ],
+    "businessStages": [
+      "$500K–$1M annual revenue",
+      "$1M–$5M annual revenue",
+      "$5M–$10M annual revenue",
+      "$10M+ annual revenue"
+    ],
+    "frequencies": [
+      "Multiple times a minute",
+      "Every few minutes",
+      "Hourly",
+      "Daily"
+    ],
+    "timelines": [
+      "Now — we have a workflow in mind",
+      "This quarter"
+    ],
+    "minimumSystemsSelected": 2
+  }
+}

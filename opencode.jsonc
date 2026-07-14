@@ -1,0 +1,78 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "shell": "pwsh",
+  "model": "openai/gpt-5.5",
+  "small_model": "openai/gpt-5.5",
+  "default_agent": "agent",
+  "permission": {
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "edit": {
+      "*": "allow",
+      ".env": "ask",
+      ".env.*": "ask",
+      "*.env": "ask",
+      "*.env.*": "ask"
+    },
+    "bash": {
+      "*": "allow",
+      "git reset --hard*": "ask",
+      "git clean*": "ask",
+      "git branch -d*": "ask",
+      "git branch -D*": "ask",
+      "git worktree remove*": "ask",
+      "git push --force*": "ask",
+      "git push --force-with-lease*": "ask",
+      "git checkout -- *": "ask",
+      "git restore --source*": "ask",
+      "rm -rf*": "ask",
+      "Remove-Item* -Recurse*": "ask"
+    },
+    "webfetch": "allow",
+    "websearch": "ask"
+  },
+  "instructions": ["AGENTS.md"],
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 20000
+  },
+  "provider": {
+    "openai": {
+      "models": {
+        "gpt-5.5": {
+          "options": {
+            "reasoningEffort": "high"
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "notion_pm": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true,
+      "oauth": {},
+      "timeout": 30000
+    }
+  },
+  "watcher": {
+    "ignore": [
+      ".git/**",
+      "node_modules/**",
+      ".opencode/node_modules/**",
+      "dist/**",
+      "build/**",
+      ".next/**",
+      ".turbo/**",
+      "coverage/**",
+      "playwright-report/**",
+      "test-results/**",
+      ".venv/**",
+      "__pycache__/**"
+    ]
+  }
+}
