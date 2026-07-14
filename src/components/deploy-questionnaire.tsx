@@ -308,21 +308,21 @@ export function DeployQuestionnaire() {
 
         {currentStep.type === "contact" ? (
           <div className="deploy-contact-grid">
-            <label>
+            <label htmlFor="deploy-work-email">
               <span>Work email *</span>
-              <input autoComplete="email" inputMode="email" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} />
+              <input id="deploy-work-email" autoComplete="email" inputMode="email" placeholder="you@company.com" type="email" value={form.email} onChange={(event) => updateField("email", event.target.value)} />
             </label>
-            <label>
+            <label htmlFor="deploy-name">
               <span>Name *</span>
-              <input autoComplete="name" type="text" value={form.name} onChange={(event) => updateField("name", event.target.value)} />
+              <input id="deploy-name" autoComplete="name" placeholder="Your name" type="text" value={form.name} onChange={(event) => updateField("name", event.target.value)} />
             </label>
-            <label>
+            <label htmlFor="deploy-company">
               <span>Company *</span>
-              <input autoComplete="organization" type="text" value={form.company} onChange={(event) => updateField("company", event.target.value)} />
+              <input id="deploy-company" autoComplete="organization" placeholder="Company name" type="text" value={form.company} onChange={(event) => updateField("company", event.target.value)} />
             </label>
-            <label>
+            <label htmlFor="deploy-phone">
               <span>Phone number (optional)</span>
-              <input autoComplete="tel" inputMode="tel" type="tel" value={form.phone} onChange={(event) => updateField("phone", event.target.value)} />
+              <input id="deploy-phone" autoComplete="tel" inputMode="tel" placeholder="+1 (555) 000-0000" type="tel" value={form.phone} onChange={(event) => updateField("phone", event.target.value)} />
             </label>
             <label className="deploy-privacy-acknowledgement">
               <input checked={form.privacyAccepted} type="checkbox" onChange={(event) => updateField("privacyAccepted", event.target.checked)} />

@@ -1351,18 +1351,41 @@ main > section {
   gap: 0.85rem;
 }
 
-.deploy-contact-grid label {
+.deploy-contact-grid > label:not(.deploy-privacy-acknowledgement) {
   display: grid;
-  gap: 0.45rem;
+  gap: 0.25rem;
+  border: 1px solid var(--nous-stroke-default);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--nous-page-soft-control-bg) 46%, transparent);
+  padding: 0.75rem 0.9rem 0.35rem;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
 }
 
-.deploy-contact-grid label span {
-  color: var(--nous-fg-muted);
-  font-size: 0.82rem;
+.deploy-contact-grid > label:not(.deploy-privacy-acknowledgement):focus-within {
+  border-color: color-mix(in srgb, var(--nous-accent-info) 48%, var(--nous-stroke-default));
+  background: color-mix(in srgb, var(--nous-page-soft-control-bg) 70%, transparent);
+}
+
+.deploy-contact-grid > label:not(.deploy-privacy-acknowledgement) > span {
+  color: var(--nous-page-body-fg);
+  font-family: var(--nous-font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.deploy-contact-grid > label:not(.deploy-privacy-acknowledgement) input {
+  border: 0;
+  padding: 0.35rem 0 0.55rem;
 }
 
 .deploy-contact-grid .deploy-privacy-acknowledgement {
   display: flex;
+  grid-column: 1 / -1;
   align-items: flex-start;
   gap: 0.7rem;
   margin-top: 0.5rem;
