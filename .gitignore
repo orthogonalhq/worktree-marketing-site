@@ -17,6 +17,7 @@ coverage/
 .eslintcache
 
 # Environment and local machine files
+.vercel/
 .env
 .env.*
 !.env.example
