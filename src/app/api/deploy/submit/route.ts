@@ -96,11 +96,11 @@ function canBookDeployment(submission: DeploySubmission, score: number) {
 }
 
 function getSupabaseConfiguration() {
-  const url = process.env.SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const url = process.env.LEADS_DB_SUPABASE_URL;
+  const serviceRoleKey = process.env.LEADS_DB_SUPABASE_SERVICE_ROLE_KEY;
   const table = process.env.SUPABASE_DEPLOY_TABLE ?? "deploy_submissions";
 
-  if (!url || !serviceRoleKey) throw new SubmissionPersistenceError("Supabase is not configured");
+  if (!url || !serviceRoleKey) throw new SubmissionPersistenceError("Leads database is not configured");
 
   return { serviceRoleKey, table, url: url.replace(/\/$/, "") };
 }
@@ -207,7 +207,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const { serviceRoleKey } = getSupabaseConfiguration();
-    const rateLimitSecret = process.env.DEPLOY_RATE_LIMIT_SECRET ?? serviceRoleKey;
+    const rateLimitSecret = process.env.LEADS_DB_RATE_LIMIT_SECRET ?? serviceRoleKey;
     const ipAllowed = await consumeRateLimit(`ip:${hashRateLimitKey(getRequestIp(request), rateLimitSecret)}`, RATE_LIMIT_MAX_IP_ATTEMPTS);
     const emailAllowed = await consumeRateLimit(`email:${hashRateLimitKey(submission.email.toLowerCase(), rateLimitSecret)}`, RATE_LIMIT_MAX_EMAIL_ATTEMPTS);
 
