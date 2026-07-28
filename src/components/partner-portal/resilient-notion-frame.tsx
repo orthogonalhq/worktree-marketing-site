@@ -31,6 +31,7 @@ export function ResilientNotionFrame({
   );
   const [manualRevision, setManualRevision] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showRecovery, setShowRecovery] = useState(false);
   const revision = manualRevision === null ? pageRevision : String(manualRevision);
   const directUrl = useMemo(() => normalizedEmbedUrl(src).toString(), [src]);
   const frameUrl = useMemo(() => {
@@ -41,8 +42,19 @@ export function ResilientNotionFrame({
   }, [revision, src]);
   const reloadDocument = useCallback(() => {
     setLoading(true);
+    setShowRecovery(false);
     setManualRevision((current) => Math.max(Date.now(), (current ?? 0) + 1));
   }, []);
+
+  useEffect(() => {
+    if (!frameUrl || !loading) return;
+
+    const recoveryTimer = window.setTimeout(() => {
+      setShowRecovery(true);
+    }, 8000);
+
+    return () => window.clearTimeout(recoveryTimer);
+  }, [frameUrl, loading]);
 
   useEffect(() => {
     const restoreFrame = (event: PageTransitionEvent) => {
@@ -55,13 +67,6 @@ export function ResilientNotionFrame({
 
   return (
     <div className={styles.embedFrameShell}>
-      <div className={styles.embedToolbar}>
-        <span>If the document appears blank, reload it here.</span>
-        <div className={styles.embedToolbarActions}>
-          <button type="button" onClick={reloadDocument}>Reload document</button>
-          <a href={directUrl} target="_blank" rel="noreferrer">Open directly ↗</a>
-        </div>
-      </div>
       <div className={styles.embedViewport}>
         {frameUrl ? (
           <iframe
@@ -73,10 +78,27 @@ export function ResilientNotionFrame({
             allowFullScreen
             loading="eager"
             referrerPolicy="strict-origin-when-cross-origin"
-            onLoad={() => setLoading(false)}
+            onError={() => setShowRecovery(true)}
+            onLoad={() => {
+              setLoading(false);
+              setShowRecovery(false);
+            }}
           />
         ) : null}
         {loading ? <div className={styles.embedLoading}>Loading partner playbook…</div> : null}
+        {showRecovery ? (
+          <div className={styles.embedRecovery} role="status">
+            <span>Document is taking longer than expected.</span>
+            <div className={styles.embedRecoveryActions}>
+              <button type="button" onClick={reloadDocument}>
+                Try again
+              </button>
+              <a href={directUrl} target="_blank" rel="noreferrer">
+                Open directly ↗
+              </a>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );
