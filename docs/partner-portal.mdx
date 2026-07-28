@@ -1,0 +1,67 @@
+# Worktree partner portal
+
+The partner portal is served by the marketing site at `/partners`. Notion is
+the authoring system, but the browser never loads Notion directly: the Next.js
+server reads the approved page tree through a read-only Notion integration and
+renders the supported blocks using the Worktree visual system.
+
+## Required configuration
+
+Create an internal Notion integration with read-content capability only. Share
+the `Outbound Sales` root page with that integration so its child pages inherit
+access.
+
+Configure these server-only deployment variables:
+
+```text
+NOTION_PARTNER_PORTAL_TOKEN=
+NOTION_PARTNER_PORTAL_PAGE_ID=3aad5a4c-f68c-81d7-ba48-e8f763836b7e
+PARTNER_PORTAL_PASSWORD=
+PARTNER_PORTAL_SESSION_SECRET=
+PARTNER_PORTAL_SESSION_DAYS=7
+```
+
+`PARTNER_PORTAL_SESSION_SECRET` must be an unrelated random value containing at
+least 32 characters. Changing the shared password affects new sign-ins.
+Changing the session secret immediately invalidates every existing portal
+session.
+
+The session cookie is HTTP-only, same-site, signed with HMAC-SHA-256, and
+restricted to a maximum lifetime of 30 days. The portal fails closed when the
+password, signing secret, or Notion token is missing.
+
+## Publishing workflow
+
+The published marketing-site route is the canonical rep-facing version:
+
+```text
+https://worktree.orthg.nl/partners
+```
+
+Keep working notes and source links on a separate private Notion page outside
+the `Outbound Sales` tree. For a substantial rewrite, draft the affected page
+privately and promote approved content into the portal tree. Avoid maintaining
+a complete duplicate of the published tree.
+
+Notion content responses are cached server-side for five minutes. The
+integration token is never sent to the browser.
+
+## Rollout order
+
+1. Add the required environment variables to the marketing-site deployment.
+2. Deploy and verify the password gate, homepage, all child-page cards, tables,
+   images, and mobile layout at `/partners`.
+3. Share the marketing-site URL with the first representatives.
+4. Unpublish the old `notion.site` version only after the new route has been
+   verified in production.
+
+## Supported content
+
+The renderer supports paragraphs, headings, rich-text annotations and links,
+quotes, callouts, lists, to-dos, toggles, tables, child pages, images, files,
+code, equations, columns, bookmarks, and synced blocks. Unsupported Notion
+blocks are omitted unless they contain supported child blocks.
+
+Only pages represented by child-page blocks beneath the configured root are
+available through the portal. Supplying another Notion page ID in the URL does
+not grant access to it.
