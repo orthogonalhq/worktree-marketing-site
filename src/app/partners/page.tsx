@@ -4,6 +4,7 @@ import {
 } from "@/components/partner-portal/notion-renderer";
 import {
   PartnerAccessGate,
+  PartnerPortalEmbed,
   PortalShell,
   PortalUnavailable,
 } from "@/components/partner-portal/portal-shell";
@@ -55,6 +56,9 @@ export default async function PartnerPortalPage({ searchParams }: PartnerPortalP
       />
     );
   }
+
+  const embedUrl = process.env.PARTNER_PORTAL_NOTION_EMBED_URL;
+  if (embedUrl) return <PartnerPortalEmbed basePath={basePath} src={embedUrl} />;
 
   const document = await getPartnerPortalRoot().catch((error: unknown) => {
     console.error("partner_portal_root_load_failed", {
