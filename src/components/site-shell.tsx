@@ -52,7 +52,13 @@ export function WorktreeShell({ children, theme = "dark" }: { children: ReactNod
   );
 }
 
-function SiteHeader({ theme }: { theme: "dark" | "light" }) {
+export function SiteHeader({
+  theme,
+  action,
+}: {
+  theme: "dark" | "light";
+  action?: ReactNode;
+}) {
   return (
     <header className="worktree-site-header">
       <Link className="worktree-brand" href="/" aria-label="Worktree home">
@@ -64,16 +70,18 @@ function SiteHeader({ theme }: { theme: "dark" | "light" }) {
         <Link className="nav-link" href="/how-it-works">How it works</Link>
         <Link className="nav-link" href="/security">Security</Link>
       </nav>
-      <span className="nue-prism-cta nue-prism-cta-secondary worktree-header-cta">
-        <span aria-hidden="true" className="nue-prism-cta-shadow" />
-        <Link className="nue-prism-cta-button" href="/deploy">
-          <span>
-            Start a review
-            <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
-          </span>
-        </Link>
-        <PrismLayers />
-      </span>
+      {action === undefined ? (
+        <span className="nue-prism-cta nue-prism-cta-secondary worktree-header-cta">
+          <span aria-hidden="true" className="nue-prism-cta-shadow" />
+          <Link className="nue-prism-cta-button" href="/deploy">
+            <span>
+              Start a review
+              <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
+            </span>
+          </Link>
+          <PrismLayers />
+        </span>
+      ) : action}
       <MobileSiteMenu theme={theme} />
     </header>
   );

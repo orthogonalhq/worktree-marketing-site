@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import styles from "@/app/partners/portal.module.css";
 import { ResilientNotionFrame } from "@/components/partner-portal/resilient-notion-frame";
+import { SiteHeader } from "@/components/site-shell";
 
 type PortalShellProps = {
   authenticated?: boolean;
@@ -11,32 +11,13 @@ type PortalShellProps = {
   title: string;
 };
 
-function PortalHeader({
-  authenticated,
-  basePath,
-}: {
-  authenticated: boolean;
-  basePath: string;
-}) {
-  const homeHref = basePath || "/";
+function PartnerSignOut({ basePath }: { basePath: string }) {
   const logoutHref = `${basePath}/logout`;
 
   return (
-    <header className={styles.siteHeader}>
-      <Link className={styles.brand} href={homeHref} aria-label="Worktree Partner Portal home">
-        <span className={styles.parentMark} aria-hidden="true">O°</span>
-        <span className={styles.familyDivider} aria-hidden="true">/</span>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className={styles.logo} src="/logo/Logomark-darkmode-transparent.png" alt="" width="40" height="40" />
-        <span className={styles.wordmark}>Worktree</span>
-      </Link>
-      <span className={styles.portalLabel}>Partner playbook</span>
-      {authenticated ? (
-        <form action={logoutHref} method="post">
-          <button className={styles.quietButton} type="submit">Sign out</button>
-        </form>
-      ) : null}
-    </header>
+    <form className={styles.signOutForm} action={logoutHref} method="post">
+      <button className={styles.signOutButton} type="submit">Sign out</button>
+    </form>
   );
 }
 
@@ -48,8 +29,14 @@ export function PortalShell({
   title,
 }: PortalShellProps) {
   return (
-    <div className={styles.portal}>
-      <PortalHeader authenticated={authenticated} basePath={basePath} />
+    <div
+      className={`nous-design-system worktree-shell ${styles.portal}`}
+      data-nous-theme="dark"
+    >
+      <SiteHeader
+        theme="dark"
+        action={authenticated ? <PartnerSignOut basePath={basePath} /> : undefined}
+      />
 
       <div className={coverUrl ? `${styles.hero} ${styles.heroWithImage}` : styles.hero}>
         {coverUrl ? (
@@ -79,8 +66,11 @@ export function PartnerPortalEmbed({
   src: string;
 }) {
   return (
-    <div className={`${styles.portal} ${styles.embedPortal}`}>
-      <PortalHeader authenticated basePath={basePath} />
+    <div
+      className={`nous-design-system worktree-shell ${styles.portal} ${styles.embedPortal}`}
+      data-nous-theme="dark"
+    >
+      <SiteHeader theme="dark" action={<PartnerSignOut basePath={basePath} />} />
       <ResilientNotionFrame src={src} />
     </div>
   );

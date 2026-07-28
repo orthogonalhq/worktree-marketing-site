@@ -97,74 +97,18 @@
   color: #f7f7f5;
 }
 
-.siteHeader {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  width: min(calc(100% - 2rem), 78rem);
-  min-height: 5rem;
-  margin-inline: auto;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.brand {
-  display: inline-flex;
-  min-width: 0;
-  align-items: center;
-  justify-self: start;
-  color: #f7f7f5;
-  font-family: var(--nous-font-mono);
-  text-decoration: none;
-}
-
-.parentMark {
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: -0.12em;
-}
-
-.familyDivider {
-  margin-inline: 0.65rem;
-  color: #3d4146;
-  font-size: 1.1rem;
-  font-weight: 300;
-}
-
-.logo {
-  width: 1.25rem;
-  height: 1.25rem;
-  object-fit: contain;
-}
-
-.wordmark {
-  margin-left: 0.55rem;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: -1.8px;
-}
-
-.portalLabel {
+.signOutForm {
   display: none;
-  color: #5b6067;
-  font-family: var(--nous-font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
-.quietButton {
-  grid-column: 2;
-  grid-row: 1;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+.signOutButton {
+  border: 1px solid var(--nous-stroke-soft);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
-  padding: 0.45rem 0.7rem;
-  color: #7f858d;
+  background: var(--nous-page-soft-control-bg);
+  padding: 0.55rem 0.8rem;
+  color: var(--nous-fg-muted);
   cursor: pointer;
-  font: inherit;
+  font-family: var(--nous-font-sans);
   font-size: 0.75rem;
   transition:
     border-color 160ms ease,
@@ -172,11 +116,10 @@
     background 160ms ease;
 }
 
-.quietButton:hover,
-.quietButton:focus-visible {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.05);
-  color: #f7f7f5;
+.signOutButton:hover,
+.signOutButton:focus-visible {
+  border-color: var(--nous-stroke-strong);
+  color: var(--nous-page-title-fg);
 }
 
 .hero {
@@ -694,27 +637,19 @@
 }
 
 @media (min-width: 640px) {
-  .siteHeader {
-    grid-template-columns: 1fr auto 1fr;
-  }
-
-  .portalLabel {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .quietButton {
-    grid-column: 3;
-    justify-self: end;
-  }
-
   .heroInner {
     padding-block: 5rem 5.5rem;
   }
 
   .loginControls {
     grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .signOutForm {
+    display: block;
+    flex: none;
   }
 }
 
