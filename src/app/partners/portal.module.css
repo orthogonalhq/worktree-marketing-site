@@ -16,6 +16,7 @@
 }
 
 .embedFrame {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
@@ -24,11 +25,14 @@
 
 .embedViewport {
   position: relative;
+  width: 100%;
+  height: 100%;
   min-height: 0;
 }
 
 .embedLoading {
   position: absolute;
+  z-index: 1;
   display: grid;
   inset: 0;
   place-items: center;
@@ -41,33 +45,39 @@
 }
 
 .embedFrameShell {
-  display: grid;
+  position: relative;
+  height: 100%;
   min-height: 0;
-  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
 }
 
-.embedToolbar {
+.embedRecovery {
+  position: absolute;
+  z-index: 2;
+  top: 0.75rem;
+  right: 0.75rem;
   display: flex;
-  min-height: 2.65rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  background: #090a0b;
-  padding: 0.45rem max(0.75rem, calc((100vw - 78rem) / 2));
-  color: #5f656d;
+  gap: 0.75rem;
+  max-width: calc(100% - 1.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+  background: rgba(9, 10, 11, 0.96);
+  padding: 0.55rem 0.65rem 0.55rem 0.8rem;
+  color: #8a9097;
   font-size: 0.7rem;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.28);
 }
 
-.embedToolbarActions {
+.embedRecoveryActions {
   display: flex;
   flex: none;
   align-items: center;
   gap: 0.45rem;
 }
 
-.embedToolbar button,
-.embedToolbar a {
+.embedRecovery button,
+.embedRecovery a {
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.025);
@@ -78,10 +88,10 @@
   text-decoration: none;
 }
 
-.embedToolbar button:hover,
-.embedToolbar button:focus-visible,
-.embedToolbar a:hover,
-.embedToolbar a:focus-visible {
+.embedRecovery button:hover,
+.embedRecovery button:focus-visible,
+.embedRecovery a:hover,
+.embedRecovery a:focus-visible {
   border-color: rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.05);
   color: #f7f7f5;
@@ -716,11 +726,15 @@
 }
 
 @media (max-width: 520px) {
-  .embedToolbar > span {
-    display: none;
+  .embedRecovery {
+    right: 0.5rem;
+    left: 0.5rem;
+    max-width: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .embedToolbar {
-    justify-content: flex-end;
+  .embedRecoveryActions {
+    margin-left: auto;
   }
 }
