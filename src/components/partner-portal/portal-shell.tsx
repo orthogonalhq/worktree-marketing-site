@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import styles from "@/app/partners/portal.module.css";
+import { ResilientNotionFrame } from "@/components/partner-portal/resilient-notion-frame";
 
 type PortalShellProps = {
   authenticated?: boolean;
@@ -80,14 +81,7 @@ export function PartnerPortalEmbed({
   return (
     <div className={`${styles.portal} ${styles.embedPortal}`}>
       <PortalHeader authenticated basePath={basePath} />
-      <iframe
-        className={styles.embedFrame}
-        src={src}
-        title="Worktree partner playbook"
-        allow="clipboard-write; fullscreen"
-        allowFullScreen
-        referrerPolicy="strict-origin-when-cross-origin"
-      />
+      <ResilientNotionFrame src={src} />
     </div>
   );
 }

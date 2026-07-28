@@ -22,6 +22,71 @@
   background: #fff;
 }
 
+.embedViewport {
+  position: relative;
+  min-height: 0;
+}
+
+.embedLoading {
+  position: absolute;
+  display: grid;
+  inset: 0;
+  place-items: center;
+  background: #0b0c0d;
+  color: #777e87;
+  font-family: var(--nous-font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.embedFrameShell {
+  display: grid;
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.embedToolbar {
+  display: flex;
+  min-height: 2.65rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: #090a0b;
+  padding: 0.45rem max(0.75rem, calc((100vw - 78rem) / 2));
+  color: #5f656d;
+  font-size: 0.7rem;
+}
+
+.embedToolbarActions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.embedToolbar button,
+.embedToolbar a {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  padding: 0.38rem 0.62rem;
+  color: #8a9097;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+}
+
+.embedToolbar button:hover,
+.embedToolbar button:focus-visible,
+.embedToolbar a:hover,
+.embedToolbar a:focus-visible {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f7f7f5;
+}
+
 .siteHeader {
   position: relative;
   z-index: 2;
@@ -647,5 +712,15 @@
   .columns {
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .embedToolbar > span {
+    display: none;
+  }
+
+  .embedToolbar {
+    justify-content: flex-end;
   }
 }
