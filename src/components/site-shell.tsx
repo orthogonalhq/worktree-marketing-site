@@ -55,10 +55,7 @@ export function WorktreeShell({ children, theme = "dark" }: { children: ReactNod
 function SiteHeader({ theme }: { theme: "dark" | "light" }) {
   return (
     <header className="worktree-site-header">
-      <Link className="worktree-brand" href="/" aria-label="Worktree home">
-        <Logomark initialTheme={theme} />
-        <span>Worktree</span>
-      </Link>
+      <FamilyBrandLockup theme={theme} />
       <nav className="worktree-nav" aria-label="Main navigation">
         <Link className="nav-link" href="/use-cases">Use cases</Link>
         <Link className="nav-link" href="/how-it-works">How it works</Link>
@@ -76,6 +73,19 @@ function SiteHeader({ theme }: { theme: "dark" | "light" }) {
       </span>
       <MobileSiteMenu theme={theme} />
     </header>
+  );
+}
+
+function FamilyBrandLockup({ theme }: { theme: "dark" | "light" }) {
+  return (
+    <Link className="worktree-family-brand" href="/" aria-label="Worktree, a product of Orthogonal, home">
+      <span aria-hidden="true" className="worktree-parent-mark">O°</span>
+      <span aria-hidden="true" className="worktree-family-divider">/</span>
+      <span aria-hidden="true" className="worktree-family-product">
+        <Logomark initialTheme={theme} />
+        <span>Worktree</span>
+      </span>
+    </Link>
   );
 }
 
