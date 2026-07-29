@@ -470,7 +470,44 @@ main > section {
   text-transform: none;
 }
 
+.worktree-family-brand {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  border-radius: 999px;
+  color: var(--nous-page-title-fg);
+  font-family: var(--nous-font-mono);
+  text-decoration: none;
+}
+
+.worktree-parent-mark {
+  flex: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.12em;
+  line-height: 1;
+}
+
+.worktree-family-divider {
+  margin-inline: 0.65rem;
+  color: var(--nous-fg-quieter);
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.worktree-family-product {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
 .worktree-brand:focus-visible,
+.worktree-family-brand:focus-visible,
 .nav-link:focus-visible,
 .worktree-mobile-menu-trigger:focus-visible,
 .worktree-site-footer a:focus-visible,
