@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { HeroSlackMockup, WatchItWorkMockup, ToolsEcosystemBadge } from "@/components/worktree-demo-mockups";
 import { AnalyzeSignalStack, DraftOutputStack, ResearchSourceStack, ReviewQueue } from "@/components/review-queue";
 import { WorktreeShell } from "@/components/site-shell";
@@ -79,7 +80,7 @@ function PrismLink({ children, href, variant = "primary" }: { children: ReactNod
       <a className="nue-prism-cta-button" href={href}>
         <span>
           {children}
-          <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
+          <ArrowRight aria-hidden="true" className="nue-prism-cta-arrow" strokeWidth={1.7} />
         </span>
       </a>
       <PrismLayers />
@@ -557,11 +558,11 @@ export default function Home() {
             </h1>
             <PrismChipList />
             <p className="hero-body mt-7 max-w-2xl text-lg leading-8 text-[var(--nous-page-body-fg)] sm:text-xl sm:leading-9">
-              Worktree maps a recurring business process, builds the agent workflow into your existing tools, then manages evaluations, quality control, and improvements after launch.
+              Worktree turns one recurring business process into a managed agent capability, with a Blueprint before launch and a Deployment Record that tracks it over time.
             </p>
             <div className="hero-actions mt-10 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/deploy">Start a deployment review</PrimaryLink>
-              <SecondaryLink href="#run">See it work</SecondaryLink>
+              <SecondaryLink href="/product">See what you receive</SecondaryLink>
             </div>
           </div>
           <div className="hero-mockup-slot">
@@ -648,8 +649,9 @@ export default function Home() {
                 eyebrow="How it works"
                 id="deployment-heading"
                 title="We turn real business processes into managed agent workflows."
-                copy="We map how the work happens today, build the agent workflow, insert it into daily operations, and manage quality after launch so each routine can prove itself in production."
+                copy="We define the workflow in a Consultation Blueprint, build and launch the managed capability, then record evaluations, changes, and limitations in a Deployment Record."
               />
+              <a className="mt-6 inline-flex gap-2 text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/product">Explore the complete product model <span aria-hidden="true">-&gt;</span></a>
             </div>
           </div>
           <div className="mt-20 lg:mt-24">

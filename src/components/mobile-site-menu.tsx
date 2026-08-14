@@ -4,36 +4,36 @@ import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
+import {
+  companyNavigationLinks,
+  comparisonNavigationLink,
+  primaryNavigationLinks,
+  productNavigationLinks,
+} from "@/components/site-navigation-data";
 
-type MobileMenuSectionId = "product" | "deploy" | "company";
+type MobileMenuSectionId = "product" | "explore" | "company";
 
 const mobileMenuSections = [
   {
     id: "product",
     label: "Product",
-    links: [
-      { href: "/", label: "Home", description: "Managed autonomous business AI agents." },
-      { href: "/how-it-works", label: "How it works", description: "How workflows are mapped, launched, and managed." },
-      { href: "/use-cases", label: "Use cases", description: "Where agent workflows fit first." },
-      { href: "/security", label: "Security", description: "Scoped tools, approvals, and run history." },
-    ],
+    links: [...productNavigationLinks, comparisonNavigationLink],
   },
   {
-    id: "deploy",
-    label: "Deploy",
+    id: "explore",
+    label: "Explore",
     links: [
-      { href: "/deploy", label: "Start a review", description: "Share the workflow you want handled." },
+      { href: "/", label: "Home", description: "Managed AI agent operations for recurring business work." },
+      primaryNavigationLinks[0],
+      primaryNavigationLinks[1],
     ],
   },
   {
     id: "company",
     label: "Company",
-    links: [
-      { href: "/about", label: "About", description: "Why Worktree exists." },
-      { href: "mailto:hello@orthg.nl", label: "Contact", description: "Reach the Worktree team." },
-      { href: "/security", label: "Security", description: "How Worktree handles operational trust." },
-    ],
+    links: companyNavigationLinks,
   },
 ] satisfies ReadonlyArray<{
   id: MobileMenuSectionId;
@@ -202,7 +202,7 @@ function MobileMenu({ isOpen, onNavigate, theme }: { isOpen: boolean; onNavigate
                 <Link className="nue-prism-cta-button" href="/deploy" onClick={onNavigate}>
                   <span>
                     Start a review
-                    <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
+                    <ArrowRight aria-hidden="true" className="nue-prism-cta-arrow" strokeWidth={1.7} />
                   </span>
                 </Link>
                 <MobilePrismLayers />

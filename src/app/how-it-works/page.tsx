@@ -15,7 +15,7 @@ export default function HowItWorksPage() {
           <header className="max-w-3xl border-b border-[var(--nous-stroke-subtle)] pb-12">
             <p className="worktree-type-eyebrow">How it works</p>
             <h1 id="how-it-works-heading" className="worktree-type-page-title mt-5">From one recurring process to a managed workflow.</h1>
-            <p className="worktree-type-lead mt-6">Worktree starts with a focused workflow, maps the work around it, builds the managed workflow, then evaluates and improves it after launch.</p>
+            <p className="worktree-type-lead mt-6">Worktree starts with a focused workflow, captures its operating definition in a Consultation Blueprint, builds the managed capability, then records evaluations and improvements after launch.</p>
           </header>
 
           <div className="mt-12 space-y-12">
@@ -28,25 +28,28 @@ export default function HowItWorksPage() {
             <section aria-labelledby="how-it-works-map">
               <p className="worktree-type-eyebrow">02</p>
               <h2 id="how-it-works-map" className="worktree-type-card-title mt-3">Map the process, systems, and approvals</h2>
-              <p className="worktree-type-body mt-4">Worktree maps how the workflow starts, the process it follows, the systems that provide context, and the points where approval belongs. The map becomes the basis for the managed workflow.</p>
+              <p className="worktree-type-body mt-4">Worktree maps how the workflow starts, the systems and rules it relies on, the points where approval belongs, the risks, and the definition of success. These decisions become the Consultation Blueprint.</p>
             </section>
 
             <section aria-labelledby="how-it-works-build">
               <p className="worktree-type-eyebrow">03</p>
               <h2 id="how-it-works-build" className="worktree-type-card-title mt-3">Build the managed workflow</h2>
-              <p className="worktree-type-body mt-4">Worktree builds the managed workflow around the mapped process, relevant systems, and defined approvals. The result is a workflow designed around the work the team selected.</p>
+              <p className="worktree-type-body mt-4">Worktree builds, connects, tests, and deploys the agent and workflow around the agreed Blueprint. Acceptance establishes the evaluation baseline and initializes the Deployment Record.</p>
             </section>
 
             <section aria-labelledby="how-it-works-improve">
               <p className="worktree-type-eyebrow">04</p>
               <h2 id="how-it-works-improve" className="worktree-type-card-title mt-3">Evaluate and improve after launch</h2>
-              <p className="worktree-type-body mt-4">After launch, Worktree evaluates the workflow and uses what is learned to make focused improvements. Evaluation and improvement remain part of managing the workflow over time.</p>
+              <p className="worktree-type-body mt-4">After launch, Worktree evaluates the workflow and uses what is learned to make focused improvements. The Deployment Record is updated monthly with performance, material changes, limitations, risks, and next actions.</p>
             </section>
 
             <section className="border-t border-[var(--nous-stroke-subtle)] pt-8" aria-labelledby="how-it-works-example">
               <h2 id="how-it-works-example" className="worktree-type-card-title">Illustrative path</h2>
               <p className="worktree-type-body mt-4">Illustratively, a team may begin with a recurring request, map the systems that hold its context and the approval it needs, then build and evaluate the managed workflow around that routine. The details are determined by the workflow being mapped.</p>
-              <Link className="mt-6 inline-block text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/deploy">Start a workflow review</Link>
+              <div className="mt-6 flex flex-wrap gap-x-8 gap-y-4">
+                <Link className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/product">See what the deployment includes</Link>
+                <Link className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/deploy">Start a workflow review</Link>
+              </div>
             </section>
           </div>
         </div>

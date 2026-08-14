@@ -1,17 +1,28 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { DesktopSiteNavigation } from "@/components/desktop-site-navigation";
 import { Logomark } from "@/components/logomark";
 import { MobileSiteMenu } from "@/components/mobile-site-menu";
+import {
+  companyNavigationLinks,
+  comparisonNavigationLink,
+  primaryNavigationLinks,
+  productNavigationLinks,
+} from "@/components/site-navigation-data";
 import { FooterThemeToggle } from "@/components/theme-toggle";
 
 const footerColumns = [
   {
     label: "Product",
+    links: [...productNavigationLinks, comparisonNavigationLink],
+  },
+  {
+    label: "Explore",
     links: [
       { href: "/", label: "Home" },
-      { href: "/how-it-works", label: "How it works" },
-      { href: "/use-cases", label: "Use cases" },
-      { href: "/security", label: "Security" },
+      primaryNavigationLinks[0],
+      primaryNavigationLinks[1],
     ],
   },
   {
@@ -22,11 +33,7 @@ const footerColumns = [
   },
   {
     label: "Company",
-    links: [
-      { href: "/about", label: "About" },
-      { href: "mailto:hello@orthg.nl", label: "Contact" },
-      { href: "/security", label: "Security" },
-    ],
+    links: companyNavigationLinks,
   },
 ];
 
@@ -62,18 +69,14 @@ export function SiteHeader({
   return (
     <header className="worktree-site-header">
       <FamilyBrandLockup theme={theme} />
-      <nav className="worktree-nav" aria-label="Main navigation">
-        <Link className="nav-link" href="/use-cases">Use cases</Link>
-        <Link className="nav-link" href="/how-it-works">How it works</Link>
-        <Link className="nav-link" href="/security">Security</Link>
-      </nav>
+      <DesktopSiteNavigation />
       {action === undefined ? (
         <span className="nue-prism-cta nue-prism-cta-secondary worktree-header-cta">
           <span aria-hidden="true" className="nue-prism-cta-shadow" />
           <Link className="nue-prism-cta-button" href="/deploy">
             <span>
               Start a review
-              <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
+              <ArrowRight aria-hidden="true" className="nue-prism-cta-arrow" strokeWidth={1.7} />
             </span>
           </Link>
           <PrismLayers />

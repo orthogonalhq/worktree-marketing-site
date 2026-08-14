@@ -36,13 +36,17 @@ export default function DataUsePage() {
             </section>
 
             <section aria-labelledby="data-use-retention">
-              <h2 id="data-use-retention" className="worktree-type-card-title">Retention and requests</h2>
-              <p className="worktree-type-body mt-4">Information is retained indefinitely by default and deleted on every verified deletion request. Send requests or questions to <a className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="mailto:hello@orthg.nl?subject=Data%20use%20request">hello@orthg.nl</a>.</p>
+              <h2 id="data-use-retention" className="worktree-type-card-title">Customer control and offboarding</h2>
+              <div className="worktree-type-body mt-4 space-y-4">
+                <p>Unless a customer agreement sets a specific retention period, information remains available until a verified deletion request is completed. Worktree deletes information on every verified deletion request.</p>
+                <p>When a managed deployment ends, the customer receives the final Deployment Record and agreed customer-owned exports. Worktree revokes or deletes its delegated credentials, disconnects managed integrations and runtime access, and handles retained customer data under the agreed export, deletion, retention, and backup policy.</p>
+                <p>Send requests or questions to <a className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="mailto:hello@orthg.nl?subject=Data%20use%20request">hello@orthg.nl</a>.</p>
+              </div>
             </section>
 
             <section className="border-t border-[var(--nous-stroke-subtle)] pt-8" aria-labelledby="data-use-context">
               <h2 id="data-use-context" className="worktree-type-card-title">Context for this page</h2>
-              <p className="worktree-type-body mt-4">Last updated July 13, 2026. This is a factual summary of current data use, not contractual or legal advice. A customer deployment may have additional written terms that apply to that engagement.</p>
+              <p className="worktree-type-body mt-4">Last updated August 12, 2026. This is a factual summary of current data use, not contractual or legal advice. A customer deployment may have additional written terms that apply to that engagement.</p>
             </section>
           </div>
         </div>

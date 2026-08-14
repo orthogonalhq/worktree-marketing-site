@@ -45,13 +45,17 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-retention">
-              <h2 id="privacy-retention" className="worktree-type-card-title">Retention and deletion</h2>
-              <p className="worktree-type-body mt-4">We retain information indefinitely by default. We delete information on every verified deletion request. To make a request, email <a className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="mailto:hello@orthg.nl?subject=Privacy%20request">hello@orthg.nl</a> from an address that lets us verify the request.</p>
+              <h2 id="privacy-retention" className="worktree-type-card-title">Your information and access stay under your control</h2>
+              <div className="worktree-type-body mt-4 space-y-4">
+                <p>Unless a customer agreement sets a specific retention period, information remains available until a verified deletion request is completed. We delete information on every verified deletion request.</p>
+                <p>When a managed deployment ends, Worktree provides the final Deployment Record and agreed customer-owned exports, revokes or deletes its delegated credentials, and disconnects managed integrations and runtime access. Retained customer data is handled under the agreed export, deletion, retention, and backup policy.</p>
+                <p>To make a request, email <a className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="mailto:hello@orthg.nl?subject=Privacy%20request">hello@orthg.nl</a> from an address that lets us verify the request.</p>
+              </div>
             </section>
 
             <section className="border-t border-[var(--nous-stroke-subtle)] pt-8" aria-labelledby="privacy-scope">
               <h2 id="privacy-scope" className="worktree-type-card-title">Scope of this notice</h2>
-              <p className="worktree-type-body mt-4">Last updated July 13, 2026. This notice describes our current public-site and workflow data practices. It is informational and does not replace any separate written agreement that applies to a customer deployment.</p>
+              <p className="worktree-type-body mt-4">Last updated August 12, 2026. This notice describes our current public-site and workflow data practices. It is informational and does not replace any separate written agreement that applies to a customer deployment.</p>
             </section>
           </div>
         </div>
