@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 
 function PrismLayers() {
   return (
@@ -26,7 +27,7 @@ export function PrismLink({ children, href, variant = "primary" }: { children: R
       <a className="nue-prism-cta-button" href={href}>
         <span>
           {children}
-          <span aria-hidden="true" className="nue-prism-cta-arrow">-&gt;</span>
+          <ArrowRight aria-hidden="true" className="nue-prism-cta-arrow" size={15} strokeWidth={1.7} />
         </span>
       </a>
       <PrismLayers />
