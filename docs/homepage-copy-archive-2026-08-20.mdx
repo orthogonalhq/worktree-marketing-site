@@ -1,0 +1,610 @@
+# Homepage copy archive
+
+Captured: 2026-08-20
+
+This document preserves the current homepage copy before the next narrative and section-structure pass. It is an archive, not a new source of truth. Wording can be reused or adapted for future product, service, use-case, security, and comparison pages.
+
+Technical, security, integration, customer, and performance statements must still be checked against current operating facts before they are republished. Illustrative names, quantities, outcomes, and interface states remain illustrative.
+
+Primary source files:
+
+- `src/app/page.tsx`
+- `src/components/homepage-workflow-gallery.tsx`
+- `src/components/operating-review-hero.tsx`
+- `src/components/site-shell.tsx`
+- `src/components/site-navigation-data.ts`
+
+## Page metadata
+
+**Title:** Hands-on AI Engineering and Managed Operations
+
+**Description:** Worktree works alongside your team to build, install, and manage AI agents and workflows that fit how your business operates.
+
+## Header and navigation
+
+**Brand accessibility label:** Worktree, a product of Orthogonal, home
+
+**Primary navigation:**
+
+- Product
+  - Product overview — What you receive with one managed deployment.
+  - Worktree Agents — A durable agent configured for a defined business role.
+  - Managed Operations — Ongoing controls, evaluation, support, and improvement.
+  - Compare approaches — See how managed operations differs from packaged and self-operated agents.
+- Use cases — Where agent workflows fit first.
+- Security — How access, controls, and operating boundaries are handled.
+- About — Why Worktree exists.
+- Blog — Practical notes on redesigning and operating work with AI.
+
+**Header CTA:** Start a review
+
+## Hero
+
+**Eyebrow:** Managed AI agent deployments
+
+**Heading:** Secure agent infrastructure. Engineers who work alongside your team.
+
+**Body:** From the first deployment to a growing portfolio, Worktree gives your team the engineering and operating capability to put AI to work across the business.
+
+**Primary CTA:** Talk to a Worktree engineer
+
+**Secondary CTA:** See how Worktree works
+
+## Workflow gallery introduction
+
+**Eyebrow:** What you can build
+
+**Heading:** Put AI to work across the parts of your business that need more capacity.
+
+## Card 01: Personal agent for owners
+
+### Card copy
+
+**Label:** Personal agent for owners
+
+**Heading:** Get your time back, and power up your team.
+
+### Card visual copy
+
+- Alex's agent
+- Answering from approved sources
+- Today
+- 7 team questions handled
+- 1 needs you
+- Jordan · Sales
+- Which pricing sheet should I use for Northstar?
+- Worktree agent
+- Use the 2026 services pricing sheet. I linked the approved version.
+- Pricing library checked
+- Avery · Operations
+- Can we move tomorrow's delivery date?
+- Needs Alex
+- 1 decision
+- Client context and delivery options are ready.
+- Review prepared decision
+
+### Expansion promise
+
+**Label:** Personal agent for owners
+
+**Heading:** Get your time back without becoming the bottleneck.
+
+**Body:** A Worktree engineer builds an agent around the knowledge, tools, and decisions your team already depends on you for.
+
+**Primary CTA:** Talk to a Worktree engineer
+
+**Secondary CTA:** Explore Worktree Agents
+
+**Benefits:**
+
+- Answers routine team questions from approved sources.
+- Prepares decisions that still need your judgement.
+- Gives your team access without giving away unrestricted control.
+
+### Expansion working story
+
+**Label:** Working story
+
+**Heading:** Your team asks. The agent handles what it can and brings you what matters.
+
+**Status:** Personal agent available
+
+**Channel:** #team-questions
+
+**Channel description:** Questions, decisions and follow-through
+
+**Conversation:**
+
+- Jordan · Sales: Which pricing sheet should I use for Northstar?
+- Worktree agent: Use the 2026 services pricing sheet. I linked the approved version and noted the client-specific terms.
+- Approved source checked
+- Avery · Operations: Can we move tomorrow's delivery date?
+
+**Activity ledger:**
+
+- Today — 7 team questions handled — 1 needs you
+- Pricing guidance — Answered — Approved sheet linked · source recorded
+- Project status — Answered — Latest task updates checked
+- Delivery date change — Needs your judgement — Customer impact prepared for review
+- Review decision
+
+### Expansion operating reality
+
+- **Connected systems:** Slack, docs and project tools
+- **Access:** Approved sources and scoped actions
+- **Human involvement:** Judgement calls return to the owner
+- **Evidence:** Answers, sources and decisions recorded
+
+## Card 02: Secure Cell architecture
+
+### Card copy
+
+**Label:** Secure Cell architecture
+
+**Heading:** Keep sensitive data scoped to one authorized execution.
+
+### Card visual copy
+
+- Identity verified
+- Single authorized execution
+
+### Expansion introduction
+
+**Label:** Secure cell architecture
+
+**Heading:** Sensitive data is decrypted for one authorized agent execution.
+
+**Body:** Each client and practitioner operates inside an isolated cell. When an agent needs sensitive information, a biometric check opens one authorized session. Only the requested data is decrypted inside that cell, and the working context is destroyed after the response is produced.
+
+**Link:** Developer documentation — Upcoming
+
+### Architectural invariant
+
+Sensitive data is unavailable to the agent until a person authorizes a specific request inside the correct cell.
+
+- **Default state:** Encrypted and unavailable
+- **Authorization:** One request, one session
+- **Execution scope:** One isolated client cell
+
+### Execution lifecycle
+
+**Heading:** What happens when an agent requests a sensitive record.
+
+#### 01. Request
+
+The agent asks for a specific piece of sensitive data.
+
+The record remains encrypted. Nothing sensitive has entered the agent's working context.
+
+- **Data state:** Encrypted
+- **Agent access:** None
+
+#### 02. Boundary selection
+
+The request is routed to the client and practitioner's isolated cell.
+
+The execution boundary is established before any protected information is released.
+
+- **Data state:** Encrypted
+- **Agent access:** None
+
+#### 03. Biometric authorization
+
+An authorized person approves this request.
+
+The biometric check creates one session for this request. It does not grant the agent ongoing access.
+
+- **Session:** Authorized
+- **Scope:** Single execution
+
+#### 04. Execution inside the cell
+
+Only the requested data is decrypted inside the isolated boundary.
+
+The agent can use that context to produce one response without gaining access to another client's data.
+
+- **Data state:** Decrypted in cell
+- **Agent access:** This execution
+
+#### 05. Response and teardown
+
+The result is returned, the session closes, and the working context is destroyed.
+
+A later request begins from the closed state and requires a new authorization.
+
+- **Session:** Closed
+- **Working context:** Destroyed
+
+### Data state
+
+**Heading:** Before, during, and after the execution.
+
+- **Before authorization — Closed:** Sensitive records remain encrypted. The agent has no sensitive client context.
+- **During execution — Open once:** The requested data is decrypted inside the selected cell for the authorized execution.
+- **After response — Closed again:** The authorization ends and the decrypted working context is destroyed.
+
+### What the boundary accomplishes
+
+**Heading:** Isolation is the control, not a promise that the model is infallible.
+
+- One client's execution does not inherit another client's decrypted context.
+- The agent does not retain standing access to sensitive records between requests.
+- An authorization cannot silently carry forward into a later execution.
+
+## Card 03: Inbound marketing support
+
+### Card copy
+
+**Label:** Inbound marketing support
+
+**Heading:** Research every website lead and prepare the handoff.
+
+### Card visual copy
+
+- Lead intelligence
+- New website inquiry
+- Now
+- Looking for help with client intake and follow-through.
+- Northwind Therapy · 18 people
+- Company researched
+- Booking checked
+- Brief prepared
+- Worktree agent
+- Human included
+- Thanks for reaching out. I've prepared the context for Alex...
+- Reply ready · Slack brief delivered
+
+### Expansion promise
+
+**Label:** Inbound marketing support
+
+**Heading:** Turn every website inquiry into a prepared human conversation.
+
+**Body:** Worktree researches the company, checks the signals your team cares about, and prepares the context and response before a person takes over.
+
+**Primary CTA:** Talk to a Worktree engineer
+
+**Secondary CTA:** Explore Worktree Agents
+
+**Benefits:**
+
+- Research the company and likely need while the inquiry is fresh.
+- Check fit, availability, and existing account context.
+- Prepare the reply and handoff without removing the human relationship.
+
+### Expansion working story
+
+**Label:** Working story
+
+**Heading:** A lead arrives. The research and first follow-through are already moving.
+
+**Status:** Handoff prepared
+
+**New website inquiry:**
+
+- Looking for help with client intake and follow-through.
+- Northwind Therapy · 18 people
+- **Contact:** Maya Chen · Practice director
+- **Source:** Operations automation page
+- **Need:** Reduce intake delays across three locations
+
+**Agent research — 4 checks complete:**
+
+- Company and team profile established — Complete
+- Existing CRM history checked — No prior account
+- Service fit summarized — Strong match
+- Booking availability checked — 3 openings
+- Sources and timestamps attached to the handoff.
+
+**Human handoff — Alex · Growth:**
+
+- **Conversation brief:** Northwind is growing across three clinics and intake follow-through is falling back to the owner.
+- Ask about current intake volume.
+- Confirm Jane App workflow.
+- Explore a first intake deployment.
+- **Reply drafted:** Thanks for reaching out, Maya. I reviewed the context and prepared a few questions for Alex…
+- Ready for human review
+
+### Expansion operating reality
+
+- **Trigger:** New website inquiry
+- **Connected systems:** Website forms, CRM, calendar, and approved sources
+- **Human involvement:** A person reviews and owns the relationship
+- **Recorded output:** Research, brief, draft, and handoff history
+
+## Card 04: Discord community feedback
+
+### Card copy
+
+**Label:** Discord community feedback
+
+**Heading:** Turn community feedback into tickets, then close the loop.
+
+### Card visual copy
+
+- **01 Listen:** Capture actionable feedback from selected Discord channels.
+- **02 Dedupe:** Group similar requests while preserving every source thread.
+- **03 Ticket:** Create one ticket with the original community context attached.
+- **04 Update:** Return progress and release updates to each conversation.
+
+### Expansion promise
+
+**Label:** Discord community feedback
+
+**Heading:** Turn community feedback into a loop people can see closing.
+
+**Body:** Worktree listens in the Discord channels you select, groups repeated requests without losing their sources, creates actionable tickets, and returns progress to the original conversations.
+
+**Primary CTA:** Talk to a Worktree engineer
+
+**Secondary CTA:** Explore Worktree Agents
+
+**Benefits:**
+
+- Capture useful feedback without asking the community to repeat itself.
+- Preserve every source while one clean ticket moves forward.
+- Post release and progress updates back to the people who raised it.
+
+### Expansion working story
+
+**Label:** Working story
+
+**Heading:** Many conversations become one actionable issue, then one visible update.
+
+**Status:** Loop active
+
+**Discord sources — 3 matched:**
+
+- **#build-feedback:** Could saved builds keep their selected sort? — Nightfold · Today 9:12
+- **#suggestions:** My build resets to newest after reopening. — Soulframe Builder · Today 9:46
+- **#help:** Can the library remember how I sorted it? — Nightfold · Today 10:03
+
+**Deduplication result:**
+
+- Saved build sorting does not persist.
+- Three requests describe the same behavior. All source messages remain linked.
+- **Confidence:** High
+- **Sources:** 3 conversations
+- **Projects:** 2 communities
+
+**Product ticket — WT-204:**
+
+- Persist the selected sort for saved builds.
+- Original community context attached.
+- Acceptance criteria prepared.
+- Source conversations subscribed.
+- **Release update:** Saved build sorting now persists between sessions.
+- Queued for 3 Discord replies.
+
+### Expansion operating reality
+
+- **Listening scope:** Only selected Discord channels
+- **Deduplication:** Similar requests grouped with sources preserved
+- **Human involvement:** Your team owns prioritization and delivery
+- **Closed loop:** Progress returned to every source conversation
+
+## Card 05: Clinical practice support
+
+### Card copy
+
+**Label:** Clinical practice support
+
+**Heading:** Give clinicians on-demand guidance and automate post-session reporting.
+
+### Card visual copy
+
+- #clinical-ops
+- Practice guidance and reporting
+- Today
+- Riley Park
+- What needs to be included before this report is filed?
+- Practice guidance agent — App
+- I checked the clinic's approved legal and practice knowledge. The filing guidance is ready.
+- Recorded session filed
+- Jane App AI Scribe · workflow started
+- Insurance report — Prepared
+- Workers' compensation — Prepared
+- Message #clinical-ops
+
+### Expansion promise
+
+**Label:** Clinical practice support
+
+**Heading:** Give clinicians approved guidance and keep reporting work moving.
+
+**Body:** Worktree connects the practice knowledge your clinicians rely on with the session and reporting workflows that follow, while keeping sensitive access inside the controls you define.
+
+**Primary CTA:** Talk to a Worktree engineer
+
+**Secondary CTA:** Explore Worktree Agents
+
+**Benefits:**
+
+- Answer practice questions from the clinic's approved knowledge.
+- Start reporting work when the recorded session is filed.
+- Prepare insurer and workers' compensation reports for review.
+
+### Expansion working story
+
+**Label:** Working story
+
+**Heading:** One approved knowledge base supports the question and the work that follows.
+
+**Status:** Practice workflow active
+
+**Practice guidance agent:**
+
+- #clinical-ops
+- Riley Park: What needs to be included before this report is filed?
+- Practice guidance agent: I checked the clinic's approved legal and practice knowledge. The filing guidance is ready.
+- 3 approved sources checked.
+- Practice manual §4.2
+- Insurer requirements
+- Clinic reporting policy
+
+**Post-session workflow — 1 review required:**
+
+- **01 Recorded session filed:** Jane App AI Scribe — Received
+- **02 Required context checked:** Approved practice knowledge — Complete
+- **03 Insurance report:** Prepared from the session record — Ready
+- **04 Workers' compensation report:** Prepared for clinician review — Review
+- **Clinician review:** Two prepared reports · source requirements attached
+- Open review
+
+### Expansion operating reality
+
+- **Knowledge:** Clinic-approved legal and practice sources
+- **Workflow trigger:** Recorded session filed through Jane App AI Scribe
+- **Human involvement:** Clinician reviews prepared reporting work
+- **Security:** Sensitive access follows the clinic's cell controls
+
+## Existing post-gallery sections
+
+### Useful access, designed carefully
+
+**Heading:** An agent needs access to be useful. That access has to be designed carefully.
+
+**Body:** Useful agents may need access to email, customer records, internal documents, CRM, billing, or other business systems. The workflow and its access cannot be designed as separate problems.
+
+**Panel label:** Questions to answer before launch
+
+1. What can it see?
+2. What can it change?
+3. Which actions require approval?
+4. Where are credentials kept?
+5. How can the team review what happened or remove access?
+
+**Panel answer:** Worktree designs the workflow, runtime, access, and human controls together, then documents the agreed boundaries for the team.
+
+### The relationship
+
+**Heading:** We learn the operation before we build the system.
+
+**Body:** A Worktree engineer works with the people who run the process, chooses the technical approach, connects the systems, tests against real cases, and stays involved after launch.
+
+1. **Learn with the operators:** Work with the people who run the process and understand how decisions, exceptions, and handoffs actually work.
+2. **Choose the technical approach:** Select the agent, workflow, runtime, and supporting tools that fit the job instead of forcing one standard setup.
+3. **Connect the selected systems:** Configure the agreed systems, job-specific access, and human approval points together.
+4. **Test real cases:** Use representative work to check accuracy, completeness, routing, and the places where a person should stay involved.
+5. **Launch with clear limits:** Put the workflow into operation with its role, access, approvals, and review process documented.
+6. **Stay involved after launch:** Review the work, make focused changes, and manage the system as the operation and portfolio develop.
+
+### The start
+
+**Heading:** Start with one job that is worth fixing.
+
+**Body:** Worktree begins with one concrete process, not a company-wide AI roadmap. The first deployment gives us something real to understand, test, operate, and measure.
+
+**First deployment:** One concrete process
+
+- Recurring work the team can describe
+- Real systems, decisions, and owners
+- A clear standard for useful work
+- A deployment Worktree can keep operating
+
+### Build from what works
+
+**Heading:** One working agent gives us a place to build from.
+
+**Body:** Later workflows do not start from zero. Worktree has learned more about the systems, policies, approvals, and teams around the work. Over time, we can manage a growing set of agents, workflows, and runtimes.
+
+1. **First working agent:** Learn one job deeply enough to put a useful system into operation.
+2. **Adjacent workflows:** Build from the context, access patterns, and working relationships already established.
+3. **Managed portfolio:** Operate and improve a growing set over time, with each addition scoped deliberately.
+
+### Relatable work
+
+**Heading:** Start where context has to become action.
+
+1. **After a sales meeting:** Update the CRM, prepare the follow-up, assign next steps, and route commercial decisions to the account owner.
+2. **During customer onboarding:** Gather the handoff, open the project, request missing information, and keep the next owners clear.
+3. **When a request comes in:** Read the request, collect the right context, prepare the response, and ask for approval when needed.
+4. **Before an account review:** Bring together recent activity, open decisions, risks, and the next actions for the team.
+5. **During a finance review:** Collect the supporting records, flag discrepancies, prepare the review packet, and route questions to the right person.
+
+### Managed operations and evidence
+
+**Heading:** We keep an eye on the work, not just the software.
+
+**Body:** An agent can be online and still perform poorly. Worktree reviews representative cases, finds missed context or incorrect routing, and updates the workflow based on evidence.
+
+#### Illustrative operating review
+
+- Worktree
+- Operating review
+- Post-meeting sales follow-through
+- 38 meetings. 38 documented next steps.
+- CRM records updated, follow-ups prepared, tasks assigned, and four commercial decisions routed to account owners.
+- **38 CRM records updated:** Records current
+- **31 follow-ups prepared:** Ready to send
+- **12 next-step tasks assigned:** Owners assigned
+- **Commercial decisions:** 4 commercial decisions routed to account owners. — Routed
+- **Evaluation evidence:** 52 / 53 cases met the record, follow-up, and handoff standard
+- **Estimated capacity:** ≈9.4 team hours returned
+- **Managed improvement:** One next step lacked an assigned owner. Owner validation has been added to the next evaluation.
+- Illustrative deployment · customer-baseline estimate
+- Average manual handling time × work completed, less review time.
+- CRM, email & tasks connected
+- Worktree managed
+
+### What you receive
+
+**Heading:** A working system and a clear record of how it runs.
+
+1. **Consultation Blueprint:** The job, systems, rules, approvals, risks, and success measures documented with your team before build.
+2. **Managed Agent Deployment:** The agent, workflow, runtime, selected systems, and ongoing operation assembled into one working deployment.
+3. **Deployment Record:** What the system was instructed to do, how it performed, what changed, and what needs attention next.
+
+### Access and control
+
+**Heading:** Know what the agent can see, change, and ask someone to approve.
+
+**Body:** Worktree configures selected systems and job-specific access. Actions can remain draft-only or require approval where a person should make the decision. The team should be able to review the work and remove access when needed.
+
+**Qualified note:** For qualified deployments, Worktree can review runtime environment, credential handling, data boundaries, approvals, and recovery requirements with the customer.
+
+**Access plan — Defined with the workflow:**
+
+- **Selected systems:** Only the business systems agreed for the job.
+- **Job-specific access:** Access shaped around the work the agent is responsible for.
+- **Controlled actions:** Draft-only or approval-gated actions where the business decision should remain with a person.
+- **Reviewable work:** A record the team can use to review what happened and what changed.
+- **Removable access:** A clear path for removing access when the workflow, role, or relationship changes.
+
+### Choosing an approach
+
+**Heading:** You can build this function yourself. You do not have to start there.
+
+**Body:** Internal hiring can make sense when an organization is ready to build and operate the capability itself. Worktree offers another path: a practical technical partner that helps get systems into operation and manages them over time.
+
+**CTA:** Compare approaches
+
+### Final CTA
+
+**Eyebrow:** Start with the operation
+
+**Heading:** Show us where the work gets stuck.
+
+**Body:** Bring a recurring process, backlog, or area where AI might help. You do not need a finished AI specification.
+
+**Primary CTA:** Start an operations review
+
+**Secondary CTA:** Explore use cases
+
+## Footer
+
+**Columns:**
+
+- Product
+- Explore
+- Deploy
+- Company
+
+**Deploy CTA:** Start a review
+
+**Legal:**
+
+- © 2026 Worktree
+- Privacy
+- Data use
+- Terms

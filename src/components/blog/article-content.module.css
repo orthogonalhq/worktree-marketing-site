@@ -1,0 +1,23 @@
+.paragraph { color: var(--nous-page-body-fg); font-size: 1.0625rem; line-height: 1.8; margin: 1.35rem 0; }
+.headingOne, .headingTwo, .headingThree { color: var(--nous-page-title-fg); letter-spacing: -0.04em; line-height: 1.05; }
+.headingOne { font-size: clamp(2.3rem, 5vw, 4.7rem); margin: 0 0 1.35rem; }
+.headingTwo { font-size: clamp(1.65rem, 3vw, 2.4rem); margin: 3.5rem 0 1rem; }
+.headingThree { font-size: 1.35rem; margin: 2.5rem 0 0.8rem; }
+.link { color: var(--nous-page-title-fg); text-decoration: underline; text-decoration-color: var(--nous-stroke-strong); text-underline-offset: 0.2em; }
+.link:hover { text-decoration-color: #78a7ff; }
+.list { color: var(--nous-page-body-fg); line-height: 1.75; margin: 1.25rem 0; padding-left: 1.4rem; }
+.listItem + .listItem { margin-top: 0.45rem; }
+.quote { border-left: 2px solid #4d73c7; color: var(--nous-page-title-fg); font-size: 1.2rem; line-height: 1.65; margin: 2rem 0; padding-left: 1.25rem; }
+.pre { background: #090b10; border: 1px solid var(--nous-stroke-subtle); border-radius: 0.75rem; color: #dfe9ff; font-size: 0.9rem; line-height: 1.6; margin: 1.75rem 0; overflow-x: auto; padding: 1.2rem; }
+.code { background: rgba(120, 167, 255, 0.12); border-radius: 0.25rem; color: #cfe0ff; font-family: var(--font-ibm-plex-mono), monospace; font-size: 0.9em; padding: 0.12em 0.32em; }
+.pre .code { background: transparent; padding: 0; }
+.figure { margin: 2.25rem 0; }
+.image { border: 1px solid var(--nous-stroke-subtle); border-radius: 0.8rem; height: auto; max-width: 100%; }
+.caption { color: var(--nous-page-body-fg); font-size: 0.88rem; line-height: 1.5; margin-top: 0.65rem; }
+.callout { background: rgba(75, 111, 198, 0.1); border: 1px solid rgba(120, 167, 255, 0.35); border-radius: 0.75rem; color: var(--nous-page-body-fg); line-height: 1.65; margin: 2rem 0; padding: 1.15rem 1.25rem; }
+.callout strong { color: #cfe0ff; display: block; font-family: var(--font-ibm-plex-mono), monospace; font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; text-transform: uppercase; }
+.citation { color: var(--nous-page-body-fg); font-size: 0.9em; }
+.tableWrap { margin: 2rem 0; overflow-x: auto; }
+.table { border-collapse: collapse; min-width: 38rem; width: 100%; }
+.headerCell, .cell, .table th, .table td { border-bottom: 1px solid var(--nous-stroke-subtle); color: var(--nous-page-body-fg); padding: 0.85rem; text-align: left; vertical-align: top; }
+.headerCell, .table th { color: var(--nous-page-title-fg); font-family: var(--font-ibm-plex-mono), monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }

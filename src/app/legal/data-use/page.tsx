@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Data Use | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Data Use",
   description: "How Worktree uses deployment inquiry and customer workflow data.",
-};
+  path: "/legal/data-use",
+});
 
 export default function DataUsePage() {
   return (

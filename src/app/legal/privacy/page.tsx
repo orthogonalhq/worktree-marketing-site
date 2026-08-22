@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Privacy",
   description: "How Worktree handles deployment inquiries and customer workflow data.",
-};
+  path: "/legal/privacy",
+});
 
 export default function PrivacyPage() {
   return (

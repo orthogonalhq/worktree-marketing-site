@@ -292,21 +292,27 @@ main > section {
 .worktree-site-header,
 .worktree-site-footer {
   position: relative;
-  width: min(100% - 2rem, 80rem);
   margin-inline: auto;
 }
 
 .worktree-site-header {
   z-index: 120;
   display: flex;
+  width: calc(100% - 2rem);
   align-items: center;
   justify-content: space-between;
   padding-block: 1.25rem;
 }
 
+.worktree-shell[data-header-overlay="true"] .worktree-site-header {
+  position: absolute;
+  inset: 0 0 auto;
+}
+
 .worktree-site-footer {
   z-index: 20;
   display: grid;
+  width: calc(100% - 2rem);
   gap: 0;
   padding-block: 3rem 0.5rem;
   color: var(--nous-fg-muted);
@@ -3523,6 +3529,20 @@ main > section {
   letter-spacing: -0.035em;
 }
 
+.worktree-services-navigation {
+  width: min(64rem, calc(100vw - 3rem));
+}
+
+.worktree-services-navigation .worktree-product-navigation-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.worktree-header-cta .nue-prism-cta-button {
+  background: color-mix(in srgb, var(--nous-page-soft-control-bg) 62%, transparent);
+  backdrop-filter: blur(18px) saturate(1.28);
+  -webkit-backdrop-filter: blur(18px) saturate(1.28);
+}
+
 .worktree-header-cta .nue-prism-cta-shadow,
 .worktree-header-cta .nue-prism-shadow {
   display: none;
@@ -6469,6 +6489,22 @@ main > section {
 }
 
 @media (max-width: 640px) {
+  .hero-actions.home-hero-actions {
+    width: min(100%, 23rem);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-hero-actions .nue-prism-cta,
+  .home-hero-actions .nue-prism-cta-button,
+  .home-hero-actions .nue-prism-cta-button > span {
+    width: 100%;
+  }
+
+  .home-hero-actions .nue-prism-cta-button > span {
+    justify-content: center;
+  }
+
   .tools-ecosystem-badge {
     width: min(100%, 80rem);
     justify-content: space-between;
@@ -9985,6 +10021,11 @@ main > section {
 }
 
 @media (min-width: 1024px) {
+  .worktree-site-header,
+  .worktree-site-footer {
+    width: min(100% - 5rem, 92rem);
+  }
+
   .worktree-mobile-menu-trigger,
   .worktree-mobile-menu {
     display: none;
@@ -10044,6 +10085,13 @@ main > section {
   .worktree-show-stage,
   .worktree-show-panel.worktree-on {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .worktree-site-header,
+  .worktree-site-footer {
+    width: calc(100% - 3rem);
   }
 }
 

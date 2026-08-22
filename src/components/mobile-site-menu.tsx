@@ -7,15 +7,22 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
+  blogNavigationLink,
   companyNavigationLinks,
   comparisonNavigationLink,
   primaryNavigationLinks,
   productNavigationLinks,
+  serviceNavigationLinks,
 } from "@/components/site-navigation-data";
 
-type MobileMenuSectionId = "product" | "explore" | "company";
+type MobileMenuSectionId = "services" | "product" | "explore" | "company";
 
 const mobileMenuSections = [
+  {
+    id: "services",
+    label: "Services",
+    links: serviceNavigationLinks,
+  },
   {
     id: "product",
     label: "Product",
@@ -28,6 +35,7 @@ const mobileMenuSections = [
       { href: "/", label: "Home", description: "Managed AI agent operations for recurring business work." },
       primaryNavigationLinks[0],
       primaryNavigationLinks[1],
+      blogNavigationLink,
     ],
   },
   {

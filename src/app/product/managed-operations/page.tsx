@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow, FinalCta, NumberedList, PrimaryLink, SecondaryLink } from "@/components/marketing-elements";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Managed AI Agent Operations | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Managed AI Agent Operations",
   description: "Worktree designs, deploys, secures, evaluates, and operates production AI agent systems so you do not have to build the function internally.",
-};
+  path: "/product/managed-operations",
+});
 
 const workflowFitCriteria = {
   good: [
@@ -213,11 +215,11 @@ export default function ManagedOperationsPage() {
           <div>
             <Eyebrow>Starting engagement</Eyebrow>
             <h2 id="included-heading" className="worktree-type-section-title mt-4">One role, operated well.</h2>
-            <p className="worktree-type-body mt-6">Engagements start around <strong className="font-medium text-[var(--nous-page-title-fg)]">$25K per year</strong>. The bounded scope keeps the first deployment measurable.</p>
+            <p className="worktree-type-body mt-6">Worktree begins with one bounded deployment so success, controls, and operating responsibility can be defined clearly. The deployment review establishes the exact scope and commercial proposal.</p>
             <p className="worktree-type-body mt-5">Additional Agents, workflows, integrations, volume, dedicated infrastructure, and enhanced service levels are scoped separately.</p>
           </div>
           <div className="scope-manifest">
-            <div className="scope-manifest-header"><span>Included</span><strong>Base managed deployment</strong></div>
+            <div className="scope-manifest-header"><span>Included</span><strong>Starting managed deployment</strong></div>
             <ul>{startingScope.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ul>
           </div>
         </div>

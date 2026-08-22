@@ -49,7 +49,7 @@ const comparisonRows = [
   ["Evaluation standard", "Your team", "Your team", "Your team", "Worktree with the customer"],
   ["Failure response", "Your team", "Your team", "Your team", "Worktree within the managed engagement"],
   ["Best fit", "Fast self-service adoption", "Teams building a flexible agent stack", "Teams prioritizing self-hosting and platform control", "Teams buying a managed business outcome"],
-  ["Commercial model", "Paid product subscription", "Open source plus models, infrastructure, and operations", "Open source plus models, infrastructure, and operations", "Annual managed engagement starting around $25K"],
+  ["Commercial model", "Paid product subscription", "Open source plus models, infrastructure, and operations", "Open source plus models, infrastructure, and operations", "Scoped managed engagement defined through a deployment review"],
 ];
 
 const operatingQuestions = [
@@ -102,7 +102,7 @@ const faqItems = [
   },
   {
     question: "How much does Worktree cost?",
-    answer: "Worktree engagements start around $25,000 per year for a bounded managed deployment. Final scope depends on the workflow, systems, permissions, evaluation requirements, and operating support involved.",
+    answer: "Pricing is established through a deployment review. The workflow, systems, permissions, evaluation requirements, and operating support determine the scope and commercial proposal.",
   },
   {
     question: "Which option is best?",
@@ -329,7 +329,7 @@ export default function CompareAiAgentApproachesPage() {
             <article className={styles.managedChoice}>
               <p className={styles.approachNumber}>Choose Worktree</p>
               <h3>Start with one managed business outcome.</h3>
-              <p>Worktree engagements start around <strong>$25,000 per year</strong> for a bounded managed deployment. Final scope depends on the workflow, systems, permissions, evaluation requirements, and operating support.</p>
+              <p>Worktree begins with a bounded managed deployment. The deployment review defines the workflow, systems, permissions, evaluation requirements, operating support, and commercial scope before work begins.</p>
               <BulletList items={["You want to improve one important workflow first.", "You do not want to hire a team before proving value.", "You want evaluation and improvement included after launch."]} />
             </article>
           </div>

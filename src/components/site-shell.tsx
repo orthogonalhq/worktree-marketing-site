@@ -5,6 +5,7 @@ import { DesktopSiteNavigation } from "@/components/desktop-site-navigation";
 import { Logomark } from "@/components/logomark";
 import { MobileSiteMenu } from "@/components/mobile-site-menu";
 import {
+  blogNavigationLink,
   companyNavigationLinks,
   comparisonNavigationLink,
   primaryNavigationLinks,
@@ -23,6 +24,7 @@ const footerColumns = [
       { href: "/", label: "Home" },
       primaryNavigationLinks[0],
       primaryNavigationLinks[1],
+      blogNavigationLink,
     ],
   },
   {
@@ -43,9 +45,21 @@ const footerBottomLinks = [
   { href: "/legal/terms", label: "Terms" },
 ];
 
-export function WorktreeShell({ children, theme = "dark" }: { children: ReactNode; theme?: "dark" | "light" }) {
+export function WorktreeShell({
+  children,
+  theme = "dark",
+  headerOverlay = false,
+}: {
+  children: ReactNode;
+  theme?: "dark" | "light";
+  headerOverlay?: boolean;
+}) {
   return (
-    <div className="nous-design-system nous-marketing-shell worktree-shell" data-nous-theme={theme}>
+    <div
+      className="nous-design-system nous-marketing-shell worktree-shell"
+      data-header-overlay={headerOverlay ? "true" : undefined}
+      data-nous-theme={theme}
+    >
       <div aria-hidden="true" className="worktree-bg-root" data-bg-layer="page-background-root">
         <div className="worktree-bg-grain" data-bg-layer="page-grain-texture" />
         <div className="worktree-bg-vignette" data-bg-layer="page-edge-vignette" />

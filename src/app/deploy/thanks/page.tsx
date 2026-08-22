@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { WorktreeShell } from "@/components/site-shell";
+import { createNoIndexMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Workflow Received | Worktree",
+export const metadata: Metadata = createNoIndexMetadata({
+  title: "Workflow Received",
   description: "Your Worktree deployment questionnaire has been received.",
-  robots: { index: false, follow: false },
-};
+});
 
 export default function DeployThanksPage() {
   return (

@@ -15,6 +15,10 @@ coverage/
 .nx/
 .cache/
 .eslintcache
+.codex-remote-attachments/
+.codex-tmp/
+__pycache__/
+*.pyc
 
 # Environment and local machine files
 .vercel/
@@ -35,3 +39,4 @@ pnpm-debug.log*
 #Artifacts
 *.md
 !docs/customer-centric-sales-copy-posture.md
+!docs/seo-*.md

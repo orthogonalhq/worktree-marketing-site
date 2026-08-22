@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1664" height="936" viewBox="0 0 1664 936" role="img" aria-labelledby="title desc">
+  <title id="title">490 workflows mapped, 70 selected</title>
+  <desc id="desc">A field of 490 squares arranged in 35 columns and 14 rows. Exactly 70 squares are highlighted in blue.</desc>
+  <defs>
+    <pattern id="workflow-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <rect width="26" height="26" rx="1" fill="#3b3b3d"/>
+    </pattern>
+    <pattern id="selected-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <rect width="26" height="26" rx="1" fill="#1473f3"/>
+    </pattern>
+  </defs>
+  <rect width="1664" height="936" fill="#050505"/>
+  <text x="832" y="101" fill="#f1f1ef" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.5" text-anchor="middle">490 WORKFLOWS MAPPED</text>
+  <!-- 35 columns by 14 rows = 490 workflows. -->
+  <rect x="207" y="154" width="1260" height="504" fill="url(#workflow-grid)"/>
+  <!-- 14 columns by 5 rows = exactly 70 selected workflows. -->
+  <rect x="207" y="154" width="504" height="180" fill="url(#selected-grid)"/>
+  <text x="832" y="855" fill="#f1f1ef" font-family="Arial, Helvetica, sans-serif" font-size="60" font-weight="700" letter-spacing="-1.25" text-anchor="middle">70 SELECTED</text>
+</svg>

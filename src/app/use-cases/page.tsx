@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Workflow Use Cases | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Workflow Use Cases",
   description: "Illustrative recurring business workflows that teams can evaluate with Worktree.",
-};
+  path: "/use-cases",
+});
 
 export default function UseCasesPage() {
   return (

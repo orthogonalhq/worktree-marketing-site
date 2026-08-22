@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Security | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Security",
   description: "A factual overview of Worktree workflow controls and data handling.",
-};
+  path: "/security",
+});
 
 export default function SecurityPage() {
   return (

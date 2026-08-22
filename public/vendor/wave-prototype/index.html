@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wave feasibility harness</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { min-height: 100%; margin: 0; }
+      body { overflow-x: hidden; background: #fff; }
+      .stage { position: relative; min-height: 761px; overflow: hidden; }
+      .wave { position: absolute; top: 0; left: max(22.88vw, 20rem); width: max(96.7vw, 87rem); height: 761px; }
+      .wave canvas { position: absolute; z-index: 1; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; }
+      .wave.hero-wave-animation--drawn canvas { opacity: 1; }
+      .fallback { position: absolute; top: -107px; left: 0; display: block; width: 100%; height: auto; }
+      .status { display: none; }
+
+      @media (max-width: 639px) {
+        .stage { min-height: 560px; }
+        .wave { top: -10px; left: 0; width: calc(100vw - 15px); height: 560px; }
+        .fallback { top: -207px; left: -124.5px; width: 624px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .status::after { content: " · reduced motion"; }
+      }
+    </style>
+    <script>
+      (() => {
+        const factories = Object.create(null);
+        const cache = Object.create(null);
+
+        self.webpackChunkStripeWave = {
+          push(payload) {
+            Object.assign(factories, payload[1] || {});
+          },
+        };
+
+        function requireModule(id) {
+          if (cache[id]) return cache[id].exports;
+          const factory = factories[id];
+          if (!factory) throw new Error(`Missing bundled module ${id}`);
+          const module = { exports: {} };
+          cache[id] = module;
+          factory(module, module.exports, requireModule);
+          return module.exports;
+        }
+
+        requireModule.d = (exports, definitions) => {
+          for (const key in definitions) {
+            if (!Object.prototype.hasOwnProperty.call(exports, key)) {
+              Object.defineProperty(exports, key, { enumerable: true, get: definitions[key] });
+            }
+          }
+        };
+        requireModule.n = (module) => {
+          const getter = module && module.__esModule ? () => module.default : () => module;
+          requireModule.d(getter, { a: getter });
+          return getter;
+        };
+        requireModule.r = (exports) => {
+          if (typeof Symbol !== "undefined" && Symbol.toStringTag) {
+            Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+          }
+          Object.defineProperty(exports, "__esModule", { value: true });
+        };
+        requireModule.o = (object, property) => Object.prototype.hasOwnProperty.call(object, property);
+        requireModule.g = globalThis;
+        self.__stripeWaveRequire = requireModule;
+      })();
+    </script>
+    <script src="./c67c952e-7f65a464f661b1d2.js"></script>
+    <script src="./55369f66-92e84f6aba0a73a8.js"></script>
+    <script src="./68654-0ccff603146a8ff7.js"></script>
+  </head>
+  <body>
+    <main class="stage">
+      <div class="wave" id="wave-root">
+        <picture>
+          <source srcset="./wave-fallback-mobile.webp" media="(max-width: 639px)" />
+          <source srcset="./wave-fallback-tablet.webp" media="(max-width: 1263px)" />
+          <img class="fallback" src="./wave-fallback-desktop.webp" alt="" aria-hidden="true" />
+        </picture>
+        <canvas id="wave-canvas" aria-hidden="true"></canvas>
+      </div>
+    </main>
+    <div class="status" id="status">Initializing</div>
+    <script>
+      (() => {
+        const requireModule = self.__stripeWaveRequire;
+        const Wave = requireModule(4014).$;
+        const configs = requireModule(89224);
+        const textures = requireModule(22137).W7;
+        const status = document.getElementById("status");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        textures[0].path = "./palette.webp";
+
+        try {
+          const wave = new Wave(document.getElementById("wave-canvas"), {
+            wideConfig: configs.gj,
+            mediumConfig: configs.P1,
+            smallConfig: configs.y7,
+            textures,
+            onError(error, tags) {
+              console.error(error, tags);
+            },
+          });
+
+          wave.onLoadReady(() => {
+            status.textContent = "Canvas running";
+          });
+          wave.initScene();
+          wave.paused = reducedMotion.matches;
+
+          reducedMotion.addEventListener("change", (event) => {
+            wave.paused = event.matches;
+            status.textContent = event.matches ? "Static canvas" : "Canvas running";
+          });
+          window.addEventListener("pagehide", () => wave.dispose(), { once: true });
+          self.__stripeWave = wave;
+        } catch (error) {
+          status.textContent = "Fallback active";
+          console.error(error);
+        }
+      })();
+    </script>
+  </body>
+</html>

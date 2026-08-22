@@ -1,0 +1,22 @@
+.page {
+  min-height: 100svh;
+  margin: 0;
+  overflow: hidden;
+  background: var(--nous-page-bg);
+}
+
+.stage {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

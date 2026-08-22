@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "About",
   description: "About Worktree and Orthogonal Labs Inc.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

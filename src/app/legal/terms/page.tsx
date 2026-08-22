@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { WorktreeShell } from "@/components/site-shell";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms | Worktree",
+export const metadata: Metadata = createPageMetadata({
+  title: "Terms",
   description: "Terms for using the public Worktree website.",
-};
+  path: "/legal/terms",
+});
 
 export default function TermsPage() {
   return (

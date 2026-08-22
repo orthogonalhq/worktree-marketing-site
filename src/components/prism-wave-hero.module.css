@@ -1,0 +1,73 @@
+.root {
+  position: absolute;
+  z-index: 0;
+  top: -4.875rem;
+  right: auto;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  overflow: hidden;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.canvasShell {
+  position: absolute;
+  top: 0;
+  right: -17vw;
+  bottom: -7%;
+  width: max(91vw, 78rem);
+  min-height: 42rem;
+}
+
+.canvasShell::before {
+  content: "";
+  position: absolute;
+  inset: 8% 0 3% 20%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 52% 42%, rgb(42 91 255 / 16%), transparent 28%),
+    radial-gradient(circle at 72% 56%, rgb(213 57 255 / 10%), transparent 34%),
+    radial-gradient(ellipse at 65% 50%, rgb(52 226 255 / 7%), transparent 58%);
+  filter: blur(34px);
+}
+
+.canvas {
+  position: absolute !important;
+  inset: 0;
+}
+
+.canvas::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--nous-page-bg) 0%, transparent 23%),
+    linear-gradient(180deg, transparent 68%, var(--nous-page-bg) 100%);
+}
+
+@media (max-width: 767px) {
+  .root {
+    top: -4.125rem;
+  }
+
+  .canvasShell {
+    top: 4rem;
+    right: -25rem;
+    bottom: auto;
+    width: 58rem;
+    height: 36rem;
+    min-height: 0;
+  }
+
+  .canvasShell::before {
+    inset: 12% 4% 8% 18%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas {
+    transform: none;
+  }
+}

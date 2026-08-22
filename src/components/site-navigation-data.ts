@@ -4,11 +4,29 @@ export type SiteNavigationLink = {
   description: string;
 };
 
+export const serviceNavigationLinks = [
+  {
+    href: "/services/ai-automation",
+    label: "AI automation",
+    description: "Find and redesign recurring work worth putting into motion.",
+  },
+  {
+    href: "/services/ai-implementation",
+    label: "AI implementation",
+    description: "Define, build, test, and launch one valuable AI workflow.",
+  },
+  {
+    href: "/services/managed-ai",
+    label: "Managed AI",
+    description: "Review, support, and improve a workflow after launch.",
+  },
+] as const satisfies ReadonlyArray<SiteNavigationLink>;
+
 export const productNavigationLinks = [
   {
     href: "/product",
     label: "Product overview",
-    description: "What you receive with one managed deployment.",
+    description: "How agents, controls, and operating evidence fit together.",
   },
   {
     href: "/product/agents",
@@ -16,16 +34,22 @@ export const productNavigationLinks = [
     description: "A durable agent configured for a defined business role.",
   },
   {
-    href: "/product/managed-operations",
-    label: "Managed Operations",
-    description: "Ongoing controls, evaluation, support, and improvement.",
+    href: "/product/security",
+    label: "Product Security",
+    description: "Access boundaries, human review, data handling, and removal.",
   },
-] satisfies ReadonlyArray<SiteNavigationLink>;
+] as const satisfies ReadonlyArray<SiteNavigationLink>;
 
 export const comparisonNavigationLink = {
-  href: "/compare-ai-agent-approaches",
+  href: "/product/compare-ai-agent-approaches",
   label: "Compare approaches",
-  description: "See how managed operations differs from packaged and self-operated agents.",
+  description: "Compare the responsibilities left by packaged, self-operated, internal, and Worktree approaches.",
+} satisfies SiteNavigationLink;
+
+export const blogNavigationLink = {
+  href: "/blog",
+  label: "Blog",
+  description: "Practical notes on redesigning and operating work with AI.",
 } satisfies SiteNavigationLink;
 
 export const primaryNavigationLinks = [
@@ -35,11 +59,6 @@ export const primaryNavigationLinks = [
     description: "Where agent workflows fit first.",
   },
   {
-    href: "/security",
-    label: "Security",
-    description: "How access, controls, and operating boundaries are handled.",
-  },
-  {
     href: "/about",
     label: "About",
     description: "Why Worktree exists.",
@@ -47,7 +66,7 @@ export const primaryNavigationLinks = [
 ] satisfies ReadonlyArray<SiteNavigationLink>;
 
 export const companyNavigationLinks = [
-  primaryNavigationLinks[2],
+  primaryNavigationLinks[1],
   {
     href: "mailto:hello@orthg.nl",
     label: "Contact",
