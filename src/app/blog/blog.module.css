@@ -14,7 +14,6 @@
 .articleTitle a:hover { color: #a8c4ff; }
 .summary { color: var(--nous-page-body-fg); line-height: 1.65; margin: 0; max-width: 45rem; }
 .list { list-style: none; margin: 0; padding: 0; }
-.listItem { border-bottom: 1px solid var(--nous-stroke-subtle); display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); padding: 2rem 0; }
 .meta { align-items: baseline; display: flex; flex-wrap: wrap; gap: 0.7rem; }
 .separator { color: var(--nous-stroke-strong); }
 .article { min-height: 70vh; padding: 6.5rem 1rem 6rem; }
@@ -32,7 +31,8 @@
 .noteSection { border-top: 1px solid var(--nous-stroke-subtle); color: var(--nous-page-body-fg); margin-top: 3rem; padding-top: 2rem; }
 .noteSection h2 { color: var(--nous-page-title-fg); font-size: 1.25rem; font-weight: 500; margin: 0 0 1rem; }
 .noteSection p, .noteSection li { line-height: 1.65; }
-.noteSection ul { margin: 0; padding-left: 1.15rem; }
+.noteSection ul { list-style: disc outside; margin: 0; padding-left: 1.15rem; }
+.noteSection li::marker { color: #78a7ff; }
 .noteSection li + li { margin-top: 0.65rem; }
 .noteSection a { color: var(--nous-page-title-fg); text-decoration: underline; text-underline-offset: 0.18em; }
 .related { border-top: 1px solid var(--nous-stroke-subtle); margin-top: 3rem; padding-top: 2rem; }
@@ -40,4 +40,4 @@
 .relatedList { display: grid; gap: 1rem; list-style: none; margin: 0; padding: 0; }
 .relatedList a { color: var(--nous-page-title-fg); text-decoration: none; }
 .relatedList a:hover { color: #a8c4ff; }
-@media (min-width: 48rem) { .featured { grid-template-columns: 11rem minmax(0, 1fr); } .listItem { grid-template-columns: 11rem minmax(0, 1fr); } }
+@media (min-width: 48rem) { .featured { grid-template-columns: 11rem minmax(0, 1fr); } }

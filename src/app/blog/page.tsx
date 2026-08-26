@@ -27,6 +27,7 @@ function formatDate(value: string): string {
 export default function BlogIndexPage() {
   const featured = articles.find((article) => article.featured);
   const remainingArticles = featured ? articles.filter((article) => article.slug !== featured.slug) : articles;
+  const orderedArticles = featured ? [featured, ...remainingArticles] : remainingArticles;
 
   return (
     <WorktreeShell>
@@ -44,22 +45,16 @@ export default function BlogIndexPage() {
             <p>Worktree publishes considered guidance about real operating work, not a stream of generic AI updates.</p>
           </section>
         ) : (
-          <>
-            {featured ? <article className={styles.featured}>
-              <p className={styles.featuredLabel}>Featured note</p>
-              <div>
-                <div className={styles.meta}><span className={styles.date}>{formatDate(featured.publishedAt)}</span>{featured.topic ? <><span className={styles.separator}>/</span><span className={styles.topic}>{featured.topic}</span></> : null}</div>
-                <h2 className={styles.articleTitle}><Link href={`/blog/${featured.slug}`}>{featured.title}</Link></h2>
-                <p className={styles.summary}>{featured.summary}</p>
-              </div>
-            </article> : null}
-            <ol className={styles.list} aria-label="Published articles">
-              {remainingArticles.map((article) => <li className={styles.listItem} key={article.slug}>
+          <ol className={styles.list} aria-label="Published articles">
+            {orderedArticles.map((article) => <li className={styles.featured} key={article.slug}>
+              <p className={styles.featuredLabel}>{article.featured ? "Featured note" : "Worktree note"}</p>
+              <article>
                 <div className={styles.meta}><span className={styles.date}>{formatDate(article.publishedAt)}</span>{article.topic ? <><span className={styles.separator}>/</span><span className={styles.topic}>{article.topic}</span></> : null}</div>
-                <div><h2 className={styles.articleTitle}><Link href={`/blog/${article.slug}`}>{article.title}</Link></h2><p className={styles.summary}>{article.summary}</p></div>
-              </li>)}
-            </ol>
-          </>
+                <h2 className={styles.articleTitle}><Link href={`/blog/${article.slug}`}>{article.title}</Link></h2>
+                <p className={styles.summary}>{article.summary}</p>
+              </article>
+            </li>)}
+          </ol>
         )}
       </div>
       </section>

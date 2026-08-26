@@ -3,7 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Eyebrow, PrimaryLink, SecondaryLink } from "@/components/marketing-elements";
 import { HomepageWorkflowGallery } from "@/components/homepage-workflow-gallery";
-import { OperatingReviewHero } from "@/components/operating-review-hero";
+import { InfrastructureFocusCards } from "@/components/infrastructure-focus-cards";
 import { WorktreeShell } from "@/components/site-shell";
 import { StripeWaveHero } from "@/components/stripe-wave-hero";
 import { getPublishedArticles } from "@/lib/blog/content";
@@ -11,8 +11,8 @@ import { createPageMetadata } from "@/lib/seo";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Hands-on AI Engineering and Managed Operations",
-  description: "Worktree works alongside your team to build, install, and manage AI agents and workflows that fit how your business operates.",
+  title: "AI Implementation Partner for Managed Workflows",
+  description: "Worktree works alongside established US and Canadian businesses to implement and manage AI workflows with clear controls and ongoing engineering support.",
   path: "/",
   absoluteTitle: true,
 });
@@ -52,22 +52,22 @@ export default async function Home({ searchParams }: HomePageProps) {
   }
 
   return (
-    <WorktreeShell>
+    <WorktreeShell className={styles.homeShell}>
       <section className={`hero-section ${styles.hero} relative px-4 pt-8 sm:px-6 lg:px-10`}>
         <StripeWaveHero />
         <div aria-hidden="true" className="hero-bottom-light" />
         <div className={`${styles.heroGrid} mx-auto grid max-w-[92rem] gap-12 pt-10 lg:items-center lg:pt-20`}>
           <div className="hero-copy-column">
             <Eyebrow>Managed AI agent deployments</Eyebrow>
-            <h1 className={`${styles.heroTitle} hero-title mt-6 max-w-5xl text-balance text-5xl font-normal leading-[0.95] tracking-[-0.075em] text-[var(--nous-page-hero-title-fg)] sm:text-7xl`}>
+            <h1 className={`${styles.heroTitle} worktree-type-display hero-title mt-6 max-w-5xl`}>
               Secure agent infrastructure. Engineers who work alongside your team.
             </h1>
-            <p className="hero-body mt-7 max-w-2xl text-lg leading-8 text-[var(--nous-page-body-fg)] sm:text-xl sm:leading-9">
+            <p className="worktree-type-lead hero-body mt-7 max-w-2xl">
               From the first deployment to a growing portfolio, Worktree gives your team the engineering and operating capability to put AI to work across the business.
             </p>
             <div className="hero-actions home-hero-actions mt-10 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
-              <SecondaryLink href="/product/">See how Worktree works</SecondaryLink>
+              <SecondaryLink href="/product">See how Worktree works</SecondaryLink>
             </div>
           </div>
         </div>
@@ -85,23 +85,55 @@ export default async function Home({ searchParams }: HomePageProps) {
             <div>
               <p className="worktree-type-body">Worktree brings the workflow, access boundaries, evaluation, operating evidence, and ongoing engineering together. The result is a system your team can put into operation and continue improving.</p>
               <div className={styles.infrastructureAction}>
-                <SecondaryLink href="/product/">Explore the Worktree Product</SecondaryLink>
+                <SecondaryLink href="/product">Explore the Worktree Product</SecondaryLink>
               </div>
             </div>
           </header>
 
           <div className={styles.infrastructureBody}>
-            <ol className={styles.infrastructureProof}>
-              {infrastructureProof.map(([number, title, copy]) => (
-                <li key={number}>
-                  <span>{number}</span>
-                  <div><h3>{title}</h3><p>{copy}</p></div>
-                </li>
-              ))}
-            </ol>
-            <div className={styles.reviewVisual}>
-              <OperatingReviewHero />
-            </div>
+            <InfrastructureFocusCards items={infrastructureProof} />
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.servicesSection} aria-labelledby="worktree-services-heading">
+        <div className={styles.servicesInner}>
+          <div className={styles.servicesLayout}>
+            <article className={styles.consultationCard}>
+              <div className={styles.consultationCopy}>
+                <p className="worktree-type-eyebrow">Free workflow consultation</p>
+                <h2 id="worktree-services-heading" className="worktree-type-section-title">Where could an agent give your team more capacity?</h2>
+                <p className="worktree-type-body">Bring us a recurring process, overloaded handoff, or piece of work that still depends on one person. We&apos;ll help determine whether an agent belongs there and what a responsible path forward would require.</p>
+              </div>
+              <div className={styles.consultationAction}>
+                <PrimaryLink href="/deploy">Book a free consultation</PrimaryLink>
+                <span className="worktree-type-meta">30 minutes · No preparation required</span>
+              </div>
+            </article>
+
+            <nav className={styles.productColumn} aria-label="Explore the Worktree product">
+              <Link className={styles.productCard} href="/product">
+                <div>
+                  <h3 className="worktree-type-card-title">The Worktree product</h3>
+                  <p className="worktree-type-card-body">See how agents, controls, and operating evidence fit together.</p>
+                </div>
+                <span className={styles.productCardArrow} aria-hidden="true">→</span>
+              </Link>
+              <Link className={styles.productCard} href="/product/agents">
+                <div>
+                  <h3 className="worktree-type-card-title">Worktree Agents</h3>
+                  <p className="worktree-type-card-body">A durable agent configured for one defined business role.</p>
+                </div>
+                <span className={styles.productCardArrow} aria-hidden="true">→</span>
+              </Link>
+              <Link className={styles.productCard} href="/product/security">
+                <div>
+                  <h3 className="worktree-type-card-title">Product Security</h3>
+                  <p className="worktree-type-card-body">Access boundaries, human review, data handling, and removal.</p>
+                </div>
+                <span className={styles.productCardArrow} aria-hidden="true">→</span>
+              </Link>
+            </nav>
           </div>
         </div>
       </section>
@@ -111,15 +143,15 @@ export default async function Home({ searchParams }: HomePageProps) {
           <div className={styles.insightInner}>
             <div className={styles.insightLead}>
               <p className={styles.insightKicker}>Latest from Worktree</p>
-              <p>Field notes on redesigning work, choosing useful boundaries, and keeping agent systems operating after launch.</p>
+              <p className="worktree-type-editorial-body">Field notes on redesigning work, choosing useful boundaries, and keeping agent systems operating after launch.</p>
             </div>
             <article className={styles.insightFeature}>
               <div className={styles.insightMeta}>
                 <span>{latestArticle.topic ?? "Worktree field note"}</span>
                 <time dateTime={latestArticle.publishedAt}>{formatArticleDate(latestArticle.publishedAt)}</time>
               </div>
-              <h2 id="latest-insight-heading">{latestArticle.title}</h2>
-              <p>{latestArticle.summary}</p>
+              <h2 id="latest-insight-heading" className="worktree-type-editorial-title">{latestArticle.title}</h2>
+              <p className="worktree-type-editorial-body">{latestArticle.summary}</p>
               <div className={styles.insightAction}>
                 <Link className={styles.insightTextLink} href={`/blog/${latestArticle.slug}`}>Read the latest note <span aria-hidden="true">→</span></Link>
               </div>
@@ -135,7 +167,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           <p className="worktree-type-body mt-6">Bring a recurring process, an overloaded handoff, or work that still depends on the same person. A Worktree engineer will help you decide whether an agent belongs there and what it would take to put one into operation.</p>
           <div className={styles.finalActions}>
             <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
-            <SecondaryLink href="/product/">See how Worktree works</SecondaryLink>
+            <SecondaryLink href="/product">See how Worktree works</SecondaryLink>
           </div>
         </div>
       </section>

@@ -12,46 +12,19 @@ export const metadata: Metadata = createPageMetadata({
   path: "/services/managed-ai",
 });
 
-const launchSignals = [
-  ["Quality", "Compare operation with the standard accepted before launch."],
-  ["Exceptions", "Give failures and unusual cases a path to an owner."],
-  ["Changes", "Test and record material updates instead of editing in place."],
-  ["Support", "Resolve team questions and operating issues within the agreed scope."],
-  ["Visibility", "Keep limitations, risks, and next actions understandable."],
-] as const;
-
-const operatingLoop = [
-  ["01", "Observe", "Use relevant operating evidence to understand completed work, exceptions, approvals, and failures."],
-  ["02", "Evaluate", "Compare representative and live evidence with the accepted measures and control boundaries."],
-  ["03", "Respond", "Follow up on failures, exceptions, team questions, and operational issues within the agreed model."],
-  ["04", "Improve", "Test focused changes when evidence shows the workflow, instructions, or integration needs attention."],
-  ["05", "Record", "Update the Deployment Record when material controls, limitations, risks, or next actions change."],
-  ["06", "Review", "Decide what is working, what remains true, and what should happen next."],
+const responsibilities = [
+  ["Quality and exceptions", "Compare live operation with the standard accepted before launch. Give failures, unusual cases, and missing context a path to an owner."],
+  ["Focused improvements", "Test changes against representative cases before they alter the live workflow. Keep the approval boundary intact while the system improves."],
+  ["A current deployment record", "Keep the workflow's role, controls, limitations, material changes, and next actions understandable to the people responsible for it."],
 ] as const;
 
 const managedScope = [
-  "The workflow's current role, instructions, and expected output",
-  "Selected integrations, permissions, and approval paths",
-  "Accepted success measures and representative cases",
-  "Relevant evidence, exceptions, and incidents",
-  "Focused changes to the agreed workflow",
-  "A current Deployment Record and review of next actions",
-] as const;
-
-const ownershipRows = [
-  ["Business purpose and policy", "Workflow and operating implementation"],
-  ["Final authority and approval owners", "Configured approval and escalation paths"],
-  ["Current guidance and source information", "Instructions, evaluation cases, and focused changes"],
-  ["Timely decisions for exceptions", "Support for agreed workflow issues"],
-  ["Direction when the operation changes", "Testing, documentation, and operating follow-through"],
-] as const;
-
-const recordQuestions = [
-  "What changed since acceptance or the last review?",
-  "Which controls and assumptions remain current?",
-  "What did evaluation or real operation reveal?",
-  "Which limitations or risks need attention?",
-  "What is the next agreed action?",
+  "Current workflow role and expected output",
+  "Selected integrations and permission boundaries",
+  "Approval, escalation, and exception paths",
+  "Representative cases and accepted measures",
+  "Relevant operating evidence and incidents",
+  "Material changes, limitations, and next actions",
 ] as const;
 
 const faqItems = [
@@ -79,11 +52,57 @@ function OperatingReview() {
   );
 }
 
+function ManagedOperationWorkspace() {
+  return (
+    <div className={styles.workspace} aria-label="Illustrative managed AI operating workspace">
+      <header className={styles.workspaceHeader}>
+        <div><span className={styles.workspaceMark}>WT</span><p><small>Illustrative managed deployment</small>Customer intake workflow</p></div>
+        <div className={styles.workspaceStatus}><i />Operating evidence current</div>
+      </header>
+      <div className={styles.workspaceMetrics}>
+        <article><span>Evidence scope</span><strong>In review</strong><em>Relevant activity</em></article>
+        <article><span>Evaluation set</span><strong>Current</strong><em>Reference retained</em></article>
+        <article><span>Owner decision</span><strong>Resolved</strong><em>No open decision</em></article>
+        <article><span>Deployment record</span><strong>Updated</strong><em>Change recorded</em></article>
+      </div>
+      <div className={styles.workspaceBody}>
+        <section className={styles.activityPanel} aria-labelledby="activity-heading">
+          <header><div><span>Review timeline</span><h3 id="activity-heading">One exception, followed through.</h3></div><em>Illustrative review</em></header>
+          <ol className={styles.activityTimeline}>
+            <li><span>01</span><i /><div><small>Observed</small><p>A new intake arrived without the policy field required to prepare account context.</p></div><em>Exception</em></li>
+            <li><span>02</span><i /><div><small>Routed</small><p>The workflow stopped before action and sent the missing decision to the process owner.</p></div><em>Boundary held</em></li>
+            <li><span>03</span><i /><div><small>Improved</small><p>A focused source check was added and tested against the accepted evaluation set.</p></div><em>Test passed</em></li>
+            <li><span>04</span><i /><div><small>Recorded</small><p>The remaining attachment limitation and next action were added to the Deployment Record.</p></div><em>Record current</em></li>
+          </ol>
+        </section>
+        <aside className={styles.workspaceRail}>
+          <section className={styles.evidenceCard}>
+            <header><span>Evaluation evidence</span><em>Current</em></header>
+            <strong>Within standard</strong><p>Representative cases meeting the accepted standard.</p>
+            <div aria-hidden="true"><i /></div>
+            <ul><li><span>Approval boundary</span><em>Passed</em></li><li><span>Required context</span><em>1 exception</em></li><li><span>Expected output</span><em>Passed</em></li></ul>
+          </section>
+          <section className={styles.changeCard}>
+            <header><span>Deployment record</span><em>Updated</em></header>
+            <div><span>Material change</span><p>Required source-field check added before context preparation.</p></div>
+            <div><span>Known limitation</span><p>Unstructured attachments still require human review.</p></div>
+            <footer><span>Next review</span><strong>Owner validation · Agreed cadence</strong></footer>
+          </section>
+        </aside>
+      </div>
+      <footer className={styles.workspaceFooter}>
+        <p><span>Operating owner</span><strong>Worktree managed</strong></p>
+        <div><span>CRM</span><span>Shared inbox</span><span>Approval queue</span></div>
+      </footer>
+    </div>
+  );
+}
+
 export default function ManagedAiPage() {
   return (
     <WorktreeShell headerOverlay>
-      <main className={styles.page}>
-        <section className={styles.hero} aria-labelledby="managed-ai-heading">
+      <main className={`${styles.page} worktree-service-page`}>
+        <section className={`${styles.hero} worktree-service-hero`} aria-labelledby="managed-ai-heading">
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <Eyebrow>Managed AI services</Eyebrow>
@@ -95,39 +114,40 @@ export default function ManagedAiPage() {
           </div>
         </section>
 
+        <section id="operating-loop" className={styles.operationSection} aria-labelledby="operation-heading">
+          <div className={styles.operationInner}>
+            <div className={styles.operationIntro}>
+              <div><Eyebrow>One deployment under management</Eyebrow><h2 id="operation-heading">Every review should leave the workflow clearer than we found it.</h2></div>
+              <p>Evidence is only useful when it leads somewhere. Worktree connects what happened in production to an owner decision, a tested response, and a current account of the deployment.</p>
+            </div>
+            <ManagedOperationWorkspace />
+            <ol className={styles.operationPrinciples}>
+              <li><span>01</span><div><h3>Observe the work</h3><p>Review the evidence that matters: completed work, exceptions, approvals, failures, and team questions.</p></div></li>
+              <li><span>02</span><div><h3>Make a focused decision</h3><p>Compare what happened with the accepted standard and route ambiguity to the person who has authority.</p></div></li>
+              <li><span>03</span><div><h3>Improve without losing control</h3><p>Test the smallest useful change, record what moved, and keep known limits visible.</p></div></li>
+            </ol>
+          </div>
+        </section>
+
         <section className={styles.responsibilitySection} aria-labelledby="responsibility-heading">
           <div className={styles.responsibilityInner}>
-            <div className={styles.responsibilityCopy}>
-              <Eyebrow>Production changes the work</Eyebrow>
-              <h2 id="responsibility-heading">Launch creates an operating responsibility.</h2>
-              <p>A workflow that passed its test cases can still meet new language, changed policies, missing information, altered system behavior, and exceptions no one predicted. The business needs a way to notice those signals and decide what happens next.</p>
+            <div className={styles.responsibilityIntro}>
+              <div><Eyebrow>Production changes the work</Eyebrow><h2 id="responsibility-heading">Launch creates an operating responsibility.</h2></div>
+              <p>A workflow that passed its test cases will still meet changed policies, missing information, new language, and exceptions no one predicted. Managed operation gives those signals somewhere to go.</p>
             </div>
-            <ol className={styles.signalList}>{launchSignals.map(([title, copy], index) => <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{copy}</p></div></li>)}</ol>
+            <div className={styles.responsibilityCards}>{responsibilities.map(([title, copy], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
           </div>
         </section>
 
-        <section id="operating-loop" className={styles.loopSection} aria-labelledby="loop-heading">
-          <div className={styles.loopInner}>
-            <div className={styles.loopIntro}>
-              <p className={styles.darkEyebrow}>Evidence becomes improvement</p>
-              <h2 id="loop-heading">Review what happened. Decide what changes.</h2>
-              <p>Worktree manages the workflow through a repeatable operating loop rather than a stream of untracked prompt edits.</p>
+        <section className={styles.authoritySection} aria-labelledby="authority-heading">
+          <div className={styles.authorityInner}>
+            <div className={styles.authorityCopy}>
+              <p className={`${styles.darkEyebrow} worktree-service-eyebrow`}>A managed workflow, not outsourced authority</p>
+              <h2 id="authority-heading">Your team keeps the decisions. Worktree keeps the operating work moving.</h2>
+              <p>Your process owner remains responsible for policy and final business decisions. Worktree turns those decisions into controls, evaluations, focused changes, and operating follow-through.</p>
+              <DeepLink href="/product/security">Review security and access controls</DeepLink>
             </div>
-            <div className={styles.loopWorkspace} aria-label="Illustrative managed AI operating loop">
-              <header><span>Illustrative operating loop</span><strong>Evidence → Decision → Documented change</strong></header>
-              <ol>{operatingLoop.map(([number, title, copy]) => <li key={number}><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div><em>{number === "06" ? "Next cycle" : "Continue"}</em></li>)}</ol>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.scopeSection} aria-labelledby="scope-heading">
-          <div className={styles.scopeInner}>
-            <div className={styles.scopeCopy}>
-              <Eyebrow>One defined production workflow</Eyebrow>
-              <h2 id="scope-heading">Manage the responsibility, not just the runtime.</h2>
-              <p>Worktree focuses on the business workflow and the operating responsibilities around it. The service is not generic model hosting, cloud administration, or an outsourced cybersecurity function.</p>
-            </div>
-            <div className={styles.scopeManifest}>
+            <div className={styles.scopeCard}>
               <header><span>Managed deployment</span><strong>Responsibilities in scope</strong></header>
               <ul>{managedScope.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p><em>Defined</em></li>)}</ul>
               <footer>The exact responsibility follows the workflow and commercial scope established during the deployment review.</footer>
@@ -135,52 +155,9 @@ export default function ManagedAiPage() {
           </div>
         </section>
 
-        <section className={styles.ownershipSection} aria-labelledby="ownership-heading">
-          <div className={styles.ownershipInner}>
-            <div className={styles.ownershipIntro}>
-              <Eyebrow>Clear responsibility on both sides</Eyebrow>
-              <h2 id="ownership-heading">Your team keeps the authority. Worktree keeps the operating work moving.</h2>
-              <p>Your process owner remains responsible for policy and final decisions. Worktree translates those decisions into the managed deployment and follows the evidence after launch.</p>
-            </div>
-            <div className={styles.ownershipTable}>
-              <header><span>Your team provides</span><span>Worktree provides</span></header>
-              {ownershipRows.map(([customer, worktree], index) => <div key={customer}><span>{String(index + 1).padStart(2, "0")}</span><p>{customer}</p><p>{worktree}</p></div>)}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.evaluationSection} aria-labelledby="evaluation-heading">
-          <div className={styles.evaluationInner}>
-            <div className={styles.evaluationCopy}>
-              <Eyebrow>Quality needs a reference point</Eyebrow>
-              <h2 id="evaluation-heading">Judge the workflow against an agreed standard.</h2>
-              <p>Evaluation begins before launch, when the team defines representative cases, expected behavior, approval requirements, and acceptance criteria. Those decisions remain the reference point for real operation and proposed changes.</p>
-              <DeepLink href="/product/security">Review security and access controls</DeepLink>
-            </div>
-            <div className={styles.evaluationPanel} aria-label="Illustrative exception evaluation">
-              <header><span>Representative case</span><strong>Exception review</strong></header>
-              <div className={styles.caseExpected}><span>Expected behavior</span><p>Prepare the account context and route policy ambiguity to the owner.</p><em>Accepted</em></div>
-              <div className={styles.caseObserved}><span>Observed exception</span><p>The source record did not include the required policy field.</p><em>Needs decision</em></div>
-              <div className={styles.caseDecision}><span>Focused response</span><p>Keep the approval boundary. Test an additional context check.</p><strong>Evaluation set updated</strong></div>
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.recordSection} aria-labelledby="record-heading">
-          <div className={styles.recordInner}>
-            <div className={styles.recordIntro}>
-              <p className={styles.darkEyebrow}>A current account of the deployment</p>
-              <h2 id="record-heading">Keep material changes and next actions visible.</h2>
-              <p>The Deployment Record captures the current role, instructions, controls, evaluation standard, material changes, limitations, risks, and next actions.</p>
-              <DeepLink href="/product">Explore the Worktree product</DeepLink>
-            </div>
-            <ol className={styles.recordQuestions}>{recordQuestions.map((question, index) => <li key={question}><span>{String(index + 1).padStart(2, "0")}</span><p>{question}</p><em>Answerable</em></li>)}</ol>
-          </div>
-        </section>
-
         <section className={styles.productBridge} aria-labelledby="product-bridge-heading">
           <div className={styles.productBridgeInner}>
-            <div><Eyebrow>The machinery behind the service</Eyebrow><h2 id="product-bridge-heading">See how the managed workflow stays inspectable.</h2><p>The product makes the role, selected systems, authority, evaluations, material changes, and next actions visible. It supports the relationship; it is not a platform your team must operate alone.</p></div>
+            <div><Eyebrow>The machinery behind the service</Eyebrow><h2 id="product-bridge-heading">See how the managed workflow stays inspectable.</h2><p>The product keeps the role, selected systems, authority, evaluations, material changes, and next actions visible. It supports the relationship; it is not a platform your team must operate alone.</p></div>
             <div className={styles.productLinks}><Link href="/product"><span>Product overview</span><em>→</em></Link><Link href="/product/compare-ai-agent-approaches"><span>Compare operating approaches</span><em>→</em></Link><Link href="/services/ai-implementation"><span>See how workflows reach launch</span><em>→</em></Link></div>
           </div>
         </section>

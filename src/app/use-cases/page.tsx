@@ -52,7 +52,12 @@ export default function UseCasesPage() {
             <section className="border-t border-[var(--nous-stroke-subtle)] pt-8" aria-labelledby="use-cases-next">
               <h2 id="use-cases-next" className="worktree-type-card-title">From example to managed workflow</h2>
               <p className="worktree-type-body mt-4">After the process is mapped, Worktree builds the managed workflow and evaluates it after launch. What the evaluation shows informs focused improvements to the workflow.</p>
-              <Link className="mt-6 inline-block text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/deploy">Start a workflow review</Link>
+              <nav className="mt-7 grid gap-4 sm:grid-cols-3" aria-label="Explore Worktree services">
+                <Link className="border-t border-[var(--nous-stroke-subtle)] pt-4 text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/services/ai-automation">Choose the workflow with AI automation services</Link>
+                <Link className="border-t border-[var(--nous-stroke-subtle)] pt-4 text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/services/ai-implementation">Put it into production with AI implementation services</Link>
+                <Link className="border-t border-[var(--nous-stroke-subtle)] pt-4 text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/services/managed-ai">Keep it useful with managed AI services</Link>
+              </nav>
+              <Link className="mt-8 inline-block text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/deploy">Start a workflow review</Link>
             </section>
           </div>
         </div>

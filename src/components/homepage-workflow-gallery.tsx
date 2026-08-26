@@ -5,8 +5,6 @@ import { type CSSProperties, type KeyboardEvent, type ReactNode, type RefObject,
 import { createPortal } from "react-dom";
 import { Fingerprint } from "lucide-react";
 
-import { CommunityDensityLogo } from "@/components/community-density-logo";
-
 import styles from "./homepage-workflow-gallery.module.css";
 
 type ExpansionId = "personal-agent" | "secure-cell" | "inbound" | "community" | "clinical";
@@ -275,11 +273,11 @@ function SecureCellExpansion({
                 Each client and practitioner operates inside an isolated cell. When an agent needs sensitive information, a biometric check opens one authorized session. Only the requested data is decrypted inside that cell, and the working context is destroyed after the response is produced.
               </span>
               <Link
-                aria-label="Developer documentation, upcoming"
+                aria-label="Explore the Worktree Product"
                 className={styles.secureDocsLink}
-                href="/docs"
+                href="/product"
               >
-                Developer documentation <span>Upcoming</span><i>→</i>
+                Explore the Worktree Product <i>→</i>
               </Link>
             </div>
 
@@ -874,45 +872,24 @@ function InboundVisual() {
   );
 }
 
+function CommunityResultPanel() {
+  return (
+    <div className={styles.communityResultPanel}>
+      <div className={styles.communityOutcomeSequence}>
+        <div><strong>208</strong><span>threads synthesized</span></div>
+        <i>→</i>
+        <div><strong>8</strong><span>tickets created</span></div>
+        <i>→</i>
+        <div><strong>208</strong><span>responses sent</span></div>
+      </div>
+    </div>
+  );
+}
+
 function CommunityVisual() {
   return (
     <div className={`${styles.visual} ${styles.communityVisual}`} aria-hidden="true">
-      <div className={styles.communityCycleCards}>
-        <article>
-          <div><span>01</span><em>Listen</em></div>
-          <p>Capture actionable feedback from selected Discord channels.</p>
-        </article>
-        <article>
-          <div><span>02</span><em>Dedupe</em></div>
-          <p>Group similar requests while preserving every source thread.</p>
-        </article>
-        <article>
-          <div><span>03</span><em>Ticket</em></div>
-          <p>Create one ticket with the original community context attached.</p>
-        </article>
-        <article>
-          <div><span>04</span><em>Update</em></div>
-          <p>Return progress and release updates to each conversation.</p>
-        </article>
-      </div>
-
-      <svg className={styles.communityCycle} viewBox="0 0 320 240" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <marker id="community-cycle-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">
-            <path d="M0 0 L6 3 L0 6 Z" />
-          </marker>
-        </defs>
-        <path className={styles.communityCycleArc} d="M160 60 A60 60 0 0 0 100 120" />
-        <path className={styles.communityCycleArc} d="M100 120 A60 60 0 0 0 160 180" />
-        <path className={styles.communityCycleArc} d="M160 180 A60 60 0 0 0 220 120" />
-        <path className={styles.communityCycleArc} d="M220 120 A60 60 0 0 0 160 60" />
-        <circle className={styles.communityCycleNode} cx="160" cy="60" r="3" />
-        <circle className={styles.communityCycleNode} cx="220" cy="120" r="3" />
-        <circle className={styles.communityCycleNode} cx="160" cy="180" r="3" />
-        <circle className={styles.communityCycleNode} cx="100" cy="120" r="3" />
-      </svg>
-
-      <CommunityDensityLogo className={styles.communityDensityLogo} />
+      <CommunityResultPanel />
     </div>
   );
 }
@@ -939,8 +916,8 @@ const workflowCards = [
     number: "03",
     label: "Inbound marketing support",
     title: "Research every website lead and prepare the handoff.",
-    ribbon: "/images/workflow-ribbons/090-canopy-001-rotated-90.webp",
-    ribbonPosition: "52% 48%",
+    ribbon: "/images/workflow-ribbons/071-header-001.webp",
+    ribbonPosition: "50% 44%",
     visual: <InboundVisual />,
   },
   {
@@ -948,15 +925,15 @@ const workflowCards = [
     label: "Discord community feedback",
     title: "Turn community feedback into tickets, then close the loop.",
     ribbon: "/images/workflow-ribbons/093-halo-001.webp",
-    ribbonPosition: "50% 46%",
+    ribbonPosition: "right bottom",
     visual: <CommunityVisual />,
   },
   {
     number: "05",
     label: "Clinical practice support",
     title: "Give clinicians on-demand guidance and automate post-session reporting.",
-    ribbon: "/images/workflow-ribbons/043-header-001.webp",
-    ribbonPosition: "50% 42%",
+    ribbon: "/images/workflow-ribbons/085-halo-001.webp",
+    ribbonPosition: "50% 48%",
     visual: <TherapyVisual />,
   },
 ] as const;
@@ -1057,7 +1034,7 @@ export function HomepageWorkflowGallery() {
                   ) : null}
                   <div className={styles.cardHeader}>
                     <div>
-                      <p><span>{card.number}</span>{card.label}</p>
+                      <p>{card.label}</p>
                       <h3 id={cardTitleId}>{card.title}</h3>
                     </div>
                     <ExpandMark />

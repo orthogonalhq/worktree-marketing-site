@@ -634,6 +634,7 @@ export function StripeWaveHero({
 }: StripeWaveHeroProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentsRef = useRef<HTMLDivElement>(null);
+  const layoutRef = useRef<HTMLDivElement>(null);
   const baseGeometryRef = useRef<WaveGeometry | undefined>(undefined);
   const baseTransformRef = useRef<WaveTransform | undefined>(undefined);
   const disposeReflectionRef = useRef<(() => void) | undefined>(undefined);
@@ -665,8 +666,9 @@ export function StripeWaveHero({
   useEffect(() => {
     const canvas = canvasRef.current;
     const contents = contentsRef.current;
+    const layout = layoutRef.current;
 
-    if (!canvas || !contents) return;
+    if (!canvas || !contents || !layout) return;
 
     if (isCaptureMode) {
       delete document.documentElement.dataset.ribbonRenderReady;
@@ -736,14 +738,15 @@ export function StripeWaveHero({
         const revealFrame = () => {
           if (disposed || !wave) return;
           if (freezeOnReady) wave.paused = true;
-          contents.classList.add(styles.drawn);
+          layout.classList.add(styles.drawn);
           if (isCaptureMode) {
             document.documentElement.dataset.ribbonRenderReady = "true";
           }
         };
 
-        if (freezeOnReady) requestAnimationFrame(revealFrame);
-        else revealFrame();
+        // Let WebGL complete and present a real frame before fading away the
+        // static image. Two frames avoid exposing an initialized-but-empty canvas.
+        requestAnimationFrame(() => requestAnimationFrame(revealFrame));
       });
       wave.initScene();
       wave.paused = freezeOnReady ? false : reducedMotion.matches;
@@ -759,6 +762,7 @@ export function StripeWaveHero({
 
     return () => {
       disposed = true;
+      layout.classList.remove(styles.drawn);
       window.removeEventListener(ribbonZoomEvent, handleZoom);
       reducedMotion.removeEventListener("change", handleReducedMotion);
       disposeReflectionRef.current?.();
@@ -806,13 +810,13 @@ export function StripeWaveHero({
       data-wave-surface="glass-v1"
       style={captureStyle}
     >
-      <div className={styles.layout}>
+      <div className={styles.layout} ref={layoutRef}>
+        <picture className={styles.fallbackFrame}>
+          <source media="(max-width: 639px)" srcSet="/vendor/wave-prototype/wave-fallback-mobile.webp" />
+          <source media="(max-width: 1263px)" srcSet="/vendor/wave-prototype/wave-fallback-tablet.webp" />
+          <img alt="" className={styles.fallback} src="/vendor/wave-prototype/wave-fallback-desktop.webp" />
+        </picture>
         <div className={styles.contents} ref={contentsRef}>
-          <picture>
-            <source media="(max-width: 639px)" srcSet="/vendor/wave-prototype/wave-fallback-mobile.webp" />
-            <source media="(max-width: 1263px)" srcSet="/vendor/wave-prototype/wave-fallback-tablet.webp" />
-            <img alt="" className={styles.fallback} src="/vendor/wave-prototype/wave-fallback-desktop.webp" />
-          </picture>
           <canvas
             className={styles.canvas}
             data-ribbon-capture-canvas={isCaptureMode ? "true" : undefined}

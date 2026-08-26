@@ -1,4 +1,4 @@
-import { mkdir, open, readdir } from "node:fs/promises";
+import { mkdir, open, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import sharp from "sharp";
@@ -27,6 +27,28 @@ export async function POST(request: Request) {
 
   if (!isPng) {
     return NextResponse.json({ error: "Capture is not a PNG image." }, { status: 400 });
+  }
+
+  if (frame === "hero-fallback-landscape" || frame === "hero-fallback-portrait") {
+    const fallbackDirectory = path.join(process.cwd(), "public", "vendor", "wave-prototype");
+    await mkdir(fallbackDirectory, { recursive: true });
+    const fallbackBytes = await sharp(sourceBytes)
+      .webp({ alphaQuality: 100, effort: 6, quality: 92, smartSubsample: true })
+      .toBuffer();
+
+    if (frame === "hero-fallback-landscape") {
+      await Promise.all([
+        writeFile(path.join(fallbackDirectory, "wave-fallback-desktop.webp"), fallbackBytes),
+        sharp(sourceBytes)
+          .resize({ width: 1264, height: 900, fit: "cover", position: "center" })
+          .webp({ alphaQuality: 100, effort: 6, quality: 92, smartSubsample: true })
+          .toFile(path.join(fallbackDirectory, "wave-fallback-tablet.webp")),
+      ]);
+      return NextResponse.json({ path: "/vendor/wave-prototype/wave-fallback-desktop.webp" });
+    }
+
+    await writeFile(path.join(fallbackDirectory, "wave-fallback-mobile.webp"), fallbackBytes);
+    return NextResponse.json({ path: "/vendor/wave-prototype/wave-fallback-mobile.webp" });
   }
 
   const bytes = await sharp(sourceBytes)

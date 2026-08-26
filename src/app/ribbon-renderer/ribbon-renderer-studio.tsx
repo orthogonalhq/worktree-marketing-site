@@ -72,7 +72,7 @@ export function RibbonRendererStudio({
   const isHeroFallback = captureMode === "hero-fallback";
   const activeShape: RibbonShape = isHeroFallback ? "header" : shape;
   const outputWidth = isHeroFallback ? (orientation === "landscape" ? 1600 : 900) : 960;
-  const outputHeight = isHeroFallback ? (orientation === "landscape" ? 900 : 1600) : 1200;
+  const outputHeight = isHeroFallback ? (orientation === "landscape" ? 900 : 1876) : 1200;
   const frameSuffix = variant === "closeup" ? "B" : variant === "closeup-strong" ? "C" : "";
   const variantQuery = !isHeroFallback && variant !== "original" ? `&variant=${variant}` : "";
   const modeQuery = isHeroFallback ? `&mode=hero-fallback&orientation=${orientation}` : "";
@@ -195,7 +195,7 @@ export function RibbonRendererStudio({
                   onClick={() => selectOrientation("portrait")}
                   type="button"
                 >
-                  Portrait · 9:16
+                  Portrait · mobile hero
                 </button>
               </nav>
             </div>
@@ -240,7 +240,7 @@ export function RibbonRendererStudio({
           <dl className={styles.metadata}>
             <div><dt>Frame</dt><dd>{isHeroFallback ? `hero/${orientation}` : `${shape}/${String(seed).padStart(3, "0")}${frameSuffix}`}</dd></div>
             <div><dt>Master</dt><dd>{outputWidth} × {outputHeight}</dd></div>
-            <div><dt>Ratio</dt><dd>{isHeroFallback ? (orientation === "landscape" ? "16:9" : "9:16") : "4:5"}</dd></div>
+            <div><dt>Ratio</dt><dd>{isHeroFallback ? (orientation === "landscape" ? "16:9" : "390:813") : "4:5"}</dd></div>
             {isHeroFallback && <div><dt>Motion</dt><dd>First frame · paused</dd></div>}
           </dl>
         </aside>

@@ -84,8 +84,8 @@ function HandoffPreview() {
 export default function AiAutomationPage() {
   return (
     <WorktreeShell headerOverlay>
-      <main className={styles.page}>
-        <section className={styles.hero} aria-labelledby="automation-heading">
+      <main className={`${styles.page} worktree-service-page`}>
+        <section className={`${styles.hero} worktree-service-hero`} aria-labelledby="automation-heading">
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <Eyebrow>AI automation services</Eyebrow>
@@ -116,7 +116,7 @@ export default function AiAutomationPage() {
         <section id="workflow-fit" className={styles.fitSection} aria-labelledby="fit-heading">
           <div className={styles.fitInner}>
             <div className={styles.fitCopy}>
-              <p className={styles.darkEyebrow}>Choose the work before the technology</p>
+              <p className={`${styles.darkEyebrow} worktree-service-eyebrow`}>Choose the work before the technology</p>
               <h2 id="fit-heading">Start where the work already has a rhythm.</h2>
               <p>A strong first workflow does not need to be simple. It does need to be understandable: what begins the work, which information matters, what usually happens, where judgment belongs, and how the team knows it is complete.</p>
               <DeepLink href="/use-cases">Explore illustrative workflow use cases</DeepLink>
@@ -146,7 +146,7 @@ export default function AiAutomationPage() {
         <section className={styles.anatomySection} aria-labelledby="anatomy-heading">
           <div className={styles.anatomyInner}>
             <div className={styles.anatomyIntro}>
-              <p className={styles.darkEyebrow}>A complete operating path</p>
+              <p className={`${styles.darkEyebrow} worktree-service-eyebrow`}>A complete operating path</p>
               <h2 id="anatomy-heading">Give every case a clear next step.</h2>
               <p>The normal work can advance while unusual work reaches a person with the context needed to decide.</p>
             </div>

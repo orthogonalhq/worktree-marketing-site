@@ -12,8 +12,8 @@
 }
 
 .capturePagePortrait {
-  width: 56.25rem;
-  min-height: 100rem;
+  width: 24.375rem;
+  min-height: 50.8125rem;
 }
 
 .stage {
@@ -198,8 +198,8 @@
 }
 
 .heroPreviewPortrait {
-  width: min(100%, 32rem);
-  aspect-ratio: 9 / 16;
+  width: min(100%, 24.375rem);
+  aspect-ratio: 390 / 813;
 }
 
 .heroFallbackStage.landscape {
@@ -208,8 +208,8 @@
 }
 
 .heroFallbackStage.portrait {
-  width: 56.25rem;
-  height: 100rem;
+  width: 24.375rem;
+  height: 50.8125rem;
 }
 
 .previewFooter {

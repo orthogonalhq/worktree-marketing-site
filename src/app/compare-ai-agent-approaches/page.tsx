@@ -270,7 +270,7 @@ export default function CompareAiAgentApproachesPage() {
               <h4>Choose it when</h4>
               <BulletList items={["You want the outcome without first assembling an agent team.", "The workflow crosses systems, rules, and approvals.", "Someone needs to remain accountable after launch."]} />
               <p className={styles.keepInMind}><strong>Keep in mind:</strong> Worktree does not replace the process owner or business judgment. The customer authorizes access and retains final authority over sensitive decisions.</p>
-              <Link className={styles.sourceLink} href="/how-it-works">See how Worktree works <span aria-hidden="true">→</span></Link>
+              <Link className={styles.sourceLink} href="/services/ai-implementation">See how Worktree works <span aria-hidden="true">→</span></Link>
             </article>
           </div>
         </div>

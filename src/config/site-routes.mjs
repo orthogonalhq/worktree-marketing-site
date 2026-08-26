@@ -10,7 +10,7 @@
 export const siteRoutes = {
   canonicalOrigin: "https://worktree.agency",
   staticRoutes: [
-    { path: "/", routeClass: "indexable", lastModified: "2026-08-15" },
+    { path: "/", routeClass: "indexable", lastModified: "2026-08-23" },
     { path: "/services/ai-automation", routeClass: "indexable", lastModified: "2026-08-21" },
     { path: "/services/ai-implementation", routeClass: "indexable", lastModified: "2026-08-21" },
     { path: "/services/managed-ai", routeClass: "indexable", lastModified: "2026-08-21" },
@@ -18,7 +18,8 @@ export const siteRoutes = {
     { path: "/product/agents", routeClass: "indexable", lastModified: "2026-08-21" },
     { path: "/product/security", routeClass: "indexable", lastModified: "2026-08-21" },
     { path: "/product/compare-ai-agent-approaches", routeClass: "indexable", lastModified: "2026-08-20" },
-    { path: "/use-cases", routeClass: "indexable", lastModified: "2026-07-13" },
+    { path: "/use-cases", routeClass: "indexable", lastModified: "2026-08-23" },
+    { path: "/locations/vancouver", routeClass: "indexable", lastModified: "2026-08-26" },
     { path: "/about", routeClass: "indexable", lastModified: "2026-07-13" },
     { path: "/legal/privacy", routeClass: "indexable", lastModified: "2026-08-13" },
     { path: "/legal/terms", routeClass: "indexable", lastModified: "2026-07-13" },

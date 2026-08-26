@@ -1,7 +1,7 @@
 .section {
   position: relative;
   z-index: 2;
-  padding: clamp(6rem, 9vw, 9rem) 1rem;
+  padding: clamp(4rem, 6.667vw, 6rem) 1rem 0;
   background:
     radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--nous-accent-info) 5%, transparent), transparent 34rem),
     var(--nous-page-bg);
@@ -64,6 +64,11 @@
   pointer-events: none;
 }
 
+.card:not(.featuredCard)::before {
+  filter: brightness(0.9) saturate(0.82) contrast(0.98);
+  opacity: 0.9;
+}
+
 .cardAction {
   position: absolute;
   z-index: 8;
@@ -88,15 +93,13 @@
 }
 
 .card:nth-child(2) { --card-accent: 199 126 197; }
-.card:nth-child(3) {
-  --card-accent: 104 190 174;
-  background: #141b27;
-}
-.card:nth-child(3)::before {
-  filter: brightness(1.28) saturate(1.02) contrast(0.95);
-}
+.card:nth-child(3) { --card-accent: 104 190 174; }
 .card:nth-child(4) { --card-accent: 90 113 173; }
 .card:nth-child(5) { --card-accent: 108 145 226; }
+
+.card:nth-child(4)::before {
+  background-size: 200%;
+}
 
 .cardHeader {
   position: relative;
@@ -112,9 +115,6 @@
 }
 
 .cardHeader p {
-  display: flex;
-  gap: 0.62rem;
-  align-items: center;
   color: rgba(224, 227, 237, 0.43);
   font-family: var(--nous-font-mono);
   font-size: 0.64rem;
@@ -122,20 +122,6 @@
   letter-spacing: 0.09em;
   line-height: 1.4;
   text-transform: uppercase;
-}
-
-.cardHeader p span {
-  display: inline-flex;
-  gap: 0.6rem;
-  align-items: center;
-  color: rgb(var(--card-accent) / 0.88);
-}
-
-.cardHeader p span::after {
-  width: 1.35rem;
-  height: 1px;
-  background: linear-gradient(90deg, rgb(var(--card-accent) / 0.7), rgb(var(--card-accent) / 0.08));
-  content: "";
 }
 
 .cardHeader h3 {
@@ -239,7 +225,7 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 0.65rem;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+  border-bottom: 1px solid var(--preview-glass-divider);
   padding: 0.65rem 0.88rem 0.72rem;
 }
 
@@ -398,7 +384,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 0.36rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.065);
+  border-top: 1px solid var(--preview-glass-divider);
   padding-top: 0.36rem;
   color: rgba(255, 255, 255, 0.62);
   font-size: 0.44rem;
@@ -411,8 +397,8 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  border-top: 1px solid var(--preview-glass-divider);
+  border-bottom: 1px solid var(--preview-glass-divider);
   padding: 0.45rem 0.76rem;
   background: rgb(var(--card-accent) / 0.045);
 }
@@ -562,10 +548,13 @@
 }
 
 .featuredCard {
-  border-color: rgba(31, 51, 86, 0.2);
+  border-color: rgba(255, 255, 255, 0.095);
   background:
-    radial-gradient(circle at 84% 12%, rgba(255, 255, 255, 0.32), transparent 31%),
-    linear-gradient(135deg, #baf1ff 0%, #9fcfff 38%, #96ddd3 70%, #a9e8bd 100%);
+    radial-gradient(circle at 88% 10%, rgba(110, 207, 255, 0.2), transparent 32%),
+    radial-gradient(circle at 78% 82%, rgba(91, 230, 181, 0.14), transparent 34%),
+    radial-gradient(circle at 18% 92%, rgba(179, 104, 255, 0.12), transparent 38%),
+    linear-gradient(118deg, transparent 28%, rgba(88, 147, 255, 0.08) 43%, rgba(187, 102, 255, 0.07) 52%, rgba(87, 225, 180, 0.08) 63%, transparent 78%),
+    linear-gradient(145deg, #090b12 0%, #0a101a 48%, #07120f 100%);
   box-shadow: none;
 }
 
@@ -589,22 +578,18 @@
   );
   background-repeat: repeat;
   background-size: 160px 160px;
-  mix-blend-mode: multiply;
-  opacity: 0.8;
+  mix-blend-mode: soft-light;
+  opacity: 0.34;
   pointer-events: none;
 }
 
-.featuredCard .cardHeader p { color: rgba(20, 31, 48, 0.58); }
-.featuredCard .cardHeader p span { color: rgba(20, 31, 48, 0.78); }
-.featuredCard .cardHeader p span::after {
-  background: rgba(20, 31, 48, 0.34);
-}
-.featuredCard .cardHeader h3 { color: #101722; }
+.featuredCard .cardHeader p { color: rgba(211, 224, 242, 0.46); }
+.featuredCard .cardHeader h3 { color: rgba(244, 247, 252, 0.94); }
 .featuredCard .expandMark {
-  border-color: rgba(20, 31, 48, 0.22);
-  background: rgba(255, 255, 255, 0.28);
-  color: rgba(16, 23, 34, 0.76);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  border-color: rgb(var(--card-accent) / 0.28);
+  background: rgba(8, 12, 19, 0.54);
+  color: rgba(239, 244, 252, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
 .cellVisual {
@@ -620,13 +605,17 @@
   left: 50%;
   width: 17.5rem;
   height: 17.5rem;
-  border: 0;
+  border: 1px solid rgba(144, 194, 255, 0.08);
   border-radius: 50%;
-  background: rgba(64, 149, 255, 0.075);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(116, 203, 255, 0.14), transparent 38%),
+    radial-gradient(circle at 72% 76%, rgba(94, 232, 184, 0.1), transparent 40%),
+    rgba(59, 97, 163, 0.035);
   box-shadow:
-    0 0 0 0.6rem rgba(65, 151, 255, 0.035),
-    0 0 4.2rem rgba(37, 120, 255, 0.15),
-    inset 0 0 3.4rem rgba(49, 137, 255, 0.075);
+    0 0 0 0.6rem rgba(94, 153, 255, 0.025),
+    0 0 4.2rem rgba(72, 137, 255, 0.13),
+    1.5rem 1.1rem 4.8rem rgba(82, 221, 177, 0.055),
+    inset 0 0 3.4rem rgba(74, 137, 226, 0.07);
   transform: translateX(-50%);
 }
 
@@ -697,7 +686,7 @@
   gap: 0.35rem;
   align-items: center;
   margin: 0;
-  color: rgba(20, 42, 70, 0.64);
+  color: rgba(180, 211, 244, 0.62);
   font-family: var(--nous-font-mono);
   font-size: 0.43rem;
   letter-spacing: 0.06em;
@@ -719,7 +708,7 @@
   top: calc(50% + 6rem);
   left: 50%;
   margin: 0;
-  color: rgba(12, 25, 42, 0.86);
+  color: rgba(231, 239, 249, 0.78);
   font-size: 0.62rem;
   font-weight: 600;
   line-height: 1.25;
@@ -754,7 +743,7 @@
   align-items: center;
   grid-template-columns: auto 1fr auto;
   gap: 0.62rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--preview-glass-divider);
   padding: 0.62rem 0.78rem;
 }
 
@@ -829,12 +818,12 @@
 .therapySlackDivider::after {
   height: 1px;
   flex: 1;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--preview-glass-divider);
   content: "";
 }
 
 .therapySlackDivider span {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--preview-glass-border);
   border-radius: 999px;
   padding: 0.1rem 0.48rem;
 }
@@ -920,7 +909,7 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--preview-glass-divider);
   padding: 0.5rem 0.58rem;
 }
 
@@ -958,7 +947,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--preview-glass-divider);
   padding: 0.42rem 0.58rem;
 }
 
@@ -1175,10 +1164,150 @@
   box-shadow: 0 0 0.55rem rgba(117, 227, 186, 0.45);
 }
 
+/* The card-face previews share one restrained glass shell. Product detail stays
+   inside the shell; device and application ornament does not. */
+.phoneFrame,
+.researchWindow,
+.therapySlack,
+.communityResultPanel {
+  --preview-glass-border: rgba(255, 255, 255, 0.03);
+  --preview-glass-divider: rgba(255, 255, 255, 0.03);
+  --preview-glass-surface: rgba(9, 11, 16, 0.42);
+  --preview-glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  border: 1px solid var(--preview-glass-border);
+  background: rgba(7, 8, 11, 0.64);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(20px) saturate(1.04);
+}
+
+.employeeMessage,
+.ownerEscalation,
+.leadCard,
+.emailPreview,
+.researchTrail span,
+.therapySlackAttachment,
+.communitySources span {
+  border: 1px solid var(--preview-glass-border);
+  background: var(--preview-glass-surface);
+  box-shadow: var(--preview-glass-highlight);
+  backdrop-filter: blur(12px) saturate(1.03);
+}
+
+.agentReply {
+  border: 1px solid var(--preview-glass-border);
+  border-left-color: rgb(var(--card-accent) / 0.42);
+  border-radius: 0.72rem;
+  background:
+    linear-gradient(90deg, rgb(var(--card-accent) / 0.055), transparent 76%),
+    var(--preview-glass-surface);
+  box-shadow: var(--preview-glass-highlight);
+  backdrop-filter: blur(12px) saturate(1.03);
+}
+
+.phoneSummary {
+  background: rgba(9, 11, 16, 0.22);
+  backdrop-filter: blur(10px) saturate(1.03);
+}
+
+.therapySlackAttachment {
+  border-left: 0.18rem solid rgb(var(--card-accent) / 0.72);
+}
+
+.phoneFrame {
+  top: 1rem;
+  right: 1.15rem;
+  bottom: -1.2rem;
+  left: 1.15rem;
+  width: auto;
+  border-radius: 1rem 1rem 0 0;
+  transform: none;
+}
+
+.phoneChrome,
+.researchWindowControls,
+.slackGlyph,
+.therapySlackHeader > em,
+.therapySlackComposer {
+  display: none;
+}
+
+.researchWindowChrome {
+  min-height: 2.35rem;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  border-bottom: 1px solid var(--preview-glass-divider);
+  padding-inline: 0.9rem;
+}
+
+.therapySlackHeader {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 2.65rem;
+  padding: 0.62rem 0.78rem;
+}
+
+.therapySlackHeader > div {
+  gap: 0.5rem;
+}
+
 .communityVisual {
   --community-inner-padding: 1rem;
 
   background: transparent;
+}
+
+.communityResultPanel {
+  position: absolute;
+  z-index: 1;
+  inset: 1.2rem 1.15rem 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid var(--preview-glass-border);
+  border-bottom: 0;
+  border-radius: 1rem 1rem 0 0;
+  background: rgba(7, 8, 11, 0.64);
+  box-shadow: none;
+  backdrop-filter: blur(20px) saturate(1.04);
+}
+
+.communityOutcomeSequence {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.communityOutcomeSequence div {
+  display: grid;
+  min-width: 0;
+  gap: 0.42rem;
+}
+
+.communityOutcomeSequence strong {
+  color: rgba(246, 247, 250, 0.9);
+  font-size: clamp(1.7rem, 2.2vw, 2rem);
+  font-weight: 430;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.communityOutcomeSequence span {
+  color: rgba(230, 233, 241, 0.62);
+  font-size: 0.78rem;
+  font-weight: 420;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.communityOutcomeSequence i {
+  color: rgb(var(--card-accent) / 0.58);
+  font-size: 1rem;
+  font-style: normal;
 }
 
 .discordFeed {

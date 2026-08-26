@@ -10,10 +10,18 @@ import {
   comparisonNavigationLink,
   primaryNavigationLinks,
   productNavigationLinks,
+  serviceNavigationLinks,
 } from "@/components/site-navigation-data";
 import { FooterThemeToggle } from "@/components/theme-toggle";
 
 const footerColumns = [
+  {
+    label: "Services",
+    links: serviceNavigationLinks.map((link) => ({
+      ...link,
+      label: `${link.label} services`,
+    })),
+  },
   {
     label: "Product",
     links: [...productNavigationLinks, comparisonNavigationLink],
@@ -35,7 +43,10 @@ const footerColumns = [
   },
   {
     label: "Company",
-    links: companyNavigationLinks,
+    links: [
+      ...companyNavigationLinks,
+      { href: "/locations/vancouver", label: "Vancouver", description: "Local service across Vancouver and the Lower Mainland." },
+    ],
   },
 ];
 
@@ -49,14 +60,16 @@ export function WorktreeShell({
   children,
   theme = "dark",
   headerOverlay = false,
+  className,
 }: {
   children: ReactNode;
   theme?: "dark" | "light";
   headerOverlay?: boolean;
+  className?: string;
 }) {
   return (
     <div
-      className="nous-design-system nous-marketing-shell worktree-shell"
+      className={`nous-design-system nous-marketing-shell worktree-shell${className ? ` ${className}` : ""}`}
       data-header-overlay={headerOverlay ? "true" : undefined}
       data-nous-theme={theme}
     >

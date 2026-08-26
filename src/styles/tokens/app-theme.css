@@ -14,6 +14,48 @@
   --nous-fg-quieter: var(--nous-color-fg-quieter);
   --nous-fg-minimal: var(--nous-color-fg-minimal);
 
+  /* Semantic marketing typography — mobile-first defaults. */
+  --nous-type-display-size: clamp(2.75rem, 11vw, 3.25rem);
+  --nous-type-display-weight: 400;
+  --nous-type-display-tracking: -0.058em;
+  --nous-type-display-leading: 0.98;
+  --nous-type-page-title-size: clamp(3rem, 11vw, 4.2rem);
+  --nous-type-page-title-weight: 400;
+  --nous-type-page-title-tracking: -0.06em;
+  --nous-type-page-title-leading: 0.98;
+  --nous-type-section-title-size: clamp(2.35rem, 9vw, 3.4rem);
+  --nous-type-section-title-weight: 400;
+  --nous-type-section-title-tracking: -0.055em;
+  --nous-type-section-title-leading: 1.02;
+  --nous-type-editorial-title-size: clamp(2.25rem, 11vw, 3.4rem);
+  --nous-type-editorial-title-weight: 400;
+  --nous-type-editorial-title-tracking: -0.067em;
+  --nous-type-editorial-title-leading: 0.96;
+  --nous-type-lead-size: var(--nous-type-body-size);
+  --nous-type-lead-weight: var(--nous-type-body-weight);
+  --nous-type-lead-leading: var(--nous-type-body-leading);
+  --nous-type-body-size: 1rem;
+  --nous-type-body-weight: 400;
+  --nous-type-body-leading: 1.75;
+  --nous-type-editorial-body-size: var(--nous-type-body-size);
+  --nous-type-editorial-body-weight: var(--nous-type-body-weight);
+  --nous-type-editorial-body-leading: var(--nous-type-body-leading);
+  --nous-type-card-title-size: 1.12rem;
+  --nous-type-card-title-weight: 500;
+  --nous-type-card-title-tracking: -0.035em;
+  --nous-type-card-title-leading: 1.25;
+  --nous-type-card-body-size: 0.9rem;
+  --nous-type-card-body-weight: 400;
+  --nous-type-card-body-leading: 1.65;
+  --nous-type-eyebrow-size: 0.8125rem;
+  --nous-type-eyebrow-weight: 600;
+  --nous-type-eyebrow-tracking: 0.08em;
+  --nous-type-eyebrow-leading: 1;
+  --nous-type-meta-size: 0.625rem;
+  --nous-type-meta-weight: 500;
+  --nous-type-meta-tracking: 0.12em;
+  --nous-type-meta-leading: 1.2;
+
   --nous-bg-canvas: var(--nous-color-black-950);
   --nous-bg-chrome: var(--nous-color-black-950);
   --nous-bg-shell: var(--nous-color-black-925);
@@ -230,6 +272,33 @@
   --nous-primary-cta-edge-red: rgba(255, 42, 74, 0.92);
   --nous-primary-cta-edge-green: rgb(0, 255, 155);
   --nous-primary-cta-edge-blue: rgba(0, 115, 255, 0.82);
+}
+
+@media (min-width: 641px) {
+  :root,
+  .nous-app-theme,
+  .nous-design-system {
+    --nous-type-editorial-title-size: clamp(2.5rem, 4.4vw, 4.8rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root,
+  .nous-app-theme,
+  .nous-design-system {
+    --nous-type-display-size: clamp(3.65rem, 5vw, 4.5rem);
+    --nous-type-display-tracking: -0.075em;
+    --nous-type-display-leading: 0.95;
+    --nous-type-page-title-size: clamp(4.5rem, 6.8vw, 6.5rem);
+    --nous-type-page-title-tracking: -0.075em;
+    --nous-type-page-title-leading: 0.95;
+    --nous-type-section-title-size: clamp(3rem, 4vw, 4.5rem);
+    --nous-type-section-title-tracking: -0.062em;
+    --nous-type-section-title-leading: 0.98;
+    --nous-type-body-size: 1.08rem;
+    --nous-type-body-leading: 1.8;
+    --nous-type-card-title-size: 1.25rem;
+  }
 }
 
 .nous-design-system[data-nous-theme="light"] {

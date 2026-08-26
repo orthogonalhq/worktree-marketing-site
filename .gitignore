@@ -40,3 +40,5 @@ pnpm-debug.log*
 *.md
 !docs/customer-centric-sales-copy-posture.md
 !docs/seo-*.md
+!docs/seo-supporting-article-cluster-review/
+!docs/seo-supporting-article-cluster-review/*.md

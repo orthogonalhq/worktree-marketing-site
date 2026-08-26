@@ -3,6 +3,10 @@
   min-height: calc(100vh - var(--nous-header-height));
 }
 
+.homeShell :global(.worktree-site-footer) {
+  padding-top: clamp(4rem, 6.667vw, 6rem);
+}
+
 .heroGrid {
   position: relative;
   z-index: 1;
@@ -15,7 +19,6 @@
 
 .heroTitle {
   max-width: 12.4em;
-  font-size: clamp(3.65rem, 5vw, 4.5rem);
 }
 
 .twoColumnIntro,
@@ -295,7 +298,7 @@
 }
 
 .finalCta {
-  padding: clamp(2.5rem, 6vw, 6rem) 1rem clamp(4rem, 8vw, 8rem);
+  padding: clamp(4rem, 6.667vw, 6rem) 1rem 0;
   background: var(--nous-page-bg);
 }
 
@@ -347,6 +350,10 @@
 }
 
 @media (min-width: 1024px) {
+  .infrastructureBody {
+    position: relative;
+  }
+
   .stickyIntro {
     position: sticky;
     top: calc(var(--nous-header-height) + 2rem);
@@ -370,7 +377,6 @@
 
   .heroTitle {
     max-width: 11em;
-    font-size: clamp(2.75rem, 11vw, 3.25rem);
   }
 
   .growthRail {
@@ -448,7 +454,7 @@
 
 .insightSection {
   position: relative;
-  padding: clamp(3rem, 7vw, 7rem) 1rem;
+  padding: clamp(4rem, 6.667vw, 6rem) 1rem 0;
   background: var(--nous-page-bg);
 }
 
@@ -499,8 +505,6 @@
 .insightLead > p:last-child {
   max-width: 24rem;
   color: #27324b;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  line-height: 1.65;
 }
 
 .insightKicker,
@@ -532,18 +536,12 @@
   max-width: 16em;
   margin-top: clamp(3rem, 6vw, 6rem);
   color: #0d111c;
-  font-size: clamp(2.5rem, 4.4vw, 4.8rem);
-  font-weight: 400;
-  letter-spacing: -0.067em;
-  line-height: 0.96;
 }
 
 .insightFeature > p {
   max-width: 46rem;
   margin-top: 1.5rem;
   color: #313a50;
-  font-size: clamp(1rem, 1.5vw, 1.18rem);
-  line-height: 1.7;
 }
 
 .insightAction {
@@ -572,51 +570,32 @@
 
 .infrastructureSection {
   position: relative;
-  padding: clamp(3rem, 7vw, 7rem) 1rem;
+  padding: clamp(5rem, 10vw, 9rem) 1rem 0;
   background: var(--nous-page-bg);
 }
 
 .infrastructureInner {
   position: relative;
-  isolation: isolate;
-  overflow: hidden;
   width: min(100%, 92rem);
   margin-inline: auto;
-  border: 1px solid rgba(222, 225, 238, 0.11);
-  border-radius: clamp(1.5rem, 3vw, 2.5rem);
-  padding: clamp(2rem, 5vw, 5rem);
-  background:
-    linear-gradient(120deg, rgba(8, 9, 12, 0.98) 0%, rgba(8, 9, 12, 0.94) 45%, rgba(8, 9, 12, 0.62) 100%),
-    url("/images/workflow-ribbons/075-canopy-001.webp") right top / 72% auto no-repeat,
-    #090a0d;
-  box-shadow: none;
-}
-
-.infrastructureInner::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  background-image: image-set(
-    url("/images/textures/nue-surface-noise.png") 1x,
-    url("/images/textures/nue-surface-noise@3x.webp") 3x
-  );
-  background-repeat: repeat;
-  background-size: 160px 160px;
-  mix-blend-mode: screen;
-  opacity: 0.13;
 }
 
 .infrastructureIntro {
-  display: grid;
-  gap: clamp(2.5rem, 7vw, 7rem);
-  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.75fr);
-  align-items: end;
+  display: flex;
+  max-width: 58rem;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .infrastructureIntro h2 {
-  max-width: 13em;
+  max-width: 14em;
+}
+
+.infrastructureIntro > div:last-child {
+  max-width: 46rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 .infrastructureAction {
@@ -624,26 +603,215 @@
 }
 
 .infrastructureBody {
-  display: grid;
-  gap: clamp(3rem, 7vw, 7rem);
-  align-items: center;
   margin-top: clamp(4rem, 8vw, 7rem);
-  grid-template-columns: minmax(22rem, 0.82fr) minmax(0, 1.18fr);
+}
+
+.servicesSection {
+  position: relative;
+  padding: 0 1rem;
+  background: var(--nous-page-bg);
+}
+
+.servicesInner {
+  width: min(100%, 92rem);
+  margin-inline: auto;
+  padding-top: clamp(5rem, 10vw, 9rem);
+}
+
+.servicesLayout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.5fr) minmax(20rem, 0.8fr);
+}
+
+.consultationCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  min-height: clamp(35rem, 45vw, 42rem);
+  flex-direction: column;
+  border: 0;
+  border-radius: 1.25rem;
+  padding: clamp(2rem, 4vw, 4rem);
+  background:
+    linear-gradient(100deg, rgba(8, 9, 12, 0.98) 0%, rgba(8, 9, 12, 0.9) 48%, rgba(8, 9, 12, 0.28) 100%),
+    url("/images/workflow-ribbons/082-pleat-001.webp") right center / auto 135% no-repeat,
+    #08090c;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nous-page-title-fg) 8%, transparent);
+  color: #f1eef5;
+}
+
+.consultationCard::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: image-set(
+    url("/images/textures/nue-surface-noise.png") 1x,
+    url("/images/textures/nue-surface-noise@3x.webp") 3x
+  );
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  content: "";
+  mix-blend-mode: screen;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.consultationCard::after {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 8%, rgba(131, 183, 255, 0.22) 54%, rgba(112, 231, 207, 0.2) 76%, transparent);
+  box-shadow: 0 0 1.25rem rgba(115, 178, 255, 0.16);
+  content: "";
+}
+
+.consultationCopy {
+  max-width: 47rem;
+}
+
+.consultationCopy h2 {
+  max-width: 11em;
+  margin-top: 1.35rem;
+  color: #f1eef5;
+}
+
+.consultationCopy > p:last-child {
+  max-width: 41rem;
+  margin-top: 2rem;
+  color: rgba(226, 228, 237, 0.68);
+}
+
+.consultationAction {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: auto;
+  padding-top: 3rem;
+}
+
+.consultationAction > span:last-child {
+  color: rgba(205, 209, 222, 0.42);
+}
+
+.productColumn {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.productCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  min-height: 0;
+  align-items: end;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border: 0;
+  border-radius: 1rem;
+  padding: clamp(1.4rem, 2.1vw, 2rem);
+  background: rgba(9, 10, 13, 0.44);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nous-page-title-fg) 8%, transparent);
+  color: rgba(244, 241, 247, 0.94);
+  transition: box-shadow 220ms ease, background-color 220ms ease, transform 220ms ease;
+}
+
+.productCard::before {
+  position: absolute;
+  z-index: 0;
+  inset: 1px;
+  border-radius: calc(1rem - 1px);
+  background-image:
+    linear-gradient(90deg, #090a0d 0%, rgba(9, 10, 13, 0.96) 48%, rgba(9, 10, 13, 0.52) 74%, rgba(9, 10, 13, 0.08) 100%),
+    var(--product-card-ribbon);
+  background-position: center, var(--product-card-ribbon-position, right center);
+  background-repeat: no-repeat;
+  background-size: cover, var(--product-card-ribbon-size, 100% auto);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+  transition: opacity 260ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.productCard:nth-child(1) {
+  --product-card-ribbon: url("/images/workflow-ribbons/073-header-001.webp");
+  --product-card-ribbon-position: right 38%;
+}
+
+.productCard:nth-child(2) {
+  --product-card-ribbon: url("/images/workflow-ribbons/078-pleat-001.webp");
+  --product-card-ribbon-position: right bottom;
+}
+
+.productCard:nth-child(3) {
+  --product-card-ribbon: url("/images/workflow-ribbons/087-canopy-001.webp");
+  --product-card-ribbon-position: right 82%;
+}
+
+.productCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.productCard:hover,
+.productCard:focus-visible {
+  outline: none;
+  background: rgba(13, 14, 18, 0.7);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nous-page-title-fg) 14%, transparent);
+  transform: translateX(0.2rem);
+}
+
+.productCard:hover::before,
+.productCard:focus-visible::before {
+  opacity: 0.92;
+  transform: scale(1.025);
+}
+
+.productCard h3 {
+  color: rgba(244, 241, 247, 0.94);
+}
+
+.productCard p {
+  max-width: 30rem;
+  margin-top: 0.65rem;
+  color: rgba(226, 228, 237, 0.56);
+}
+
+.productCardArrow {
+  align-self: end;
+  color: rgba(239, 241, 247, 0.72);
+  font-size: 1.15rem;
+  transition: transform 220ms ease;
+}
+
+.productCard:hover .productCardArrow,
+.productCard:focus-visible .productCardArrow {
+  transform: translateX(0.25rem);
 }
 
 .infrastructureProof {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 0;
   list-style: none;
-  border-top: 1px solid rgba(231, 233, 241, 0.18);
   padding: 0;
 }
 
 .infrastructureProof li {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-  border-bottom: 1px solid rgba(231, 233, 241, 0.12);
-  padding: 1.4rem 0;
+  display: flex;
+  aspect-ratio: 1;
+  flex-direction: column;
+  border: 1px solid rgba(231, 233, 241, 0.1);
+  border-radius: 0.85rem;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: rgba(9, 10, 13, 0.3);
 }
 
 .infrastructureProof li > span {
@@ -653,32 +821,292 @@
   letter-spacing: 0.08em;
 }
 
+.infrastructureProof li > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 1.25rem;
+}
+
 .infrastructureProof h3 {
   color: #f4f1f7;
-  font-size: 1.08rem;
+  font-size: clamp(1.65rem, 2.1vw, 2.15rem);
   font-weight: 520;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 .infrastructureProof p {
   max-width: 36rem;
-  margin-top: 0.55rem;
+  margin-top: auto;
   color: rgba(226, 228, 237, 0.67);
-  font-size: 0.88rem;
-  line-height: 1.65;
 }
 
-.infrastructureBody .reviewVisual {
-  width: 100%;
-  margin: 0;
-  padding-left: 0;
+@media (min-width: 1024px) {
+  .infrastructureProof {
+    --card-size: clamp(24rem, 32vw, 32rem);
+    --card-gap: 8rem;
+
+    position: relative;
+    display: block;
+    left: clamp(6rem, 9vw, 9rem);
+    width: calc(var(--card-size) + (var(--card-gap) * 3));
+    height: var(--card-size);
+    margin-inline: auto;
+    perspective: 70rem;
+    perspective-origin: var(--perspective-origin-x, 0px) center;
+    transform-style: preserve-3d;
+  }
+
+  .infrastructureBody::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(197, 211, 255, 0.1) 14%,
+      rgba(242, 244, 255, 0.42) 50%,
+      rgba(197, 211, 255, 0.1) 86%,
+      transparent
+    );
+    box-shadow: 0 0 0.65rem rgba(148, 174, 255, 0.12);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.12) 14%,
+      rgba(0, 0, 0, 0.7) 34%,
+      #000 44%,
+      #000 64%,
+      rgba(0, 0, 0, 0.62) 74%,
+      rgba(0, 0, 0, 0.1) 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.12) 14%,
+      rgba(0, 0, 0, 0.7) 34%,
+      #000 44%,
+      #000 64%,
+      rgba(0, 0, 0, 0.62) 74%,
+      rgba(0, 0, 0, 0.1) 88%,
+      transparent 100%
+    );
+    opacity: 0;
+    transform: translateY(-0.5px) scaleX(0);
+    transform-origin: var(--beam-origin-x, 50%) center;
+  }
+
+  .infrastructureBody.infrastructureScenePlaying::before {
+    animation: infrastructureBeamDraw 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+  }
+
+  .infrastructureBody.infrastructureSceneReady::before {
+    opacity: 1;
+    transform: translateY(-0.5px) scaleX(1);
+  }
+
+  .infrastructureProof li {
+    position: absolute;
+    z-index: calc(var(--card-index) + 1);
+    top: 0;
+    left: calc(var(--card-index) * var(--card-gap));
+    width: var(--card-size);
+    height: var(--card-size);
+    overflow: visible;
+    opacity: var(--focus-opacity, 1);
+    background: rgba(9, 10, 13, 0.3);
+    backface-visibility: hidden;
+    filter: blur(var(--focus-blur, 0));
+    transform: rotateY(45deg);
+    transform-origin: left center;
+    will-change: transform;
+    transition:
+      transform 220ms ease,
+      border-color 220ms ease,
+      background-color 220ms ease;
+  }
+
+  .rackFocusActive li {
+    will-change: filter, opacity;
+  }
+
+  .infrastructureProof.infrastructureScenePending li {
+    opacity: 0;
+    filter: blur(16px);
+  }
+
+  .infrastructureProof.infrastructureScenePlaying li {
+    animation: infrastructureCardResolve 900ms cubic-bezier(0.22, 1, 0.36, 1) 300ms both;
+    will-change: filter, opacity;
+  }
+
+  .infrastructureProof li::before,
+  .infrastructureProof li::after {
+    content: "";
+    position: absolute;
+    z-index: 21;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .infrastructureProof li::before {
+    width: 5.5rem;
+    height: 3.5rem;
+    background:
+      radial-gradient(circle at 54% 46%, rgba(255, 255, 255, 0.78), transparent 9%),
+      radial-gradient(ellipse at 38% 48%, rgba(108, 157, 255, 0.72), transparent 38%),
+      radial-gradient(ellipse at 58% 30%, rgba(216, 107, 255, 0.58), transparent 36%),
+      radial-gradient(ellipse at 62% 68%, rgba(79, 238, 218, 0.55), transparent 38%);
+    filter: blur(0.55rem);
+    mix-blend-mode: screen;
+    opacity: 0.72;
+    transform: translate(-52%, -50%);
+  }
+
+  .infrastructureProof li::after {
+    width: 0.42rem;
+    height: 0.42rem;
+    background: rgba(250, 252, 255, 0.96);
+    box-shadow:
+      0 0 0.35rem rgba(255, 255, 255, 0.95),
+      -0.35rem 0 1.15rem rgba(105, 153, 255, 0.85),
+      0.28rem -0.18rem 1.25rem rgba(213, 101, 255, 0.68),
+      0.32rem 0.24rem 1.25rem rgba(78, 239, 218, 0.62);
+    transform: translate(-50%, -50%);
+  }
+
+  .infrastructureProof.infrastructureScenePending li::before,
+  .infrastructureProof.infrastructureScenePending li::after {
+    opacity: 0;
+  }
+
+  .infrastructureProof.infrastructureScenePlaying li::before {
+    animation: infrastructurePrismBloomIgnite 420ms ease-out var(--scene-delay) both;
+  }
+
+  .infrastructureProof.infrastructureScenePlaying li::after {
+    animation: infrastructurePrismCoreIgnite 360ms ease-out var(--scene-delay) both;
+  }
+
+  .infrastructureProof.infrastructureScenePlaying li:first-child::before {
+    animation:
+      infrastructurePrismBloomIgnite 420ms ease-out var(--scene-delay) both,
+      infrastructurePrismBloomPulse 350ms ease-in-out 1350ms;
+  }
+
+  .infrastructureProof.infrastructureScenePlaying li:first-child::after {
+    animation:
+      infrastructurePrismCoreIgnite 360ms ease-out var(--scene-delay) both,
+      infrastructurePrismCorePulse 350ms ease-in-out 1350ms;
+  }
+
+  .infrastructureProof li:hover,
+  .infrastructureProof li:focus-visible {
+    z-index: 10;
+    outline: none;
+    border-color: rgba(195, 208, 255, 0.1);
+    background: rgba(13, 14, 18, 0.3);
+    transform: rotateY(45deg);
+  }
+}
+
+@keyframes infrastructureBeamDraw {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5px) scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-0.5px) scaleX(1);
+  }
+}
+
+@keyframes infrastructureCardResolve {
+  from {
+    opacity: 0.04;
+    filter: blur(16px);
+  }
+
+  to {
+    opacity: var(--focus-opacity, 1);
+    filter: blur(var(--focus-blur, 0));
+  }
+}
+
+@keyframes infrastructurePrismBloomIgnite {
+  from {
+    opacity: 0;
+    transform: translate(-52%, -50%) scale(0.35);
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.72;
+    transform: translate(-52%, -50%) scale(1);
+  }
+}
+
+@keyframes infrastructurePrismCoreIgnite {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes infrastructurePrismBloomPulse {
+  50% {
+    opacity: 1;
+    transform: translate(-52%, -50%) scale(1.16);
+  }
+}
+
+@keyframes infrastructurePrismCorePulse {
+  50% {
+    transform: translate(-50%, -50%) scale(1.45);
+  }
 }
 
 @media (max-width: 1023px) {
   .insightInner,
   .infrastructureIntro,
-  .infrastructureBody {
+  .infrastructureBody,
+  .servicesLayout {
     grid-template-columns: 1fr;
+  }
+
+  .consultationCard {
+    min-height: 34rem;
+  }
+
+  .productColumn {
+    grid-template-rows: none;
+  }
+
+  .productCard {
+    min-height: 12rem;
   }
 
   .insightLead {
@@ -688,11 +1116,17 @@
   .infrastructureBody {
     align-items: stretch;
   }
+
+  .infrastructureProof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
 }
 
 @media (min-width: 640px) {
   .insightSection,
   .infrastructureSection,
+  .servicesSection,
   .finalCta {
     padding-inline: 1.5rem;
   }
@@ -701,19 +1135,14 @@
 @media (min-width: 1024px) {
   .insightSection,
   .infrastructureSection,
+  .servicesSection,
   .finalCta {
     padding-inline: 2.5rem;
   }
 }
 
 @media (max-width: 640px) {
-  .insightSection,
-  .infrastructureSection {
-    padding-block: 2.5rem;
-  }
-
   .insightInner,
-  .infrastructureInner,
   .finalCtaInner {
     border-radius: 1.35rem;
     padding: 1.5rem;
@@ -729,7 +1158,6 @@
 
   .insightFeature h2 {
     margin-top: 2.5rem;
-    font-size: clamp(2.25rem, 11vw, 3.4rem);
   }
 
   .insightMeta {
@@ -737,8 +1165,56 @@
     flex-direction: column;
   }
 
+  .infrastructureBody {
+    overflow: hidden;
+    margin-inline: -1rem;
+  }
+
+  .infrastructureProof {
+    --mobile-card-width: min(86vw, 23rem);
+
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0 calc((100vw - var(--mobile-card-width)) / 2) 0.75rem;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: calc((100vw - var(--mobile-card-width)) / 2);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+
+  .infrastructureProof::-webkit-scrollbar {
+    display: none;
+  }
+
   .infrastructureProof li {
-    grid-template-columns: 2rem minmax(0, 1fr);
+    width: var(--mobile-card-width);
+    flex: 0 0 var(--mobile-card-width);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .infrastructureProof.rackFocusActive li {
+    opacity: var(--focus-opacity, 1);
+    filter: blur(var(--focus-blur, 0));
+    transition: filter 120ms linear, opacity 120ms linear;
+    will-change: filter, opacity;
+  }
+
+  .consultationCard {
+    min-height: 32rem;
+    border-radius: 1.15rem;
+    padding: 1.5rem;
+  }
+
+  .consultationAction {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .productCard {
+    min-height: 11.5rem;
   }
 
   .finalCtaInner {

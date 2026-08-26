@@ -121,8 +121,8 @@ function WorkflowPreview() {
 export default function AiImplementationPage() {
   return (
     <WorktreeShell headerOverlay>
-      <main className={styles.page}>
-        <section className={styles.hero} aria-labelledby="implementation-heading">
+      <main className={`${styles.page} worktree-service-page`}>
+        <section className={`${styles.hero} worktree-service-hero`} aria-labelledby="implementation-heading">
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <Eyebrow>AI implementation services</Eyebrow>
@@ -159,7 +159,7 @@ export default function AiImplementationPage() {
         <section className={styles.anatomySection} aria-labelledby="anatomy-heading">
           <div className={styles.anatomyInner}>
             <div className={styles.anatomyIntro}>
-              <p className={styles.darkEyebrow}>Workflow anatomy</p>
+              <p className={`${styles.darkEyebrow} worktree-service-eyebrow`}>Workflow anatomy</p>
               <h2 id="anatomy-heading">Give the system a job your team can explain.</h2>
               <p>A defined workflow makes the deployment easier to test, control, and improve. Each part answers a practical operating question.</p>
               <DeepLink href="/use-cases">Explore workflow examples</DeepLink>

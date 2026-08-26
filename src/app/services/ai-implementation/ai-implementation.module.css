@@ -20,7 +20,7 @@
   isolation: isolate;
   min-height: clamp(44rem, 78vh, 56rem);
   overflow: hidden;
-  padding-top: clamp(6rem, 10vw, 9rem);
+  padding-top: var(--worktree-service-hero-padding-top, clamp(6rem, 10vw, 9rem));
   padding-bottom: clamp(5rem, 9vw, 8rem);
 }
 
@@ -88,8 +88,8 @@
   max-width: 45rem;
   margin-top: 2rem;
   color: var(--nous-page-body-fg);
-  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
-  line-height: 1.75;
+  font-size: var(--worktree-service-lead-size, clamp(1.05rem, 1.35vw, 1.25rem));
+  line-height: var(--worktree-service-lead-line-height, 1.75);
 }
 
 .heroActions {
@@ -821,7 +821,7 @@
 @media (max-width: 760px) {
   .hero {
     min-height: auto;
-    padding-top: 5.5rem;
+    padding-top: var(--worktree-service-hero-padding-top, 5.5rem);
   }
 
   .hero::before {

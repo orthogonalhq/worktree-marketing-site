@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run generate:blog",
     "dev": "next dev --webpack",
+    "predev:turbo": "npm run generate:blog",
     "dev:turbo": "next dev --turbopack",
+    "prebuild": "npm run generate:blog",
     "build": "next build",
+    "prevercel-build": "npm run generate:blog",
     "vercel-build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "generate:blog": "node scripts/generate-blog-registry.mjs",
     "check:routes": "node scripts/check-routes.mjs"
   },
   "dependencies": {

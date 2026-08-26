@@ -6,6 +6,10 @@
 .link { color: var(--nous-page-title-fg); text-decoration: underline; text-decoration-color: var(--nous-stroke-strong); text-underline-offset: 0.2em; }
 .link:hover { text-decoration-color: #78a7ff; }
 .list { color: var(--nous-page-body-fg); line-height: 1.75; margin: 1.25rem 0; padding-left: 1.4rem; }
+.unorderedList { list-style: disc outside; }
+.orderedList { list-style: decimal outside; }
+.list .list { margin: 0.5rem 0; }
+.listItem::marker { color: #78a7ff; font-family: var(--font-ibm-plex-mono), monospace; }
 .listItem + .listItem { margin-top: 0.45rem; }
 .quote { border-left: 2px solid #4d73c7; color: var(--nous-page-title-fg); font-size: 1.2rem; line-height: 1.65; margin: 2rem 0; padding-left: 1.25rem; }
 .pre { background: #090b10; border: 1px solid var(--nous-stroke-subtle); border-radius: 0.75rem; color: #dfe9ff; font-size: 0.9rem; line-height: 1.6; margin: 1.75rem 0; overflow-x: auto; padding: 1.2rem; }
