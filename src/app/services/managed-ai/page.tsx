@@ -158,7 +158,7 @@ export default function ManagedAiPage() {
         <section className={styles.productBridge} aria-labelledby="product-bridge-heading">
           <div className={styles.productBridgeInner}>
             <div><Eyebrow>The machinery behind the service</Eyebrow><h2 id="product-bridge-heading">See how the managed workflow stays inspectable.</h2><p>The product keeps the role, selected systems, authority, evaluations, material changes, and next actions visible. It supports the relationship; it is not a platform your team must operate alone.</p></div>
-            <div className={styles.productLinks}><Link href="/product"><span>Product overview</span><em>→</em></Link><Link href="/product/compare-ai-agent-approaches"><span>Compare operating approaches</span><em>→</em></Link><Link href="/services/ai-implementation"><span>See how workflows reach launch</span><em>→</em></Link></div>
+            <div className={styles.productLinks}><Link href="/product"><span>Product overview</span><em>→</em></Link><Link href="/product/compare-ai-agent-approaches"><span>Compare operating approaches</span><em>→</em></Link><Link href="/services/ai-implementation"><span>See how workflows reach launch</span><em>→</em></Link><Link href="/blog/monitor-ai-agents-in-production"><span>Read how to monitor AI agents in production</span><em>→</em></Link></div>
           </div>
         </section>
 

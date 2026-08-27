@@ -161,7 +161,7 @@ export default function AiImplementationPage() {
             <div className={styles.anatomyIntro}>
               <p className={`${styles.darkEyebrow} worktree-service-eyebrow`}>Workflow anatomy</p>
               <h2 id="anatomy-heading">Give the system a job your team can explain.</h2>
-              <p>A defined workflow makes the deployment easier to test, control, and improve. Each part answers a practical operating question.</p>
+              <p>A defined workflow makes the deployment easier to test, control, and improve. Each part answers a practical operating question. If the opportunity is still broader, our <Link className={styles.inlineLink} href="/services/ai-automation">AI automation services</Link> help identify the right recurring work before implementation.</p>
               <DeepLink href="/use-cases">Explore workflow examples</DeepLink>
             </div>
             <div className={styles.anatomyPath} aria-label="Illustrative workflow anatomy">
@@ -182,7 +182,8 @@ export default function AiImplementationPage() {
             <div className={styles.pathIntro}>
               <Eyebrow>The implementation path</Eyebrow>
               <h2 id="path-heading">Move from the current process to a controlled launch.</h2>
-              <p>Each stage resolves a different operating question and leaves behind something the team can inspect.</p>
+              <p>Each stage resolves a different operating question and leaves behind something the team can inspect. If budget is part of the decision, review <Link className={styles.inlineLink} href="/blog/ai-automation-cost">what determines AI automation cost</Link>.</p>
+              <DeepLink href="/blog/ai-implementation-roadmap">Read the AI implementation roadmap</DeepLink>
             </div>
             <ol className={styles.stageList}>
               {implementationStages.map((stage) => (
@@ -276,7 +277,7 @@ export default function AiImplementationPage() {
             <p>Start with recurring work that is delayed, repeated, or still depends on the same overloaded person.</p>
             <div className={styles.heroActions}>
               <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
-              <SecondaryLink href="/use-cases">Explore use cases</SecondaryLink>
+              <SecondaryLink href="/services/managed-ai">Explore managed AI services</SecondaryLink>
             </div>
           </div>
         </section>

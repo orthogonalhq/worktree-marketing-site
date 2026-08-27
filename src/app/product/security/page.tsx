@@ -222,6 +222,7 @@ export default function ProductSecurityPage() {
             <div className={styles.deliveryLinks}>
               <article><span>Build the boundaries</span><p>Map systems, actions, approvals, test cases, and acceptance criteria before launch.</p><DeepLink href="/services/ai-implementation">Explore AI implementation</DeepLink></article>
               <article><span>Keep them current</span><p>Review exceptions and material change against the agreed deployment standard.</p><DeepLink href="/services/managed-ai">Explore managed AI</DeepLink></article>
+              <article><span>Review before launch</span><p>Check the workflow&apos;s purpose, owner, data, tools, authority, approvals, evidence, change process, and removal path.</p><DeepLink href="/blog/ai-agent-governance-checklist">Review the AI agent governance checklist</DeepLink></article>
             </div>
           </div>
         </section>

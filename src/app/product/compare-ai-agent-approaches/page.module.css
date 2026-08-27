@@ -264,6 +264,25 @@
   font-size: 0.85rem;
 }
 
+.inlineLink {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, currentColor 46%, transparent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease;
+}
+
+.inlineLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.inlineLink:focus-visible {
+  border-radius: 0.1rem;
+  outline: 1px solid currentColor;
+  outline-offset: 0.2rem;
+}
+
 .worktreeCard {
   position: relative;
 }

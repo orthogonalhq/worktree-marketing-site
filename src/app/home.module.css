@@ -326,7 +326,7 @@
   pointer-events: none;
   background-image: image-set(
     url("/images/textures/nue-surface-noise.png") 1x,
-    url("/images/textures/nue-surface-noise@3x.webp") 3x
+    url("/images/textures/nue-surface-noise@3x.avif") 3x
   );
   background-repeat: repeat;
   background-size: 160px 160px;
@@ -347,6 +347,32 @@
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 2rem;
+}
+
+.localServiceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+  color: rgba(226, 228, 237, 0.62);
+  font-size: 0.82rem;
+  font-weight: 560;
+  transition: color 200ms ease;
+}
+
+.localServiceLink:hover,
+.localServiceLink:focus-visible {
+  outline: none;
+  color: rgba(244, 241, 247, 0.96);
+}
+
+.localServiceLink > span {
+  transition: transform 200ms ease;
+}
+
+.localServiceLink:hover > span,
+.localServiceLink:focus-visible > span {
+  transform: translateX(0.2rem);
 }
 
 @media (min-width: 1024px) {
@@ -484,7 +510,7 @@
   pointer-events: none;
   background-image: image-set(
     url("/images/textures/nue-surface-noise.png") 1x,
-    url("/images/textures/nue-surface-noise@3x.webp") 3x
+    url("/images/textures/nue-surface-noise@3x.avif") 3x
   );
   background-repeat: repeat;
   background-size: 160px 160px;
@@ -624,6 +650,24 @@
   grid-template-columns: minmax(0, 1.5fr) minmax(20rem, 0.8fr);
 }
 
+.servicesLayout + .servicesLayout {
+  margin-top: 1rem;
+}
+
+.servicesLayoutReversed {
+  grid-template-columns: minmax(20rem, 0.8fr) minmax(0, 1.5fr);
+}
+
+.servicesLayoutReversed > .serviceFeatureCard {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.servicesLayoutReversed > .serviceColumn {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .consultationCard {
   position: relative;
   isolation: isolate;
@@ -648,7 +692,7 @@
   inset: 0;
   background-image: image-set(
     url("/images/textures/nue-surface-noise.png") 1x,
-    url("/images/textures/nue-surface-noise@3x.webp") 3x
+    url("/images/textures/nue-surface-noise@3x.avif") 3x
   );
   background-repeat: repeat;
   background-size: 160px 160px;
@@ -668,6 +712,13 @@
   background: linear-gradient(90deg, transparent 8%, rgba(131, 183, 255, 0.22) 54%, rgba(112, 231, 207, 0.2) 76%, transparent);
   box-shadow: 0 0 1.25rem rgba(115, 178, 255, 0.16);
   content: "";
+}
+
+.serviceFeatureCard {
+  background:
+    linear-gradient(100deg, rgba(8, 9, 12, 0.97) 0%, rgba(8, 9, 12, 0.88) 50%, rgba(8, 9, 12, 0.24) 100%),
+    url("/images/workflow-ribbons/076-twist-001.webp") right center / auto 130% no-repeat,
+    #08090c;
 }
 
 .consultationCopy {
@@ -702,6 +753,46 @@
   display: grid;
   gap: 1rem;
   grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.productColumnGroup {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.comparisonLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(9, 10, 13, 0.44);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nous-page-title-fg) 8%, transparent);
+  color: rgba(226, 228, 237, 0.72);
+  font-size: 0.82rem;
+  font-weight: 620;
+  letter-spacing: 0.01em;
+  transition: background-color 220ms ease, box-shadow 220ms ease, color 220ms ease;
+}
+
+.comparisonLink:hover,
+.comparisonLink:focus-visible {
+  outline: none;
+  background: rgba(13, 14, 18, 0.7);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nous-page-title-fg) 14%, transparent);
+  color: rgba(244, 241, 247, 0.96);
+}
+
+.comparisonLink > span:last-child {
+  transition: transform 220ms ease;
+}
+
+.comparisonLink:hover > span:last-child,
+.comparisonLink:focus-visible > span:last-child {
+  transform: translateX(0.25rem);
 }
 
 .productCard {
@@ -752,6 +843,21 @@
 .productCard:nth-child(3) {
   --product-card-ribbon: url("/images/workflow-ribbons/087-canopy-001.webp");
   --product-card-ribbon-position: right 82%;
+}
+
+.serviceColumn .productCard:nth-child(1) {
+  --product-card-ribbon: url("/images/workflow-ribbons/075-canopy-001.webp");
+  --product-card-ribbon-position: right 48%;
+}
+
+.serviceColumn .productCard:nth-child(2) {
+  --product-card-ribbon: url("/images/workflow-ribbons/085-halo-001.webp");
+  --product-card-ribbon-position: right 58%;
+}
+
+.serviceColumn .productCard:nth-child(3) {
+  --product-card-ribbon: url("/images/workflow-ribbons/090-canopy-001-rotated-90.webp");
+  --product-card-ribbon-position: right 50%;
 }
 
 .productCard > * {
@@ -1095,6 +1201,19 @@
   .infrastructureBody,
   .servicesLayout {
     grid-template-columns: 1fr;
+  }
+
+  .servicesLayoutReversed > .serviceFeatureCard,
+  .servicesLayoutReversed > .serviceColumn {
+    grid-column: 1;
+  }
+
+  .servicesLayoutReversed > .serviceFeatureCard {
+    grid-row: 1;
+  }
+
+  .servicesLayoutReversed > .serviceColumn {
+    grid-row: 2;
   }
 
   .consultationCard {

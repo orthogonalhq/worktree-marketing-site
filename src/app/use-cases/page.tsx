@@ -4,8 +4,9 @@ import { WorktreeShell } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Workflow Use Cases",
-  description: "Illustrative recurring business workflows that teams can evaluate with Worktree.",
+  title: "AI Workflow Use Cases for Business",
+  description:
+    "Explore practical AI workflow use cases for recurring business work, including operational follow-through, account preparation, internal coordination, and reporting.",
   path: "/use-cases",
 });
 

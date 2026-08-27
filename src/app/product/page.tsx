@@ -170,7 +170,7 @@ export default function ProductPage() {
             <p>You do not need an AI roadmap. Bring a recurring process, an overloaded handoff, or work that still depends on the same person. A Worktree engineer will help you decide whether an agent belongs there and what it would take to put one into operation.</p>
             <div className={styles.heroActions}>
               <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
-              <SecondaryLink href="/use-cases">Explore use cases</SecondaryLink>
+              <SecondaryLink href="/services/ai-implementation">Explore AI implementation services</SecondaryLink>
             </div>
           </div>
         </section>

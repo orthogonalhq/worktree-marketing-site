@@ -1029,9 +1029,7 @@ export function HomepageWorkflowGallery() {
                     "--workflow-ribbon-position": card.ribbonPosition,
                   } as CSSProperties}
                 >
-                  {"featured" in card && card.featured ? (
-                    <div aria-hidden="true" className={styles.featuredGrain} />
-                  ) : null}
+                  <div aria-hidden="true" className={styles.cardGrain} />
                   <div className={styles.cardHeader}>
                     <div>
                       <p>{card.label}</p>

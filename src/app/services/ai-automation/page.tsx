@@ -176,6 +176,7 @@ export default function AiAutomationPage() {
               <Eyebrow>From workflow review to production</Eyebrow>
               <h2 id="delivery-heading">Worktree carries the idea through implementation.</h2>
               <p>Identifying the workflow is only the first decision. Worktree maps the real process, defines its boundaries, connects selected systems, tests difficult cases, and supports acceptance and launch.</p>
+              <DeepLink href="/blog/ai-automation-cost">Understand what drives AI automation cost</DeepLink>
             </div>
             <div className={styles.deliveryRoutes}>
               <Link href="/services/ai-implementation"><span>Build and launch</span><strong>AI implementation services</strong><em>→</em></Link>
@@ -196,7 +197,7 @@ export default function AiAutomationPage() {
           <div className={styles.finalCtaInner}>
             <Eyebrow>Start with one recurring workflow</Eyebrow>
             <h2 id="automation-contact-heading">Show us where the work keeps slowing down.</h2>
-            <p>Bring the current process, its owner, the systems it touches, and a recent example. A Worktree engineer will help determine what should change, what should remain human, and what it would take to put the improved workflow into operation.</p>
+            <p>Bring the current process, its owner, the systems it touches, and a recent example. A Worktree engineer will help determine what should change, what should remain human, and what it would take to put the improved workflow into operation. For local teams, see how Worktree provides <Link className={styles.inlineLink} href="/locations/vancouver">AI automation services in Vancouver and the Lower Mainland</Link>.</p>
             <div className={styles.heroActions}><PrimaryLink href="/deploy">Review a workflow</PrimaryLink><SecondaryLink href="/services/ai-implementation">Explore AI implementation</SecondaryLink></div>
           </div>
         </section>

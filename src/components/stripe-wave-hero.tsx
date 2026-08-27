@@ -814,7 +814,13 @@ export function StripeWaveHero({
         <picture className={styles.fallbackFrame}>
           <source media="(max-width: 639px)" srcSet="/vendor/wave-prototype/wave-fallback-mobile.webp" />
           <source media="(max-width: 1263px)" srcSet="/vendor/wave-prototype/wave-fallback-tablet.webp" />
-          <img alt="" className={styles.fallback} src="/vendor/wave-prototype/wave-fallback-desktop.webp" />
+          <img
+            alt=""
+            className={styles.fallback}
+            fetchPriority="high"
+            loading="eager"
+            src="/vendor/wave-prototype/wave-fallback-desktop.webp"
+          />
         </picture>
         <div className={styles.contents} ref={contentsRef}>
           <canvas

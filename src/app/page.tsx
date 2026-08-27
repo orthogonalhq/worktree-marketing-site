@@ -58,12 +58,12 @@ export default async function Home({ searchParams }: HomePageProps) {
         <div aria-hidden="true" className="hero-bottom-light" />
         <div className={`${styles.heroGrid} mx-auto grid max-w-[92rem] gap-12 pt-10 lg:items-center lg:pt-20`}>
           <div className="hero-copy-column">
-            <Eyebrow>Managed AI agent deployments</Eyebrow>
+            <Eyebrow>AI implementation partner</Eyebrow>
             <h1 className={`${styles.heroTitle} worktree-type-display hero-title mt-6 max-w-5xl`}>
-              Secure agent infrastructure. Engineers who work alongside your team.
+              Put AI workflows into operation. With engineers who stay involved.
             </h1>
             <p className="worktree-type-lead hero-body mt-7 max-w-2xl">
-              From the first deployment to a growing portfolio, Worktree gives your team the engineering and operating capability to put AI to work across the business.
+              Worktree works alongside established teams to identify valuable workflows, connect the systems involved, and define approvals and operating boundaries. We launch them together, then monitor, evaluate, and improve their performance as the business grows.
             </p>
             <div className="hero-actions home-hero-actions mt-10 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
@@ -111,25 +111,69 @@ export default async function Home({ searchParams }: HomePageProps) {
               </div>
             </article>
 
-            <nav className={styles.productColumn} aria-label="Explore the Worktree product">
-              <Link className={styles.productCard} href="/product">
+            <div className={styles.productColumnGroup}>
+              <nav className={styles.productColumn} aria-label="Explore the Worktree product">
+                <Link className={styles.productCard} href="/product">
+                  <div>
+                    <h3 className="worktree-type-card-title">The Worktree product</h3>
+                    <p className="worktree-type-card-body">See how agents, controls, and operating evidence fit together.</p>
+                  </div>
+                  <span className={styles.productCardArrow} aria-hidden="true">→</span>
+                </Link>
+                <Link className={styles.productCard} href="/product/agents">
+                  <div>
+                    <h3 className="worktree-type-card-title">Worktree Agents</h3>
+                    <p className="worktree-type-card-body">A durable agent configured for one defined business role.</p>
+                  </div>
+                  <span className={styles.productCardArrow} aria-hidden="true">→</span>
+                </Link>
+                <Link className={styles.productCard} href="/product/security">
+                  <div>
+                    <h3 className="worktree-type-card-title">Product Security</h3>
+                    <p className="worktree-type-card-body">Access boundaries, human review, data handling, and removal.</p>
+                  </div>
+                  <span className={styles.productCardArrow} aria-hidden="true">→</span>
+                </Link>
+              </nav>
+              <Link className={styles.comparisonLink} href="/product/compare-ai-agent-approaches">
+                <span>Compare AI agent approaches</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className={`${styles.servicesLayout} ${styles.servicesLayoutReversed}`}>
+            <article className={`${styles.consultationCard} ${styles.serviceFeatureCard}`}>
+              <div className={styles.consultationCopy}>
+                <p className="worktree-type-eyebrow">AI implementation services</p>
+                <h2 className="worktree-type-section-title">Put one valuable AI workflow into operation.</h2>
+                <p className="worktree-type-body">Work alongside an engineer to map the work, connect the systems involved, define approvals and operating boundaries, test the workflow, and launch it with a clear owner.</p>
+              </div>
+              <div className={styles.consultationAction}>
+                <PrimaryLink href="/services/ai-implementation">Explore AI implementation</PrimaryLink>
+                <span className="worktree-type-meta">From workflow selection through launch</span>
+              </div>
+            </article>
+
+            <nav className={`${styles.productColumn} ${styles.serviceColumn}`} aria-label="Explore Worktree services and use cases">
+              <Link className={styles.productCard} href="/services/ai-automation">
                 <div>
-                  <h3 className="worktree-type-card-title">The Worktree product</h3>
-                  <p className="worktree-type-card-body">See how agents, controls, and operating evidence fit together.</p>
+                  <h3 className="worktree-type-card-title">AI Automation Services</h3>
+                  <p className="worktree-type-card-body">Turn recurring work into a workflow that keeps moving.</p>
                 </div>
                 <span className={styles.productCardArrow} aria-hidden="true">→</span>
               </Link>
-              <Link className={styles.productCard} href="/product/agents">
+              <Link className={styles.productCard} href="/services/managed-ai">
                 <div>
-                  <h3 className="worktree-type-card-title">Worktree Agents</h3>
-                  <p className="worktree-type-card-body">A durable agent configured for one defined business role.</p>
+                  <h3 className="worktree-type-card-title">Managed AI Services</h3>
+                  <p className="worktree-type-card-body">Keep the workflow useful as the work and systems change.</p>
                 </div>
                 <span className={styles.productCardArrow} aria-hidden="true">→</span>
               </Link>
-              <Link className={styles.productCard} href="/product/security">
+              <Link className={styles.productCard} href="/use-cases">
                 <div>
-                  <h3 className="worktree-type-card-title">Product Security</h3>
-                  <p className="worktree-type-card-body">Access boundaries, human review, data handling, and removal.</p>
+                  <h3 className="worktree-type-card-title">AI Workflow Use Cases</h3>
+                  <p className="worktree-type-card-body">Find recurring work that could support a useful first deployment.</p>
                 </div>
                 <span className={styles.productCardArrow} aria-hidden="true">→</span>
               </Link>
@@ -169,6 +213,9 @@ export default async function Home({ searchParams }: HomePageProps) {
             <PrimaryLink href="/deploy">Talk to a Worktree engineer</PrimaryLink>
             <SecondaryLink href="/product">See how Worktree works</SecondaryLink>
           </div>
+          <Link className={styles.localServiceLink} href="/locations/vancouver">
+            Vancouver and Lower Mainland AI services <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
     </WorktreeShell>

@@ -298,7 +298,7 @@ export default function CompareAiAgentApproachesPage() {
               </article>
             ))}
           </div>
-          <p className={styles.conclusionLine}>Open-source software can reduce license cost. A hosted product can reduce infrastructure work. Neither eliminates operating ownership.</p>
+          <p className={styles.conclusionLine}>Open-source software can reduce license cost. A hosted product can reduce infrastructure work. Neither eliminates operating ownership. For a fuller scope, see <Link className={styles.inlineLink} href="/blog/ai-automation-cost">what determines AI automation cost</Link>.</p>
         </div>
       </section>
 
@@ -340,7 +340,7 @@ export default function CompareAiAgentApproachesPage() {
               </article>
             ))}
           </div>
-          <p className={styles.conclusionLine}>The runtime is an implementation decision, not the customer outcome. The mapped process, control boundaries, evaluation standard, and operating history remain valuable even when the underlying technology changes.</p>
+          <p className={styles.conclusionLine}>The runtime is an implementation decision, not the customer outcome. The mapped process, control boundaries, evaluation standard, and operating history remain valuable even when the underlying technology changes. That ongoing ownership is the role of Worktree&apos;s <Link className={styles.inlineLink} href="/services/managed-ai">managed AI services</Link>.</p>
         </div>
       </section>
 

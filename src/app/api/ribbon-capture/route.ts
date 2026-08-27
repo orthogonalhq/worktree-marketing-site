@@ -52,7 +52,7 @@ export async function POST(request: Request) {
   }
 
   const bytes = await sharp(sourceBytes)
-    .webp({ effort: 4, lossless: true })
+    .webp({ alphaQuality: 85, effort: 6, quality: 82, smartSubsample: true })
     .toBuffer();
 
   const outputDirectory = path.join(process.cwd(), "public", "images", "workflow-ribbons");

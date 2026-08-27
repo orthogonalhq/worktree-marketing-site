@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { WorktreeShell } from "@/components/site-shell";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "About",
-  description: "About Worktree and Orthogonal Labs Inc.",
+  title: "About Our AI Workflow Engineering Team",
+  description:
+    "Learn how Worktree helps established teams implement and manage AI workflows. Worktree is operated by Orthogonal Labs Inc. in British Columbia, Canada.",
   path: "/about",
 });
 
@@ -17,6 +19,7 @@ export default function AboutPage() {
             <p className="worktree-type-eyebrow">About Worktree</p>
             <h1 id="about-heading" className="worktree-type-page-title mt-5">Managed workflows for real operational work.</h1>
             <p className="worktree-type-lead mt-6">Worktree is operated by Orthogonal Labs Inc., a company based in British Columbia, Canada. We help teams turn recurring business processes into managed agent workflows.</p>
+            <p className="worktree-type-body mt-4">For local service information, explore Worktree&apos;s <Link className="text-[var(--nous-page-title-fg)] underline decoration-[var(--nous-stroke-strong)] underline-offset-4" href="/locations/vancouver">AI automation services in Vancouver and the Lower Mainland</Link>.</p>
           </header>
 
           <div className="mt-12 space-y-12">

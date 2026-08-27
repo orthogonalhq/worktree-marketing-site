@@ -383,6 +383,25 @@
   transform: translateX(0.2rem);
 }
 
+.inlineLink {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, currentColor 46%, transparent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease;
+}
+
+.inlineLink:hover {
+  text-decoration-color: currentColor;
+}
+
+.inlineLink:focus-visible {
+  border-radius: 0.1rem;
+  outline: 1px solid currentColor;
+  outline-offset: 0.2rem;
+}
+
 .anatomyPath > p {
   margin-bottom: 1rem;
   color: rgba(16, 23, 34, 0.5);
