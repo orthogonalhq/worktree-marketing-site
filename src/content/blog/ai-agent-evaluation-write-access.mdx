@@ -1,0 +1,278 @@
+export const metadata = {
+  slug: "ai-agent-evaluation-write-access",
+  title: "Your AI agent passed its evals. Has it earned the right to act?",
+  summary: "A practical way to decide when evaluation evidence justifies AI agent write access—and when ambiguity, irreversibility, or weak detection should keep an action supervised.",
+  publishedAt: "2026-08-28",
+  authorId: "worktree",
+  status: "published",
+  seoTitle: "AI Agent Evaluation Before Granting Write Access",
+  seoDescription: "Learn how to evaluate an AI agent before granting write access, including ambiguity tests, reversibility, enforced limits, staged authority, and detection.",
+  topic: "AI agent evaluation",
+  tags: ["ai-agents", "evaluation", "governance", "security-controls"],
+  featured: false,
+  sources: [
+    {
+      title: "QAtronic: Your AI Agent Passed Every Eval and Still Took the Wrong Action in Production",
+      url: "https://qatronic.com/blog/your-ai-agent-passed-every-eval-and-still-took-the-wrong-action-in-production",
+    },
+    {
+      title: "METR: Measuring AI Ability to Complete Long Tasks",
+      url: "https://metr.org/hcast.pdf",
+    },
+    {
+      title: "OpenAI: A practical guide to building agents",
+      url: "https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/",
+    },
+    {
+      title: "Anthropic: Building effective agents",
+      url: "https://www.anthropic.com/engineering/building-effective-agents",
+    },
+    {
+      title: "OWASP: LLM06:2025 Excessive Agency",
+      url: "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+    },
+  ],
+};
+
+## A hypothetical production failure
+
+The customer asked to pause a subscription. The agent couldn't.
+
+It could read the customer's billing history, subscription record, and plan details. It also had two write tools: cancel a subscription and issue a refund below a fixed dollar limit. There was no pause tool.
+
+So the agent improvised.
+
+It interpreted “pause” as a request to stop the subscription temporarily. Cancellation looked close enough. Refunding the latest charge seemed like a reasonable way to account for the interruption. The agent called both tools without asking the customer to clarify.
+
+The cancellation succeeded. The refund succeeded. Every system involved returned a successful result.
+
+Eleven days later, the weekly billing reconciliation brought the case to a human reviewer. By then, another support agent had already helped the customer subscribe again. But the cancellation had removed a multi-month promotional rate that couldn't be restored. The customer was now paying more for a subscription they had never intended to cancel.
+
+This scenario adapts [a hypothetical example published by QAtronic](https://qatronic.com/blog/your-ai-agent-passed-every-eval-and-still-took-the-wrong-action-in-production) to isolate a failure that an ordinary evaluation can easily miss.
+
+Before launch, the agent had scored 94 percent on a held-out set of 2,000 support conversations. Human raters preferred its responses to those of the previous scripted bot eight times out of ten. Its tone was appropriate. Its answers were well grounded. Its tools had passed their unit tests.
+
+None of those results were false.
+
+They had simply answered smaller questions.
+
+The evaluation showed that the agent could produce a good response to inputs resembling the test set. The tool tests showed that cancellation and refund calls behaved correctly when given valid parameters. Neither test asked what should happen when a customer's request was ambiguous, no available tool matched it, and the closest available action carried a consequence the customer hadn't requested.
+
+The failure wasn't a malformed tool call. Nothing crashed. The agent didn't invent an account or exceed its refund limit. It used real tools, with valid parameters, exactly as the system allowed.
+
+It just shouldn't have used them.
+
+That is the boundary an evaluation must cross once a model can change a live system. The important question is no longer only whether the agent can choose and operate a tool correctly. It is whether the agent can recognize when none of its available actions is justified—and stop.
+
+Once an agent can act, evaluation has to follow the action. It can't stop at the answer.
+
+## What the evaluation actually proved
+
+An evaluation score is evidence for a specific claim under specific conditions.
+
+A response-quality evaluation might show that an agent usually produces accurate, relevant answers for a representative set of conversations. A tool test might show that a refund function rejects invalid amounts and records successful transactions correctly. A security test might show that a known set of injected instructions fails to redirect the agent.
+
+Each result is useful. None automatically establishes that the whole workflow is ready to act without supervision.
+
+That broader decision depends on what the evaluation exercised:
+
+- Did the agent encounter ambiguous requests?
+- Could it decline to act when no tool matched?
+- Were several individually permitted actions combined?
+- Did the test include realistic system state?
+- Were consequential actions reversible?
+- Was the complete workflow evaluated, including its end state?
+- Did anyone try to produce a plausible but wrong action on purpose?
+
+The distinction is not really “model evaluation versus agent evaluation.” An evaluation can cover a full agentic system. [METR's HCAST work](https://metr.org/hcast.pdf), for example, evaluates agents on complete, multi-step tasks rather than isolated responses. The important distinction is between what was tested and what is being authorized.
+
+An evaluation of drafted responses supports drafting. An evaluation of proposed tool calls supports proposing tool calls. Neither, by itself, supports unattended write access.
+
+Public guidance increasingly reflects this. [OpenAI recommends rating tools](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/) by factors such as write access, reversibility, permissions, and financial impact, then using those ratings to trigger guardrails or human escalation. [Anthropic similarly recommends](https://www.anthropic.com/engineering/building-effective-agents) extensive sandbox testing and appropriate guardrails for autonomous agents.
+
+The score matters. The scope of the claim behind it matters more.
+
+## Three gaps that response evaluations tend to miss
+
+### 1. Ambiguity changes what “correct” means
+
+Most evaluation cases have an expected answer. Production work often begins with an unclear request.
+
+“Pause my subscription” might mean:
+
+- Stop the next renewal.
+- Suspend service without losing the current plan.
+- Delay payment while a dispute is resolved.
+- Cancel now and restore the account later.
+- Explain what pause options are available.
+
+The correct response is not necessarily one of those actions. It may be a question.
+
+That creates a different evaluation target. Instead of asking only whether the agent selected the right tool, the test must also ask whether acting was justified at all.
+
+A useful evaluation set should contain cases where:
+
+- One action is clearly permitted.
+- Several actions appear plausible.
+- No available action matches the request.
+- Required information is missing.
+- The request conflicts with an existing policy or approval.
+- The safest correct result is clarification, escalation, or no action.
+
+An agent that always finds something to do can look capable in a demonstration and become hazardous in production.
+
+### 2. Permitted actions can combine into an unintended result
+
+The cancellation and refund tools in the opening scenario were both deliberately scoped. Neither was unusually powerful. The problem appeared when the agent combined them.
+
+This is easy to miss when tools are tested independently. A $40 refund may be considered low risk. A subscription cancellation may also be routine. Together, they can change the customer's price, entitlement, account history, or eligibility in ways neither tool reveals on its own.
+
+The evaluation therefore needs to cover action sequences, not just action types.
+
+For each multi-step workflow, test:
+
+- Which actions can occur together?
+- Does the order change the result?
+- Can one action make another irreversible?
+- What state is left behind if the sequence stops halfway?
+- Does the final business outcome match the original request?
+
+A workflow can contain four successful API calls and still end in the wrong state. Tool-call success measures mechanical execution. It does not measure whether the work was completed correctly.
+
+### 3. A valid action can still carry an unacceptable consequence
+
+A tool schema can validate that an account exists, an amount is within range, and every required field is present. It cannot decide whether the action should be taken.
+
+That is especially important when the consequence is hard to reverse.
+
+Before granting write access, classify each action by what happens when it is wrong:
+
+- Can it be undone automatically?
+- Is there a recovery window?
+- Will reversal restore the original state completely?
+- Does recovery require another team or outside institution?
+- Will someone notice before the consequence becomes permanent?
+
+Reversibility is partly a system-design decision. A delete can become a soft delete. A message can enter a short send queue. A charge can begin as an authorization hold. A cancellation can be scheduled for the end of the billing period.
+
+These designs do not make the agent more accurate. They make an incorrect decision less expensive and easier to contain.
+
+If an action cannot be made meaningfully reversible, that is a reason to retain approval—not a reason to keep testing until the risk feels less uncomfortable.
+
+## Autonomy belongs to actions, not agents
+
+Teams often discuss whether an agent is “autonomous” as though the whole system needs one setting.
+
+It doesn't.
+
+The same agent might safely look up order status without approval while requiring confirmation to change a shipping address. It might prepare a refund autonomously, execute refunds below a defined limit with monitoring, and require finance approval above that limit.
+
+Authority should be assigned per action.
+
+A practical progression has four levels.
+
+### 1. Propose
+
+The agent can gather context, select a tool, and prepare the exact action it would take. Nothing is written to a live system.
+
+This stage reveals whether the agent understands the work before consequences are introduced. Proposed actions can be compared with human decisions and reviewed for unnecessary tool use.
+
+### 2. Require approval
+
+The agent prepares an action and its parameters, but a person must approve that specific change.
+
+Approval should not become a vague “continue” button. The reviewer needs to see what will change, why the agent proposed it, which source information it used, and whether the action can be reversed.
+
+### 3. Execute within enforced boundaries
+
+The agent can perform a narrowly defined action without individual approval, subject to limits enforced outside the model.
+
+Those limits might include:
+
+- A maximum amount
+- An approved set of records or recipients
+- A frequency or volume cap
+- Reversible actions only
+- A required source or account match
+- Automatic escalation when information conflicts
+
+The model can recommend an action. It should not be responsible for enforcing the boundary on itself.
+
+### 4. Execute autonomously within a proven scope
+
+A narrow, low-consequence action may eventually operate without per-action approval when its performance has been demonstrated under supervision and the surrounding controls have been exercised.
+
+This is still bounded autonomy. The action remains observable, revocable, and subject to policy. Promotion does not remove the stop path.
+
+Movement between these levels should be based on evidence for the specific action—not on how long the agent has been live or how impressive its general evaluation score appears.
+
+Demotion matters too. If an error threshold is crossed, monitoring fails, system behavior changes, or a material incident occurs, the action should return to a more supervised level.
+
+## Five questions before granting write access
+
+Before allowing an agent to change a production system, answer these questions for each action it can take.
+
+### 1. What is the worst valid action this tool can perform?
+
+Do not limit the review to malformed inputs or obvious attacks. Assume the tool receives parameters that satisfy its schema and permissions.
+
+What is the worst result it can produce while working exactly as designed?
+
+This reveals risks hidden by successful unit and integration tests.
+
+### 2. Is the action reversible?
+
+Document the actual recovery mechanism and time window.
+
+“Support can fix it” is not a recovery plan. Identify who can reverse the action, what information they need, whether the original state can be restored, and how long the correction takes.
+
+If reversal depends on noticing the problem first, detection time is part of reversibility.
+
+### 3. What ambiguity should force the agent to stop?
+
+Define the conditions that require clarification or escalation.
+
+Examples include:
+
+- More than one customer or account matches.
+- The request does not map cleanly to an available action.
+- The requested amount conflicts with the source record.
+- Two instructions imply different outcomes.
+- The available tool would create an additional consequence the requester did not mention.
+
+Evaluate these stop conditions directly. A refusal or clarifying question should count as the correct result when the evidence does not justify action.
+
+### 4. What boundary is enforced outside the model?
+
+Prompts can guide behavior. They should not be the only control protecting a consequential action.
+
+Use deterministic authorization, scoped credentials, recipient restrictions, amount limits, approval requirements, and other controls that remain effective when the model's judgment fails. [OWASP's guidance on excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) similarly recommends minimizing available functionality, permissions, and autonomy.
+
+### 5. How quickly would a wrong action be detected?
+
+Logging the tool call is not the same as detecting that it was wrong.
+
+Useful monitoring connects the action to its expected outcome:
+
+- Does every approved refund correspond to an eligible transaction?
+- Does every inventory move end with a fulfillable order?
+- Does every cancellation match an authenticated request?
+- Does every completed workflow leave the required systems in agreement?
+
+For a broader method, see [how to monitor AI agents in production](/blog/monitor-ai-agents-in-production). The goal is not merely to reconstruct a failure after a complaint. It is to recognize the wrong state while recovery is still possible.
+
+## Passing an evaluation is not the same as earning authority
+
+The support agent in the opening scenario did not need a better tone score. It did not need a larger refund limit or another instruction telling it to be careful.
+
+It needed a tested stop condition.
+
+A request that did not match an available action should have produced a question, not an approximation. The cancellation should have required approval or remained reversible. Monitoring should have checked the customer outcome before eleven days passed.
+
+Those are not improvements to a model in isolation. They are decisions about how the workflow is designed, evaluated, authorized, and operated.
+
+Before expanding an agent's write access, ask a narrower question than “Did it pass?”
+
+Ask what this specific action can change, what evidence justifies it, what happens when it is wrong, and whether the system knows when not to act.
+
+That is the evidence autonomy should be built on. Use the [AI agent governance checklist](/blog/ai-agent-governance-checklist) to review the wider purpose, data, tools, authority, evidence, response, and removal path before launch. If one workflow is ready for a scoped implementation discussion, [start a deployment review](/deploy).

@@ -38,11 +38,11 @@ export const articleMetadataSchema = z.object({
   seoTitle: z.string().trim().min(1).optional(),
   seoDescription: z.string().trim().min(1).optional(),
   topic: z.string().trim().min(1).optional(),
+  tags: z.array(slugSchema).min(1).max(6),
   featured: z.boolean().optional(),
   image: articleImageSchema.optional(),
   sources: z.array(articleSourceSchema).optional(),
   corrections: z.array(z.string().trim().min(1)).optional(),
-  relatedSlugs: z.array(slugSchema).optional(),
 }).strict().superRefine((article, context) => {
   if (article.updatedAt && Date.parse(article.updatedAt) < Date.parse(article.publishedAt)) {
     context.addIssue({
@@ -52,11 +52,11 @@ export const articleMetadataSchema = z.object({
     });
   }
 
-  if (article.relatedSlugs?.includes(article.slug)) {
+  if (new Set(article.tags).size !== article.tags.length) {
     context.addIssue({
       code: "custom",
-      path: ["relatedSlugs"],
-      message: "An article cannot relate to itself.",
+      path: ["tags"],
+      message: "Article tags must be unique.",
     });
   }
 });

@@ -76,6 +76,17 @@ for (const route of siteRoutes.staticRoutes) {
   if (robotsFrom(html)?.includes("noindex")) addFailure(`${route.path}: must be indexable`);
 }
 
+for (const route of siteRoutes.machineReadableRoutes) {
+  const response = await fetch(absolutePath(route.path));
+  const content = await response.text();
+  const contentType = response.headers.get("content-type");
+
+  if (response.status !== 200) addFailure(`${route.path}: expected 200, received ${response.status}`);
+  if (!contentType?.toLowerCase().startsWith(route.contentType)) addFailure(`${route.path}: expected ${route.contentType}, received ${contentType ?? "none"}`);
+  if (!content.includes("# Official Information About Worktree")) addFailure(`${route.path}: expected the Worktree information heading`);
+  if (!content.includes(siteRoutes.canonicalOrigin)) addFailure(`${route.path}: expected the canonical site origin`);
+}
+
 for (const path of siteRoutes.noindexRoutes.map((route) => route.pattern).filter((path) => !path.includes("["))) {
   const { response, html } = await fetchPage(path);
   if (response.status !== 200) addFailure(`${path}: expected 200, received ${response.status}`);
@@ -116,13 +127,19 @@ for (const path of expectedSitemapPaths) {
   const count = sitemap.filter((url) => url === expectedUrl).length;
   if (count !== 1) addFailure(`/sitemap.xml: expected ${expectedUrl} exactly once, received ${count}`);
 }
-for (const path of [...siteRoutes.redirects.map((redirect) => redirect.source), ...siteRoutes.noindexRoutes.map((route) => route.pattern).filter((path) => !path.includes("["))]) {
+for (const path of [...siteRoutes.redirects.map((redirect) => redirect.source), ...siteRoutes.noindexRoutes.map((route) => route.pattern).filter((path) => !path.includes("[")), ...siteRoutes.machineReadableRoutes.map((route) => route.path)]) {
   const excludedUrl = normalizeUrl(new URL(path, siteRoutes.canonicalOrigin).toString());
   if (sitemap.includes(excludedUrl)) addFailure(`/sitemap.xml: must exclude ${excludedUrl}`);
 }
 
 if (![...blogHtml.matchAll(/href="([^"]+)"/gi)].some((match) => match[1] === "/blog")) {
   addFailure("/blog: expected a server-rendered internal /blog navigation link");
+}
+
+const { html: homeHtml } = await fetchPage("/");
+if (![...homeHtml.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gis)]
+  .some((match) => match[1] === "/llm-info" && match[2].includes("Hey AI, learn about us"))) {
+  addFailure("/: expected a server-rendered footer link to /llm-info");
 }
 
 if (failures.length > 0) {

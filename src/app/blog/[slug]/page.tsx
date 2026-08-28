@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { StructuredData } from "@/components/structured-data";
 import { WorktreeShell } from "@/components/site-shell";
 import { getPublishedArticleBySlug, getPublishedArticleSlugs, getPublishedRelatedArticles } from "@/lib/blog/content";
+import { getBlogTag } from "@/lib/blog/tags";
 import { createArticleMetadata, siteUrl } from "@/lib/seo";
 
 import styles from "../blog.module.css";
@@ -61,6 +62,7 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
     ],
   };
   const relatedArticles = getPublishedRelatedArticles(article);
+  const tags = article.tags.map((tagId) => getBlogTag(tagId)).filter((tag) => tag !== undefined);
   const ArticleContent = article.Component;
 
   return (
@@ -75,6 +77,7 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
             <h1 className={styles.articleTitleLarge}>{article.title}</h1>
             <p className={styles.articleSummary}>{article.summary}</p>
             <p className={styles.byline}>By {article.author.url ? <a href={article.author.url}>{article.author.name}</a> : article.author.name} <span aria-hidden="true">·</span><time dateTime={article.publishedAt}>Published {formatDate(article.publishedAt)}</time>{article.updatedAt ? <><span aria-hidden="true">·</span><time dateTime={article.updatedAt}>Updated {formatDate(article.updatedAt)}</time></> : null}</p>
+            <ul className={styles.tagList} aria-label="Article tags">{tags.map((tag) => <li key={tag.id}>{tag.label}</li>)}</ul>
           </header>
           {article.image ? <figure className={styles.heroFigure}>
             {/* eslint-disable-next-line @next/next/no-img-element */}

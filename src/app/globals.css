@@ -407,6 +407,23 @@ main > section {
   justify-items: start;
 }
 
+.worktree-site-footer .worktree-footer-ai-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.9rem;
+  color: var(--nous-fg-muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.worktree-footer-ai-link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
 .worktree-footer-nav {
   display: grid;
   width: 100%;

@@ -1,12 +1,13 @@
-/** @typedef {"indexable" | "noindex" | "publication"} RouteClass */
+/** @typedef {"indexable" | "noindex" | "publication" | "machine-readable"} RouteClass */
 
 /**
  * @typedef {{ path: string, routeClass: RouteClass, lastModified: string }} StaticRoute
  * @typedef {{ pattern: string, routeClass: "publication", lastModifiedFrom: "article metadata" }} PublicationRoute
+ * @typedef {{ path: string, routeClass: "machine-readable", contentType: "text/plain" }} MachineReadableRoute
  * @typedef {{ source: string, destination: string, permanent: true }} PermanentRedirect
  */
 
-/** @type {{ canonicalOrigin: string, staticRoutes: readonly StaticRoute[], publicationRoutes: readonly PublicationRoute[], noindexRoutes: readonly { pattern: string, routeClass: "noindex" }[], redirects: readonly PermanentRedirect[], pendingDependencies: readonly { source: string, destination: string, reason: string }[], unknownRoutes: { expectedStatus: 404, probePath: string } }} */
+/** @type {{ canonicalOrigin: string, staticRoutes: readonly StaticRoute[], publicationRoutes: readonly PublicationRoute[], machineReadableRoutes: readonly MachineReadableRoute[], noindexRoutes: readonly { pattern: string, routeClass: "noindex" }[], redirects: readonly PermanentRedirect[], pendingDependencies: readonly { source: string, destination: string, reason: string }[], unknownRoutes: { expectedStatus: 404, probePath: string } }} */
 export const siteRoutes = {
   canonicalOrigin: "https://worktree.agency",
   staticRoutes: [
@@ -29,6 +30,9 @@ export const siteRoutes = {
   publicationRoutes: [
     { pattern: "/blog", routeClass: "publication", lastModifiedFrom: "article metadata" },
     { pattern: "/blog/[slug]", routeClass: "publication", lastModifiedFrom: "article metadata" },
+  ],
+  machineReadableRoutes: [
+    { path: "/llm-info", routeClass: "machine-readable", contentType: "text/plain" },
   ],
   noindexRoutes: [
     { pattern: "/deploy/book", routeClass: "noindex" },

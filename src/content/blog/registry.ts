@@ -2,11 +2,12 @@
 import type { ComponentType } from "react";
 
 import type { ArticleMetadata } from "@/lib/blog/schema";
-import Article0, { metadata as article0Metadata } from "./ai-agent-governance-checklist.mdx";
-import Article1, { metadata as article1Metadata } from "./ai-automation-cost.mdx";
-import Article2, { metadata as article2Metadata } from "./ai-implementation-roadmap.mdx";
-import Article3, { metadata as article3Metadata } from "./ibm-ai-transformation-work-redesign.mdx";
-import Article4, { metadata as article4Metadata } from "./monitor-ai-agents-in-production.mdx";
+import Article0, { metadata as article0Metadata } from "./ai-agent-evaluation-write-access.mdx";
+import Article1, { metadata as article1Metadata } from "./ai-agent-governance-checklist.mdx";
+import Article2, { metadata as article2Metadata } from "./ai-automation-cost.mdx";
+import Article3, { metadata as article3Metadata } from "./ai-implementation-roadmap.mdx";
+import Article4, { metadata as article4Metadata } from "./ibm-ai-transformation-work-redesign.mdx";
+import Article5, { metadata as article5Metadata } from "./monitor-ai-agents-in-production.mdx";
 
 export type RegisteredArticle = {
   metadata: ArticleMetadata;
@@ -33,5 +34,9 @@ export const articleRegistry = [
   {
     metadata: article4Metadata,
     Component: Article4,
+  },
+  {
+    metadata: article5Metadata,
+    Component: Article5,
   },
 ] as const satisfies readonly RegisteredArticle[];
