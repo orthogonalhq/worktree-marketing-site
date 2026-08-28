@@ -2,9 +2,7 @@
   position: relative;
   z-index: 2;
   padding: clamp(4rem, 6.667vw, 6rem) 1rem 0;
-  background:
-    radial-gradient(circle at 50% 22%, color-mix(in srgb, var(--nous-accent-info) 5%, transparent), transparent 34rem),
-    var(--nous-page-bg);
+  background: var(--nous-page-bg);
 }
 
 .inner {

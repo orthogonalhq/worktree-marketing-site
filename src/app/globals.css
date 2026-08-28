@@ -3485,6 +3485,7 @@ main > section {
   width: calc(100% + var(--nous-primary-cta-shadow-cutoff));
   height: calc(100% + var(--nous-primary-cta-shadow-cutoff));
   overflow: visible;
+  border-radius: inherit;
   filter: blur(clamp(2px, 0.125em, 12px));
   pointer-events: none;
 }
