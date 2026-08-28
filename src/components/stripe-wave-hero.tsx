@@ -737,7 +737,6 @@ export function StripeWaveHero({
         applyZoom(initialZoom);
         const revealFrame = () => {
           if (disposed || !wave) return;
-          if (freezeOnReady) wave.paused = true;
           layout.classList.add(styles.drawn);
           if (isCaptureMode) {
             document.documentElement.dataset.ribbonRenderReady = "true";
@@ -748,8 +747,12 @@ export function StripeWaveHero({
         // static image. Two frames avoid exposing an initialized-but-empty canvas.
         requestAnimationFrame(() => requestAnimationFrame(revealFrame));
       });
+
+      // A paused Wave renders one deterministic time-zero frame as soon as its
+      // scene is ready. Set the state before initialization so fallback captures
+      // never advance by a load-time-dependent number of animation frames.
+      wave.paused = freezeOnReady || reducedMotion.matches;
       wave.initScene();
-      wave.paused = freezeOnReady ? false : reducedMotion.matches;
     }).catch((error: unknown) => {
       console.error(error);
     });
